@@ -1,21 +1,17 @@
 import React from "react";
+import { StyleSheet, Text, ScrollView, View, Alert, Image } from "react-native";
 import {
-  StyleSheet,
-  Text,
-  ScrollView,
-  View,
-  Alert,
-  Image
-} from "react-native";
-import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
+  SimpleButton,
+  SimpleLinearGradientButton
+} from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 
 export default function Home() {
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
-        <Text>Landing page</Text>
-        <Text>My Roots In</Text>
+        <Text style={styles.title}>Your home. Greener.</Text>
+        <Text style={styles.subtitle}>Enjoy the experience.</Text>
       </View>
       <View style={styles.imageWrapper}>
         <Image
@@ -28,7 +24,7 @@ export default function Home() {
           class={styles.btnGradient}
           textStyle={styles.whiteText}
           title="Login"
-          onPress={() => Alert.alert('Gradient button clicked')}
+          onPress={() => Alert.alert("Gradient button clicked")}
         />
         <SimpleButton
           class={styles.btnWhite}
@@ -65,10 +61,10 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: colors.rootGreen,
     paddingVertical: 15,
-    marginVertical: 10,
+    marginVertical: 10
   },
   btnGradient: {
-    marginVertical: 10,
+    marginVertical: 10
   },
   btnWhite: {
     backgroundColor: colors.rootWhite,
@@ -101,7 +97,14 @@ const styles = StyleSheet.create({
     color: colors.rootBlack
   },
   buttonWrapper: {
-    width: '100%',
-    alignItems: "center",
+    width: "100%",
+    alignItems: "center"
+  },
+  title: {
+    fontSize: 30
+  },
+  subtitle: {
+    fontSize: 20,
+    opacity: 0.3
   }
 });
