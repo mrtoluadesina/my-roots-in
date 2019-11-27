@@ -9,7 +9,8 @@ export const Button = styled(TouchableOpacity)`
 `;
 
 export const LinearGradientButton = styled(LinearGradient)`
-  width: 80%;
+  width: 100%;
+  padding: 15px;
   align-items: center;
   border-radius: 5px;
 `
