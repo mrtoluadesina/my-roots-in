@@ -10,7 +10,11 @@ export const SimpleButton = props => (
 
 export const SimpleLinearGradientButton = props => (
   <Button style={props.class} onPress={props.onPress}>
-    <LinearGradientButton colors={["#0AC4BA", "#2BDA8E"]}>
+    <LinearGradientButton
+      start={{ x: 0, y: 0 }}
+      end={{ x: 1, y: 0 }}
+      colors={["#0AC4BA", "#2BDA8E"]}
+    >
       <Text style={props.textStyle}>{props.title}</Text>
     </LinearGradientButton>
   </Button>
