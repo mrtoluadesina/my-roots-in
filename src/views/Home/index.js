@@ -69,7 +69,6 @@ const styles = StyleSheet.create({
   },
   btnGradient: {
     marginVertical: 10,
-    paddingVertical: 15,
   },
   btnWhite: {
     backgroundColor: colors.rootWhite,
