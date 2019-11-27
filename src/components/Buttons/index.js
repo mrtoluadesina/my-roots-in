@@ -12,7 +12,7 @@ export const SimpleLinearGradientButton = props => (
   <LinearGradientButton
     colors={["#0AC4BA", "#2BDA8E"]}
     style={props.class}
-    onPress={props.onPress}
+    onClick={props.onPress}
   >
     <Text style={props.textStyle}>{props.title}</Text>
   </LinearGradientButton>
