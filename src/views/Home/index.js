@@ -2,13 +2,12 @@ import React from "react";
 import {
   StyleSheet,
   Text,
-  SafeAreaView,
   ScrollView,
   View,
   Alert,
   Image
 } from "react-native";
-import { SimpleButton } from "../../components/Buttons";
+import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 
 export default function Home() {
@@ -25,11 +24,11 @@ export default function Home() {
         />
       </View>
       <View style={styles.buttonWrapper}>
-        <SimpleButton
-          class={styles.btn}
+        <SimpleLinearGradientButton
+          class={styles.btnGradient}
           textStyle={styles.whiteText}
-          title="Press Me"
-          onPress={() => Alert.alert("Simple Button")}
+          title="Login"
+          onPress={() => Alert.alert('Gradient button clicked')}
         />
         <SimpleButton
           class={styles.btnWhite}
@@ -66,19 +65,24 @@ const styles = StyleSheet.create({
   btn: {
     backgroundColor: colors.rootGreen,
     paddingVertical: 15,
-    marginVertical: 5,
-    shadowColor: colors.rootBlack,
+    marginVertical: 10,
+  },
+  btnGradient: {
+    marginVertical: 10,
+    paddingVertical: 15,
   },
   btnWhite: {
     backgroundColor: colors.rootWhite,
     paddingVertical: 15,
-    marginVertical: 5,
-    shadowColor: colors.rootBlack,
-    shadowOpacity: 0.15,
+    marginVertical: 10,
     shadowOffset: {
-      width: 1,
-      height: 4
-    }
+      width: 0,
+      height: 15
+    },
+    shadowRadius: 55,
+    shadowOpacity: 0.7,
+    shadowColor: colors.rootShadow,
+    elevation: 1
   },
   imageWrapper: {
     width: "100%",
