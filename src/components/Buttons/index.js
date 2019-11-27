@@ -9,11 +9,9 @@ export const SimpleButton = props => (
 );
 
 export const SimpleLinearGradientButton = props => (
-  <LinearGradientButton
-    colors={["#0AC4BA", "#2BDA8E"]}
-    style={props.class}
-    onClick={props.onPress}
-  >
-    <Text style={props.textStyle}>{props.title}</Text>
-  </LinearGradientButton>
+  <Button style={props.class} onPress={props.onPress}>
+    <LinearGradientButton colors={["#0AC4BA", "#2BDA8E"]}>
+      <Text style={props.textStyle}>{props.title}</Text>
+    </LinearGradientButton>
+  </Button>
 );
