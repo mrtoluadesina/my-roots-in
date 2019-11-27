@@ -1,19 +1,20 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {useState, useEffect} from 'react';
+import * as Fonts from 'expo-font';
+import AppRoutes from './routes';
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-    </View>
-  );
-}
+  const [isFontReady, setIsFontReady] = useState(false);
+  useEffect(() => {
+    const loadFont = async () => {
+      await Fonts.loadAsync({
+        'Helvetica': require('./assets/fonts/HelveticaNeue.ttf'),
+        'Helvetica-Light': require('./assets/fonts/HelveticaNeue-Light.ttf'),
+        'Helvetica-Bold': require('./assets/fonts/Helvetica-Neu-Bold.ttf')
+      });
+      setIsFontReady(true);
+    };
+    loadFont();
+  }, [isFontReady]);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  return isFontReady ? <AppRoutes /> : null;
+}
