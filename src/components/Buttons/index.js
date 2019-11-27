@@ -1,8 +1,10 @@
 import React from "react";
-import { TouchableOpacity, Text } from "react-native";
+import { Text } from "react-native";
+import { Button } from "./style";
 
 export const SimpleButton = props => (
-  <TouchableOpacity style={props.class} onPress={props.onPress}>
-    <Text>{props.title}</Text>
-  </TouchableOpacity>
+  <Button style={props.class} onPress={props.onPress}>
+    <Text style={props.textStyle}>{props.title}</Text>
+  </Button>
 );
+
