@@ -6,5 +6,3 @@ export const Button = styled(TouchableOpacity)`
   align-items: center;
   border-radius: 5px;
 `;
-
-
