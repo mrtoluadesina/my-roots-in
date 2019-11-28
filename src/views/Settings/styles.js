@@ -39,13 +39,12 @@ export const Greeting = styled.Text`
   text-transform: capitalize;
 `;
 
-export const Description = styled.Text`
-  margin-top: 20px;
-  width: 100%;
-  font-family: "Helvetica";
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.07px;
+export const Header = styled.View`
+  border: 1px black solid;
+`;
+
+export const Avater = styled.Image`
+  border: 1px black solid;
 `;
 
 export const Form = styled.View`
