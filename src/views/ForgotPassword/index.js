@@ -7,7 +7,7 @@ import {
   Image,
   ScrollView
 } from "react-native";
-import CustomInput from "../../components/Input";
+import { CustomInput } from "../../components/Input";
 import {
   SimpleLinearGradientButton,
   SimpleButton
