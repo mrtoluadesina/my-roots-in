@@ -20,9 +20,6 @@ export default function Home() {
           source={require("../../../assets/images/get-started-tree.png")}
         />
       </View>
-      <SimpleCard>
-        <Text>This is how we work</Text>
-      </SimpleCard>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
           class={styles.btnGradient}
