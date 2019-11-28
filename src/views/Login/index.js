@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import {
   SimpleButton,
@@ -6,16 +6,18 @@ import {
 } from "../../components/Buttons";
 import CustomInput from "../../components/Input";
 import metadata from "../../constants/meta";
+import { connect } from "react-redux";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
+import { login } from "./redux/action";
 
 function Login(props) {
   const { navigate } = props.navigation;
 
   const initialState = {
-    email: 'tadesina90@gmail.com',
-    password: ''
-  }
+    email: "tadesina90@gmail.com",
+    password: ""
+  };
 
   const [values, setValues] = useState(initialState);
   return (
@@ -109,6 +111,14 @@ const styles = StyleSheet.create({
   formWrapper: {
     width: "80%"
   }
+});
+
+const mapStateToProps = state => ({
+  isLoading: state.Login.isLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  loginHandler: payload => dispatch(login(payload))
 });
 
 export default Login;
