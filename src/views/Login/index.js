@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
 import {
   SimpleButton,
@@ -11,6 +11,13 @@ import { colors } from "../../constants/colors";
 
 function Login(props) {
   const { navigate } = props.navigation;
+
+  const initialState = {
+    email: 'tadesina90@gmail.com',
+    password: ''
+  }
+
+  const [values, setValues] = useState(initialState);
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={styles.header}>
@@ -20,12 +27,10 @@ function Login(props) {
         <Image style={styles.image} source={images.loginImg} />
       </View>
       <View style={styles.formWrapper}>
-        <Text>Email</Text>
-        <CustomInput />
+        <CustomInput label="Email" />
       </View>
       <View style={styles.formWrapper}>
-        <Text>Password</Text>
-        <CustomInput />
+        <CustomInput label="Password" />
       </View>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
