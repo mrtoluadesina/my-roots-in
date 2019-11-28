@@ -8,7 +8,7 @@ export default metadata = {
     },
     {
       label: "Email",
-      type: "email;",
+      type: "email",
       text: "emailAddress", // input field textContentType
       id: "b785e8be-aa7f-48ac-8f30-775c02eb973d"
     },
