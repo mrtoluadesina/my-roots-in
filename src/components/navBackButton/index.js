@@ -3,6 +3,7 @@ import * as Progress from "react-native-progress";
 
 import { Image, Platform } from "react-native";
 import { Container, ProgressContainer, TouchableOpacity } from "./styles";
+import { colors } from "../../constants/colors";
 
 export default function NavBackButton({ onPress }) {
   return (
@@ -13,8 +14,8 @@ export default function NavBackButton({ onPress }) {
       <ProgressContainer>
         <Progress.Bar
           progress={0.5}
-          color="#0AC4BA"
-          unfilledColor="#EBF0FF"
+          color={colors.rootGreenDark}
+          unfilledColor={colors.unfilledColor}
           borderWidth={0}
           height={2}
           width={350}

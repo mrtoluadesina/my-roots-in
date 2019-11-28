@@ -11,9 +11,10 @@
  *****/
 
 import styled from "styled-components";
+import { colors } from "../../constants/colors";
 
 export const Container = styled.View`
-  background-color: #ffffff;
+  background-color: ${colors.rootWhite};
   flex-direction: row;
   height: 80;
   align-items: flex-end;

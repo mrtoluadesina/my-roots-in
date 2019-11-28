@@ -9,7 +9,7 @@ export default function Signup(props) {
   const { navigate } = props.navigation;
 
   const initialFormState = {
-    fullName: "john doe",
+    fullName: "",
     email: "",
     password: "",
     countryOfResidence: "",

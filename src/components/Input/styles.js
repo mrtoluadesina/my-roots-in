@@ -11,18 +11,19 @@
  *****/
 
 import styled from "styled-components";
+import { colors } from "../../constants/colors";
 
 export const Container = styled.View`
   width: 100%;
   border-bottom-width: 1px;
-  border-bottom-color: #e1e1e5;
+  border-bottom-color: ${colors.rootInputUnderline};
   height: 58;
   justify-content: space-between;
 `;
 
 export const InputLabel = styled.Text`
   font-size: 18px;
-  color: #c4ccd6;
+  color: ${colors.rootInputLabel};
   letter-spacing: 2px;
   font-family: "Helvetica-Light";
   font-weight: 400;
@@ -30,7 +31,7 @@ export const InputLabel = styled.Text`
 
 export const TextInput = styled.TextInput`
   font-size: 15px;
-  color: #323643;
+  color: ${colors.rootBlack};
   text-transform: capitalize;
   letter-spacing: 1px;
 `;
