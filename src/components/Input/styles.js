@@ -19,6 +19,7 @@ export const Container = styled.View`
   border-bottom-color: ${colors.rootInputUnderline};
   height: 58;
   justify-content: space-between;
+  position: relative;
 `;
 
 export const InputLabel = styled.Text`
@@ -36,4 +37,17 @@ export const TextInput = styled.TextInput`
   letter-spacing: 1px;
   height: 60%;
   margin-top: 4px;
+`;
+
+export const Edit = styled.Text`
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 12px;
+  line-height: 14px;
+  letter-spacing: 0.05px;
+  text-transform: capitalize;
+  color: ${colors.rootGreenDark};
+  margin-bottom: 4px;
+  padding-right: 4px;
 `;
