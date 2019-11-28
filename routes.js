@@ -1,8 +1,30 @@
-import React from 'react';
-import Home from './src/views/Home';
+import React from "react";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
+import NavBackButton from "./src/components/navBackButton";
 
-export default function AppRoutes() {
-  return (
-    <Home />
-  )
-}
+import Signup from "./src/views/Signup";
+import Home from "./src/views/Home";
+
+const MainNavigator = createStackNavigator(
+  {
+    Home: { screen: Home },
+    Signup: {
+      screen: Signup,
+      navigationOptions: ({ navigation }) => ({
+        header: <NavBackButton onPress={() => navigation.goBack()} />,
+        headerStyle: {
+          borderBottomWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0
+        },
+        headerTintColor: "#ffffff"
+      })
+    }
+  },
+  {
+    initialRouteName: "Signup"
+  }
+);
+
+export default AppRoutes = createAppContainer(MainNavigator);
