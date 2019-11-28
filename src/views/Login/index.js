@@ -49,6 +49,13 @@ function Login(props) {
           {...details[1]}
           style={{ marginBottom: 26 }}
         />
+        <Text
+          onPress={() => {
+            navigate("ForgotPassword");
+          }}
+        >
+          Forgot Password?
+        </Text>
       </View>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
