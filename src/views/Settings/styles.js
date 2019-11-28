@@ -30,8 +30,6 @@ export const Background = styled.View`
 `;
 
 export const Greeting = styled.Text`
-  width: 100%;
-  margin-top: 30px;
   font-family: "Helvetica-Bold";
   font-size: 26px;
   line-height: 26px;
@@ -40,11 +38,17 @@ export const Greeting = styled.Text`
 `;
 
 export const Header = styled.View`
-  border: 1px black solid;
+  padding-top: 30px;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Avater = styled.Image`
-  border: 1px black solid;
+  width: 40px;
+  height: 40px;
+  border-radius: 20;
 `;
 
 export const Form = styled.View`
@@ -53,11 +57,27 @@ export const Form = styled.View`
   margin-top: 40px;
 `;
 
-export const Signin = styled.Text`
+export const Notification = styled.View`
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 40px;
+`;
+
+export const NotificationTitle = styled.Text`
+  text-transform: capitalize;
   font-size: 12px;
-  line-height: 18px;
-  margin-top: 10px;
-  text-decoration: underline;
-  text-decoration-color: #9da3b4;
-  color: #9da3b4;
+  line-height: 14px;
+  color: ${colors.rootInputLabel};
+`;
+
+export const NotificationToggle = styled.Switch``;
+
+export const Footer = styled.View`
+  flex: 1;
+  border-top-width: 1px;
+  border-top-color: #e1e3e8;
+  border-style: solid;
+  width: 100%;
+  padding: 30px 50px;
 `;
