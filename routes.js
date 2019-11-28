@@ -7,6 +7,7 @@ import Signup from "./src/views/Signup";
 import Home from "./src/views/Home";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
+import ForgotPassword from "./src/views/ForgotPassword";
 
 const MainNavigator = createStackNavigator(
   {
@@ -53,9 +54,16 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0
+          borderBottomWidth: 0
+        }
+      })
+    },
+    ForgotPassword: {
+      screen: ForgotPassword,
+      navigationOptions: ({ navigation }) => ({
+        header: <NavBackButton onPress={() => navigation.goBack()} />,
+        headerStyle: {
+          borderBottomWidth: 0
         },
         headerTintColor: "#ffffff"
       })

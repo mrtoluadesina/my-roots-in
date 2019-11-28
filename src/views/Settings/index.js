@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomInput from "../../components/Input";
+import { EditableInput } from "../../components/Input";
 import {
   Container,
   Background,
@@ -47,7 +47,7 @@ export default function Settings(props) {
           <Avater source={images.getDefaultAvater}></Avater>
         </Header>
         <Form>
-          <CustomInput
+          <EditableInput
             defaultValue={fields[details[0].type]}
             textContentType={details[0].text}
             onChangeText={handleChange(details[0].type)}
@@ -55,7 +55,7 @@ export default function Settings(props) {
             {...details[0]}
             style={{ marginBottom: 26 }}
           />
-          <CustomInput
+          <EditableInput
             defaultValue={fields[details[1].type]}
             textContentType={details[1].text}
             onChangeText={handleChange(details[1].type)}
@@ -63,7 +63,7 @@ export default function Settings(props) {
             {...details[1]}
             style={{ marginBottom: 26 }}
           />
-          <CustomInput
+          <EditableInput
             defaultValue={fields[details[2].type]}
             textContentType={details[2].text}
             onChangeText={handleChange(details[2].type)}
@@ -71,7 +71,7 @@ export default function Settings(props) {
             {...details[2]}
             style={{ marginBottom: 26 }}
           />
-          <CustomInput
+          <EditableInput
             defaultValue={fields[details[3].type]}
             textContentType={details[3].text}
             onChangeText={handleChange(details[3].type)}
@@ -79,7 +79,7 @@ export default function Settings(props) {
             {...details[3]}
             style={{ marginBottom: 26 }}
           />
-          <CustomInput
+          <EditableInput
             defaultValue={fields[details[4].type]}
             textContentType={details[4].text}
             onChangeText={handleChange(details[4].type)}
