@@ -1,6 +1,7 @@
 import React from "react";
 import { Text } from "react-native";
 import { Button, LinearGradientButton } from "./style";
+import {colors} from '../../constants/colors';
 
 export const SimpleButton = props => (
   <Button style={props.class} onPress={props.onPress}>
@@ -13,7 +14,7 @@ export const SimpleLinearGradientButton = props => (
     <LinearGradientButton
       start={{ x: 0, y: 0 }}
       end={{ x: 1, y: 0 }}
-      colors={["#0AC4BA", "#2BDA8E"]}
+      colors={[colors.linearGradientFrom, colors.linearGradientTo]}
     >
       <Text style={props.textStyle}>{props.title}</Text>
     </LinearGradientButton>
