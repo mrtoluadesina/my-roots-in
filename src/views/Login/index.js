@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Image, ScrollView } from "react-native";
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  View,
+  Text,
+  Image,
+  ScrollView
+} from "react-native";
 import {
   SimpleButton,
   SimpleLinearGradientButton
@@ -26,49 +33,51 @@ function Login(props) {
 
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
-      <View style={styles.header}>
-        <Text style={styles.title}>Login.</Text>
-      </View>
-      <View style={styles.imageWrapper}>
-        <Image style={styles.image} source={images.loginImg} />
-      </View>
-      <View style={styles.formWrapper}>
-        <CustomInput
-          defaultValue={values[details[0].type]}
-          textContentType={details[0].text}
-          onChangeText={handleChange(details[0].type)}
-          {...details[0]}
-          style={{ marginBottom: 26 }}
-        />
-      </View>
-      <View style={styles.formWrapper}>
-        <CustomInput
-          defaultValue={values[details[1].type]}
-          textContentType={details[1].text}
-          onChangeText={handleChange(details[1].type)}
-          {...details[1]}
-          style={{ marginBottom: 26 }}
-        />
-        <Text
-          onPress={() => {
-            navigate("ForgotPassword");
-          }}
-        >
-          Forgot Password?
-        </Text>
-      </View>
-      <View style={styles.buttonWrapper}>
-        <SimpleLinearGradientButton
-          class={styles.btnGradient}
-          textStyle={styles.whiteText}
-          title="Login"
-          onPress={() => navigate("Login")}
-        />
-        <SimpleButton
-          title="Don't have an account yet?"
-          onPress={() => navigate("Signup")}
-        />
-      </View>
+      <KeyboardAvoidingView behavior="position" contentContainerStyle={styles.content}>
+        <View style={styles.header}>
+          <Text style={styles.title}>Login.</Text>
+        </View>
+        <View style={styles.imageWrapper}>
+          <Image style={styles.image} source={images.loginImg} />
+        </View>
+        <View style={styles.formWrapper}>
+          <CustomInput
+            defaultValue={values[details[0].type]}
+            textContentType={details[0].text}
+            onChangeText={handleChange(details[0].type)}
+            {...details[0]}
+            style={{ marginBottom: 26 }}
+          />
+        </View>
+        <View style={styles.formWrapper}>
+          <CustomInput
+            defaultValue={values[details[1].type]}
+            textContentType={details[1].text}
+            onChangeText={handleChange(details[1].type)}
+            {...details[1]}
+            style={{ marginBottom: 26 }}
+          />
+          <Text
+            onPress={() => {
+              navigate("ForgotPassword");
+            }}
+          >
+            Forgot Password?
+          </Text>
+        </View>
+        <View style={styles.buttonWrapper}>
+          <SimpleLinearGradientButton
+            class={styles.btnGradient}
+            textStyle={styles.whiteText}
+            title="Login"
+            onPress={() => navigate("Login")}
+          />
+          <SimpleButton
+            title="Don't have an account yet?"
+            onPress={() => navigate("Signup")}
+          />
+        </View>
+      </KeyboardAvoidingView>
     </ScrollView>
   );
 }
@@ -81,7 +90,10 @@ const styles = StyleSheet.create({
     fontSize: 30
   },
   wrapper: {
-    flex: 1,
+    flex: 1
+  },
+  content: {
+    height: "100%",
     alignItems: "center",
     justifyContent: "space-evenly",
     paddingHorizontal: 5
