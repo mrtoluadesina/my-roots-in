@@ -5,6 +5,7 @@ import {
   SimpleLinearGradientButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
+import { SimpleCard } from "../../components/Cards";
 
 export default function Home() {
   return (
