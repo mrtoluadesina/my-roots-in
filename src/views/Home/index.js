@@ -5,8 +5,11 @@ import {
   SimpleLinearGradientButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
+import { SimpleCard } from "../../components/Cards";
 
-export default function Home() {
+export default function Home(props) {
+  const { navigate } = props.navigation;
+
   return (
     <ScrollView contentContainerStyle={styles.content}>
       <View style={styles.header}>
@@ -29,8 +32,8 @@ export default function Home() {
         <SimpleButton
           class={styles.btnWhite}
           textStyle={styles.blackText}
-          title="Press Me"
-          onPress={() => Alert.alert("Simple Button")}
+          title="Signup"
+          onPress={() => navigate("Signup")}
         />
         <SimpleButton
           title="Terms of service"
@@ -59,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btn: {
-    backgroundColor: colors.rootGreen,
+    backgroundColor: colors.rootGreenLight,
     paddingVertical: 15,
     marginVertical: 10
   },
