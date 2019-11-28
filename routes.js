@@ -65,7 +65,7 @@ const MainNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: "VerificationCompleted",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
