@@ -5,6 +5,7 @@ import {
   SimpleLinearGradientButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
+import { images } from "../../../assets/images";
 
 export default function Home(props) {
   const { navigate } = props.navigation;
@@ -16,10 +17,7 @@ export default function Home(props) {
         <Text style={styles.subtitle}>Enjoy the experience.</Text>
       </View>
       <View style={styles.imageWrapper}>
-        <Image
-          style={styles.image}
-          source={require("../../../assets/images/get-started-tree.png")}
-        />
+        <Image style={styles.image} source={images.getStartedImg} />
       </View>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
