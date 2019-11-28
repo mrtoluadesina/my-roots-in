@@ -16,8 +16,6 @@ const MainNavigator = createStackNavigator(
         header: <NavBackButton onPress={() => navigation.goBack()} />,
         headerStyle: {
           borderBottomWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0
         },
         headerTintColor: "#ffffff"
       })
