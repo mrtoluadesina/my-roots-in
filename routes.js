@@ -15,15 +15,20 @@ const MainNavigator = createStackNavigator(
       navigationOptions: ({ navigation }) => ({
         header: <NavBackButton onPress={() => navigation.goBack()} />,
         headerStyle: {
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
         headerTintColor: "#ffffff"
       })
     },
     Login: {
       screen: Login,
-      navigationOptions: ({navigation}) => ({
-        header: <NavBackButton onPress={() => navigation.goBack()} showProgress={false} />,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            showProgress={false}
+          />
+        ),
         headerStyle: {
           borderBottomWidth: 0
         },
