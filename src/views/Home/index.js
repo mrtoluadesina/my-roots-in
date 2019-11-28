@@ -5,7 +5,6 @@ import {
   SimpleLinearGradientButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
-import { SimpleCard } from "../../components/Cards";
 
 export default function Home(props) {
   const { navigate } = props.navigation;
@@ -27,7 +26,7 @@ export default function Home(props) {
           class={styles.btnGradient}
           textStyle={styles.whiteText}
           title="Login"
-          onPress={() => Alert.alert("Gradient button clicked")}
+          onPress={() => navigate("Login")}
         />
         <SimpleButton
           class={styles.btnWhite}
