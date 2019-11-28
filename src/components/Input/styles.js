@@ -34,4 +34,6 @@ export const TextInput = styled.TextInput`
   color: ${colors.rootBlack};
   text-transform: capitalize;
   letter-spacing: 1px;
+  height: 60%;
+  margin-top: 4px;
 `;
