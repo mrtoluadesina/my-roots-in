@@ -5,6 +5,7 @@ import NavBackButton from "./src/components/navBackButton";
 
 import Signup from "./src/views/Signup";
 import Home from "./src/views/Home";
+import VerificationCompleted from "./src/views/VerificationCompleted/index";
 
 const MainNavigator = createStackNavigator(
   {
@@ -20,10 +21,11 @@ const MainNavigator = createStackNavigator(
         },
         headerTintColor: "#ffffff"
       })
-    }
+    },
+    VerificationCompleted: { screen: VerificationCompleted }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "VerificationCompleted",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
