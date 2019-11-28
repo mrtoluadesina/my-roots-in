@@ -59,7 +59,7 @@ function Login(props) {
         />
         <SimpleButton
           title="Don't have an account yet?"
-          onPress={() => Alert.alert("Simple Button")}
+          onPress={() => navigate("Signup")}
         />
       </View>
     </ScrollView>
