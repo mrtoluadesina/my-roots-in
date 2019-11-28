@@ -11,7 +11,7 @@ import {
   SimpleButton,
   SimpleLinearGradientButton
 } from "../../components/Buttons";
-import CustomInput from "../../components/Input";
+import { CustomInput } from "../../components/Input";
 import metadata from "../../constants/meta";
 import { connect } from "react-redux";
 import { images } from "../../../assets/images";
@@ -33,7 +33,10 @@ function Login(props) {
 
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
-      <KeyboardAvoidingView behavior="position" contentContainerStyle={styles.content}>
+      <KeyboardAvoidingView
+        behavior="position"
+        contentContainerStyle={styles.content}
+      >
         <View style={styles.header}>
           <Text style={styles.title}>Login.</Text>
         </View>
@@ -74,7 +77,7 @@ function Login(props) {
           />
           <SimpleButton
             title="Don't have an account yet?"
-            onPress={() => navigate("Signup")}
+            onPress={() => navigate("Settings")}
           />
         </View>
       </KeyboardAvoidingView>
