@@ -23,7 +23,7 @@ const MainNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Signup"
+    initialRouteName: "Home"
   }
 );
 
