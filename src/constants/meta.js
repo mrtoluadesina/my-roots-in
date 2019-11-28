@@ -30,5 +30,17 @@ export default metadata = {
       text: "telephoneNumber", // input field textContentType
       id: "d1bfbca7-068a-402a-b807-a3fc7d7d38a9"
     }
+  ],
+  loginPage: [
+    {
+      label: "Email",
+      type: "email",
+      text: "emailAddress", // input field textContentType
+    },
+    {
+      label: "Password",
+      type: "password",
+      text: "password", // input field textContentType
+    },
   ]
 };
