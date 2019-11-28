@@ -46,7 +46,12 @@ const MainNavigator = createStackNavigator(
     Settings: {
       screen: Settings,
       navigationOptions: ({ navigation }) => ({
-        header: <NavBackButton onPress={() => navigation.goBack()} />,
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            showProgress={false}
+          />
+        ),
         headerStyle: {
           borderBottomWidth: 0,
           elevation: 0,
@@ -58,7 +63,7 @@ const MainNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: "Settings",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
