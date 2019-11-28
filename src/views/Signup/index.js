@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CustomInput from "../../components/Input";
+import {CustomInput} from "../../components/Input";
 import { KeyboardAvoidingView, StyleSheet } from "react-native";
 import {
   Container,
