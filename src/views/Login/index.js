@@ -13,16 +13,16 @@ import { login } from "./redux/action";
 
 function Login(props) {
   const { navigate } = props.navigation;
+  const details = metadata.loginPage;
 
   const initialState = {
     email: "tadesina90@gmail.com",
-    password: ""
+    password: "8392198489712"
   };
 
   const [values, setValues] = useState(initialState);
 
-  const handleChange = e =>
-    setValues({ ...values, [e.target.name]: e.target.value });
+  const handleChange = field => text => setValues({ ...values, [field]: text });
 
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
@@ -34,15 +34,21 @@ function Login(props) {
       </View>
       <View style={styles.formWrapper}>
         <CustomInput
-          label="Email"
-          type="text"
-          name="email"
-          value={values.email}
-          onChange={handleChange}
+          defaultValue={values[details[0].type]}
+          textContentType={details[0].text}
+          onChangeText={handleChange(details[0].type)}
+          {...details[0]}
+          style={{ marginBottom: 26 }}
         />
       </View>
       <View style={styles.formWrapper}>
-        <CustomInput label="Password" />
+        <CustomInput
+          defaultValue={values[details[1].type]}
+          textContentType={details[1].text}
+          onChangeText={handleChange(details[1].type)}
+          {...details[1]}
+          style={{ marginBottom: 26 }}
+        />
       </View>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
@@ -131,4 +137,4 @@ const mapDispatchToProps = dispatch => ({
   loginHandler: payload => dispatch(login(payload))
 });
 
-export default Login;
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
