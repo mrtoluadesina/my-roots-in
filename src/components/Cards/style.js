@@ -6,7 +6,7 @@ export const Card = styled(View)`
 	min-height: 100px;
 	min-width: 100px;
   padding: 10px;
-	border-radius: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.07);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+	border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.02);
+  box-shadow: 0 3px 6px rgba(157, 163, 180, 0.15);
 `;
