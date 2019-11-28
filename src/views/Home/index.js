@@ -5,6 +5,7 @@ import {
   SimpleLinearGradientButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
+import { SimpleCard } from "../../components/Cards";
 
 export default function Home() {
   return (
@@ -19,6 +20,9 @@ export default function Home() {
           source={require("../../../assets/images/get-started-tree.png")}
         />
       </View>
+      <SimpleCard>
+        <Text>This is how we work</Text>
+      </SimpleCard>
       <View style={styles.buttonWrapper}>
         <SimpleLinearGradientButton
           class={styles.btnGradient}
