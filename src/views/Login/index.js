@@ -20,6 +20,10 @@ function Login(props) {
   };
 
   const [values, setValues] = useState(initialState);
+
+  const handleChange = e =>
+    setValues({ ...values, [e.target.name]: e.target.value });
+
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
       <View style={styles.header}>
@@ -29,7 +33,13 @@ function Login(props) {
         <Image style={styles.image} source={images.loginImg} />
       </View>
       <View style={styles.formWrapper}>
-        <CustomInput label="Email" />
+        <CustomInput
+          label="Email"
+          type="text"
+          name="email"
+          value={values.email}
+          onChange={handleChange}
+        />
       </View>
       <View style={styles.formWrapper}>
         <CustomInput label="Password" />
