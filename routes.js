@@ -5,11 +5,12 @@ import NavBackButton from "./src/components/navBackButton";
 
 import Signup from "./src/views/Signup";
 import Home from "./src/views/Home";
-import Verify from "./src/views/Verify";
+import VerificationCompleted from "./src/views/VerificationCompleted/index";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
-import Dashboard from "./src/views/Dashboard";
+import Verify from "./src/views/Verify";
 import ForgotPassword from "./src/views/ForgotPassword";
+import Dashboard from "./src/views/Dashboard";
 import PlantTree from "./src/views/PlantTree";
 import OccasionTypes from "./src/views/Occasions";
 
@@ -29,8 +30,12 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
+          borderBottomWidth: 0,
+          elevation: 0,
+          shadowOpacity: 0,
           borderBottomWidth: 0
-        }
+        },
+        headerTintColor: "#ffffff"
       })
     },
 
@@ -46,9 +51,11 @@ const MainNavigator = createStackNavigator(
         ),
         headerStyle: {
           borderBottomWidth: 0
-        }
+        },
+        headerTintColor: "#ffffff"
       })
     },
+    VerificationCompleted: { screen: VerificationCompleted },
 
     // Setting Route
     Settings: {
@@ -78,7 +85,8 @@ const MainNavigator = createStackNavigator(
         ),
         headerStyle: {
           borderBottomWidth: 0
-        }
+        },
+        headerTintColor: "#ffffff"
       })
     },
 
