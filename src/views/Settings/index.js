@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {KeyboardAvoidingView, StyleSheet} from 'react-native';
 import { EditableInput } from "../../components/Input";
 import {
   Container,
@@ -41,6 +42,10 @@ export default function Settings(props) {
 
   return (
     <Container>
+    <KeyboardAvoidingView
+        behavior="position"
+        contentContainerStyle={StyleSheet.wrapper}
+      >
       <Background>
         <Header>
           <Greeting>Settings</Greeting>
@@ -111,6 +116,13 @@ export default function Settings(props) {
           onPress={() => navigate("Home")}
         />
       </Footer>
+      </KeyboardAvoidingView>
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1
+  }
+});
