@@ -10,6 +10,7 @@ import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
 import ForgotPassword from "./src/views/ForgotPassword";
 import PlantTree from "./src/views/PlantTree";
+import OccasionTypes from "./src/views/Occasions";
 
 const MainNavigator = createStackNavigator(
   {
@@ -27,12 +28,8 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0,
           borderBottomWidth: 0
-        },
-        headerTintColor: "#ffffff"
+        }
       })
     },
 
@@ -48,8 +45,7 @@ const MainNavigator = createStackNavigator(
         ),
         headerStyle: {
           borderBottomWidth: 0
-        },
-        headerTintColor: "#ffffff"
+        }
       })
     },
 
@@ -69,7 +65,7 @@ const MainNavigator = createStackNavigator(
       })
     },
 
-    //Forgot Password
+    // Forget Password Route
     ForgotPassword: {
       screen: ForgotPassword,
       navigationOptions: ({ navigation }) => ({
@@ -81,11 +77,11 @@ const MainNavigator = createStackNavigator(
         ),
         headerStyle: {
           borderBottomWidth: 0
-        },
-        headerTintColor: "#ffffff"
+        }
       })
     },
 
+    // Verify Account Route
     Verify: {
       screen: Verify,
       navigationOptions: ({ navigation }) => ({
@@ -97,6 +93,7 @@ const MainNavigator = createStackNavigator(
         )
       })
     },
+
     PlantTree: {
       screen: PlantTree,
       navigationOptions: ({ navigation }) => ({
@@ -109,6 +106,22 @@ const MainNavigator = createStackNavigator(
       })
     },
 
+    // Occasion Type Route
+    OccasionTypes: {
+      screen: OccasionTypes,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            progressLevel={0.7}
+          />
+        ),
+        headerStyle: {
+          borderBottomWidth: 0
+        }
+      })
+    },
+
     //Dashboard
     Dashboard: {
       screen: Dashboard,
@@ -116,8 +129,7 @@ const MainNavigator = createStackNavigator(
         header: null,
         headerStyle: {
           borderBottomWidth: 0
-        },
-        headerTintColor: "#ffffff"
+        }
       })
     }
   },
@@ -128,7 +140,8 @@ const MainNavigator = createStackNavigator(
         borderBottomWidth: 0,
         elevation: 0,
         shadowOpacity: 0
-      }
+      },
+      headerTintColor: "#ffffff"
     }
   }
 );
