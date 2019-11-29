@@ -6,6 +6,7 @@ export default function PasscodeInputs({
   style,
   autoFocus,
   onChangeText,
+  keyboardType,
 }) {
   return (
     <TextInput
@@ -15,6 +16,7 @@ export default function PasscodeInputs({
       style={style}
       autoFocus={autoFocus}
       onChangeText={onChangeText}
+      keyboardType={keyboardType}
     ></TextInput>
   );
 }
