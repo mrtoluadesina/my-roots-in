@@ -28,17 +28,6 @@ export const ImageBg = styled.ImageBackground`
 export const Container = styled.View`
 `;
 
-export const Background = styled.View`
-  flex: 1;
-  width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
-  font-weight: 800;
-  align-items: center;
-  justify-content: center;
-  color: ${colors.rootBlack};
-`;
-
 export const Row = styled.View`
   padding-top: 30px;
   padding-bottom: 30px;
@@ -62,35 +51,4 @@ export const OverviewImage = styled.Image`
 
 export const DetailsView = styled.View`
   flex-basis: 75%;
-`;
-
-export const Form = styled.View`
-  flex: 1;
-  width: 100%;
-  margin-top: 40px;
-`;
-
-export const Notification = styled.View`
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 40px;
-`;
-
-export const NotificationTitle = styled.Text`
-  text-transform: capitalize;
-  font-size: 12px;
-  line-height: 14px;
-  color: ${colors.rootInputLabel};
-`;
-
-export const NotificationToggle = styled.Switch``;
-
-export const Footer = styled.View`
-  flex: 1;
-  border-top-width: 1px;
-  border-top-color: #e1e3e8;
-  border-style: solid;
-  width: 100%;
-  padding: 30px 50px;
 `;
