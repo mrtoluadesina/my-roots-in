@@ -1,14 +1,14 @@
-import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
-import NavBackButton from './src/components/navBackButton';
+import React from "react";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
+import NavBackButton from "./src/components/navBackButton";
 
-import Signup from './src/views/Signup';
-import Home from './src/views/Home';
-import Verify from './src/views/Verify';
-import Login from './src/views/Login';
-import Settings from './src/views/Settings';
-import ForgotPassword from './src/views/ForgotPassword';
+import Signup from "./src/views/Signup";
+import Home from "./src/views/Home";
+import Verify from "./src/views/Verify";
+import Login from "./src/views/Login";
+import Settings from "./src/views/Settings";
+import ForgotPassword from "./src/views/ForgotPassword";
 
 const MainNavigator = createStackNavigator(
   {
@@ -29,10 +29,10 @@ const MainNavigator = createStackNavigator(
           borderBottomWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
-        headerTintColor: '#ffffff',
-      }),
+        headerTintColor: "#ffffff"
+      })
     },
 
     // Login Route
@@ -46,10 +46,10 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
-        headerTintColor: '#ffffff',
-      }),
+        headerTintColor: "#ffffff"
+      })
     },
 
     // Setting Route
@@ -63,20 +63,28 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
-        },
-      }),
+          borderBottomWidth: 0
+        }
+      })
     },
+
+    //Forgot Password
     ForgotPassword: {
       screen: ForgotPassword,
       navigationOptions: ({ navigation }) => ({
-        header: <NavBackButton onPress={() => navigation.goBack()} />,
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            showProgress={false}
+          />
+        ),
         headerStyle: {
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
-        headerTintColor: '#ffffff',
-      }),
+        headerTintColor: "#ffffff"
+      })
     },
+
     Verify: {
       screen: Verify,
       navigationOptions: ({ navigation }) => ({
@@ -85,21 +93,32 @@ const MainNavigator = createStackNavigator(
             onPress={() => navigation.goBack()}
             progressLevel={1}
           />
-        ),
-      }),
+        )
+      })
     },
-  },
 
+    //Dashboard
+    Dashboard: {
+      screen: Dashboard,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+        headerStyle: {
+          borderBottomWidth: 0
+        },
+        headerTintColor: "#ffffff"
+      })
+    }
+  },
   {
-    initialRouteName: 'Home',
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
         elevation: 0,
-        shadowOpacity: 0,
-      },
-    },
-  },
+        shadowOpacity: 0
+      }
+    }
+  }
 );
 
 export default AppRoutes = createAppContainer(MainNavigator);

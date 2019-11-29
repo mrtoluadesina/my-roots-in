@@ -47,6 +47,7 @@ function Login(props) {
           <CustomInput
             defaultValue={values[details[0].type]}
             textContentType={details[0].text}
+            keyboardType={'email-address'}
             onChangeText={handleChange(details[0].type)}
             {...details[0]}
             style={{ marginBottom: 26 }}
@@ -73,7 +74,7 @@ function Login(props) {
             class={styles.btnGradient}
             textStyle={styles.whiteText}
             title="Login"
-            onPress={() => navigate("Login")}
+            onPress={() => navigate("Dashboard")}
           />
           <SimpleButton
             title="Don't have an account yet?"
