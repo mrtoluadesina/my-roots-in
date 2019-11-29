@@ -1,14 +1,15 @@
-import React from 'react';
-import { createStackNavigator } from 'react-navigation-stack';
-import { createAppContainer } from 'react-navigation';
-import NavBackButton from './src/components/navBackButton';
+import React from "react";
+import { createStackNavigator } from "react-navigation-stack";
+import { createAppContainer } from "react-navigation";
+import NavBackButton from "./src/components/navBackButton";
 
-import Signup from './src/views/Signup';
-import Home from './src/views/Home';
-import Verify from './src/views/Verify';
-import Login from './src/views/Login';
-import Settings from './src/views/Settings';
-import ForgotPassword from './src/views/ForgotPassword';
+import Signup from "./src/views/Signup";
+import Home from "./src/views/Home";
+import Verify from "./src/views/Verify";
+import Login from "./src/views/Login";
+import Settings from "./src/views/Settings";
+import ForgotPassword from "./src/views/ForgotPassword";
+import OccasionTypes from "./src/views/Occasions";
 
 const MainNavigator = createStackNavigator(
   {
@@ -26,13 +27,9 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
-          elevation: 0,
-          shadowOpacity: 0,
-          borderBottomWidth: 0,
-        },
-        headerTintColor: '#ffffff',
-      }),
+          borderBottomWidth: 0
+        }
+      })
     },
 
     // Login Route
@@ -46,10 +43,10 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
-        headerTintColor: '#ffffff',
-      }),
+        headerTintColor: "#ffffff"
+      })
     },
 
     // Setting Route
@@ -63,20 +60,24 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0,
-        },
-      }),
+          borderBottomWidth: 0
+        }
+      })
     },
+
+    // Forget Password Route
     ForgotPassword: {
       screen: ForgotPassword,
       navigationOptions: ({ navigation }) => ({
         header: <NavBackButton onPress={() => navigation.goBack()} />,
         headerStyle: {
-          borderBottomWidth: 0,
+          borderBottomWidth: 0
         },
-        headerTintColor: '#ffffff',
-      }),
+        headerTintColor: "#ffffff"
+      })
     },
+
+    // Verify Account Route
     Verify: {
       screen: Verify,
       navigationOptions: ({ navigation }) => ({
@@ -85,21 +86,38 @@ const MainNavigator = createStackNavigator(
             onPress={() => navigation.goBack()}
             progressLevel={1}
           />
-        ),
-      }),
+        )
+      })
     },
+
+    // Occasion Type Route
+    OccasionTypes: {
+      screen: OccasionTypes,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            progressLevel={0.7}
+          />
+        ),
+        headerStyle: {
+          borderBottomWidth: 0
+        }
+      })
+    }
   },
 
   {
-    initialRouteName: 'Home',
+    initialRouteName: "OccasionTypes",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
         elevation: 0,
-        shadowOpacity: 0,
+        shadowOpacity: 0
       },
-    },
-  },
+      headerTintColor: "#ffffff"
+    }
+  }
 );
 
 export default AppRoutes = createAppContainer(MainNavigator);

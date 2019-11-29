@@ -68,5 +68,14 @@ const cardSizeStyle = {
   marginBottom: 50,
   position: "relative",
   alignItems: "center",
-  justifyContent: "center"
+  justifyContent: "center",
+  borderWidth: 0.5,
+  borderRadius: 2,
+  borderColor: `${colors.boxShadow}`,
+  borderBottomWidth: 0,
+  shadowColor: `${colors.boxShadow}`,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 2,
+  elevation: 2
 };
