@@ -6,7 +6,11 @@ import { Container, ProgressContainer, TouchableOpacity } from './styles';
 import { colors } from '../../constants/colors';
 import { setRecoveryProps } from 'expo/build/ErrorRecovery/ErrorRecovery';
 
-export default function NavBackButton({ onPress, progressLevel }) {
+export default function NavBackButton({
+  onPress,
+  showProgress,
+  progressLevel,
+}) {
   return (
     <Container Platform={Platform}>
       <TouchableOpacity onPress={onPress}>
@@ -23,6 +27,19 @@ export default function NavBackButton({ onPress, progressLevel }) {
           style={{ width: '90%' }}
         />
       </ProgressContainer>
+      {showProgress ? (
+        <ProgressContainer>
+          <Progress.Bar
+            progress={0.5}
+            color={colors.rootGreenDark}
+            unfilledColor={colors.unfilledColor}
+            borderWidth={0}
+            height={2}
+            width={350}
+            style={{ width: '90%' }}
+          />
+        </ProgressContainer>
+      ) : null}
     </Container>
   );
 }

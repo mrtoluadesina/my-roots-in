@@ -1,11 +1,21 @@
 import React from "react";
-import { Container, InputLabel, TextInput } from "./styles";
+import { Container, InputLabel, TextInput, Edit } from "./styles";
 
-export default function CustomInput(props) {
+export function CustomInput(props) {
   return (
-    <Container>
+    <Container style={props.style}>
       <InputLabel>{props.label}</InputLabel>
       <TextInput {...props} />
+    </Container>
+  );
+}
+
+export function EditableInput(props) {
+  return (
+    <Container style={props.style}>
+      <InputLabel>{props.label}</InputLabel>
+      <TextInput {...props} editable={props.editable ? true : false} />
+      {props.editable ? <Edit>Edit</Edit> : null}
     </Container>
   );
 }
