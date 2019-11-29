@@ -8,6 +8,7 @@ import Home from "./src/views/Home";
 import Verify from "./src/views/Verify";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
+import Dashboard from "./src/views/Dashboard";
 import ForgotPassword from "./src/views/ForgotPassword";
 import PlantTree from "./src/views/PlantTree";
 import OccasionTypes from "./src/views/Occasions";
