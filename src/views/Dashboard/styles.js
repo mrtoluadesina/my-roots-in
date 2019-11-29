@@ -21,6 +21,7 @@ export const ImageBg = styled.ImageBackground`
   width: 100%;
   height: 100%;
   position: relative;
+  padding: 20px;
 `;
 
 export const Background = styled.View`
@@ -34,26 +35,29 @@ export const Background = styled.View`
   color: ${colors.rootBlack};
 `;
 
-export const Greeting = styled.Text`
-  font-family: "Helvetica-Bold";
-  font-size: 26px;
-  line-height: 26px;
-  letter-spacing: 0.67px;
-  text-transform: capitalize;
-`;
-
-export const Header = styled.View`
+export const Row = styled.View`
   padding-top: 30px;
+  padding-bottom: 30px;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 export const Avatar = styled.Image`
   width: 40px;
   height: 40px;
   border-radius: 20;
+`;
+
+export const ImageView = styled.View`
+  flex-basis: 25%;
+`;
+export const OverviewImage = styled.Image`
+  width: 60px;
+  height: 60px;
+`;
+
+export const DetailsView = styled.View`
+  flex-basis: 75%;
 `;
 
 export const Form = styled.View`
