@@ -86,7 +86,7 @@ const MainNavigator = createStackNavigator(
     }
   },
   {
-    initialRouteName: "Home",
+    initialRouteName: "Dashboard",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
