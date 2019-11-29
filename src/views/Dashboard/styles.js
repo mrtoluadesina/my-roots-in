@@ -13,7 +13,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const Container = styled.ScrollView`
+export const Main = styled.ScrollView`
   flex: 1;
 `;
 
@@ -22,6 +22,10 @@ export const ImageBg = styled.ImageBackground`
   height: 100%;
   position: relative;
   padding: 20px;
+  justify-content: space-between
+`;
+
+export const Container = styled.View`
 `;
 
 export const Background = styled.View`
