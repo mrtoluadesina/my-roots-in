@@ -8,7 +8,6 @@ import Home from "./src/views/Home";
 import VerificationCompleted from "./src/views/VerificationCompleted/index";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
-import Signup from "./src/views/Signup";
 import Verify from "./src/views/Verify";
 import ForgotPassword from "./src/views/ForgotPassword";
 
@@ -94,7 +93,7 @@ const MainNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: "VerificationCompleted",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
