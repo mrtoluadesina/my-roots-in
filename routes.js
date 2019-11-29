@@ -8,6 +8,8 @@ import Home from "./src/views/Home";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
 import ForgotPassword from "./src/views/ForgotPassword";
+import Dashboard from "./src/views/Dashboard";
+import { colors } from "./src/constants/colors";
 
 const MainNavigator = createStackNavigator(
   {
@@ -58,18 +60,31 @@ const MainNavigator = createStackNavigator(
         }
       })
     },
+
+    //Forgot Password
     ForgotPassword: {
       screen: ForgotPassword,
       navigationOptions: ({ navigation }) => ({
-        header: <NavBackButton onPress={() => navigation.goBack()} />,
+        header: <NavBackButton onPress={() => navigation.goBack()} showProgress={false} />,
         headerStyle: {
           borderBottomWidth: 0
         },
         headerTintColor: "#ffffff"
       })
+    },
+
+    //Dashboard
+    Dashboard: {
+      screen: Dashboard,
+      navigationOptions: ({ navigation }) => ({
+        header: null,
+        headerStyle: {
+          borderBottomWidth: 0,
+        },
+        headerTintColor: "#ffffff"
+      })
     }
   },
-
   {
     initialRouteName: "Home",
     defaultNavigationOptions: {
