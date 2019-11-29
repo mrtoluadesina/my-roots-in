@@ -11,5 +11,6 @@ export const colors = {
   rootShadow: "#9DA3B4",
   rootInputUnderline: "#e1e1e5",
   rootInputLabel: "#c4ccd6",
-  unfilledColor: "#EBF0FF"
+  unfilledColor: "#EBF0FF",
+  rootDashboardSpanTitle: "#06AAA1"
 };
