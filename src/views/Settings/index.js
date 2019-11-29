@@ -49,7 +49,7 @@ export default function Settings(props) {
       <Background>
         <Header>
           <Greeting>Settings</Greeting>
-          <Avater source={images.getDefaultAvater}></Avater>
+          <Avater source={images.getDefaultAvatar}></Avater>
         </Header>
         <Form>
           <EditableInput
