@@ -9,6 +9,7 @@ import Verify from "./src/views/Verify";
 import Login from "./src/views/Login";
 import Settings from "./src/views/Settings";
 import ForgotPassword from "./src/views/ForgotPassword";
+import PlantTree from "./src/views/PlantTree";
 
 const MainNavigator = createStackNavigator(
   {
@@ -92,6 +93,17 @@ const MainNavigator = createStackNavigator(
           <NavBackButton
             onPress={() => navigation.goBack()}
             progressLevel={1}
+          />
+        )
+      })
+    },
+    PlantTree: {
+      screen: PlantTree,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            progressLevel={0.5}
           />
         )
       })
