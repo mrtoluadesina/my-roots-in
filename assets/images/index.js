@@ -6,9 +6,10 @@ import OtherImage from "./other";
 export const images = {
   loginImg: require("./login.png"),
   getStartedImg: require("./get-started-tree.png"),
-  getDefaultAvatar: require("./avatar.png"),
-  forgotPasswordImg: require('./forgot-password.png'),
-  dashboardBg: require('./dashboard.png'),
+  verification: require("./success_png.png"),
+  getDefaultAvater: require("./avatar.png"),
+  forgotPasswordImg: require("./forgot-password.png"),
+  dashboardBg: require("./dashboard.png"),
   HolidayImage,
   GiftImage,
   OtherImage,
