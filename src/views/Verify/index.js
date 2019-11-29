@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {
   StyleSheet,
   Text,
@@ -33,7 +33,7 @@ export default function(props) {
           }
           autoFocus={index === 0 ? true : false}
           key={index}
-          keyboardType={'numeric'}
+          keyboardType={'number-pad'}
           onChangeText={event => {
             event && nextFocus.focus();
           }}
@@ -79,12 +79,14 @@ export default function(props) {
                 event && passcode2.focus();
                 inputChangeHandler(event);
               }}
+              keyboardType={'number-pad'}
             />
             <PasscodeInputs
               style={styles.inputFields}
               inputRef={r => {
                 this.passcode2 = r;
               }}
+              keyboardType={'number-pad'}
               onChangeText={event => {
                 event && this.passcode3.focus();
                 inputChangeHandler(event);
@@ -95,6 +97,7 @@ export default function(props) {
               inputRef={r => {
                 this.passcode3 = r;
               }}
+              keyboardType={'number-pad'}
               onChangeText={event => {
                 event && this.passcode4.focus();
                 inputChangeHandler(event);
@@ -105,6 +108,7 @@ export default function(props) {
               inputRef={r => {
                 passcode4 = r;
               }}
+              keyboardType={'number-pad'}
               onChangeText={event => inputChangeHandler(event)}
             />
           </>
@@ -132,17 +136,18 @@ const styles = StyleSheet.create({
     width: '100%',
   },
   imageWrapper: {
-    width: '100%',
-    height: 10,
+    width: 220,
+    height: 220,
     alignItems: 'center',
     justifyContent: 'center',
+    borderRadius: 220 / 2,
+    overflow: 'hidden',
   },
   image: {
     width: 220,
     height: 220,
     resizeMode: 'contain',
     backgroundColor: '#e7e6f0',
-    borderRadius: 220 / 2,
   },
   whiteText: {
     color: colors.rootWhite,
