@@ -1,16 +1,9 @@
 import styled from "styled-components";
-import { colors } from "../../constants/colors";
 
 export const Container = styled.View`
   flex: 1;
   align-items: center;
-  padding: 20px;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin: 15% 10% 20% 10%;
-  border-radius: 10px;
-  box-shadow: 0px 5px 5px black;
-  border: 1px solid black;
+  justify-content: center;
 `;
 
 export const ImageContainer = styled.Image`
