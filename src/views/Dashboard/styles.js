@@ -17,13 +17,18 @@ export const Container = styled.ScrollView`
   flex: 1;
 `;
 
+export const ImageBg = styled.ImageBackground`
+  width: 100%;
+  height: 100%;
+  position: relative;
+`;
+
 export const Background = styled.View`
   flex: 1;
   width: 100%;
   padding: 0 50px;
   font-family: "Helvetica-Bold";
   font-weight: 800;
-  background-color: #ffffff;
   align-items: center;
   justify-content: center;
   color: ${colors.rootBlack};
@@ -45,7 +50,7 @@ export const Header = styled.View`
   align-items: center;
 `;
 
-export const Avater = styled.Image`
+export const Avatar = styled.Image`
   width: 40px;
   height: 40px;
   border-radius: 20;
