@@ -7,66 +7,41 @@ import {
   Image,
   ScrollView
 } from "react-native";
-import {
-  SimpleButton,
-  SimpleLinearGradientButton
-} from "../../components/Buttons";
 import { CustomInput } from "../../components/Input";
-import metadata from "../../constants/meta";
-import { connect } from "react-redux";
+import {
+  SimpleLinearGradientButton,
+  SimpleButton
+} from "../../components/Buttons";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
-import { login } from "./redux/action";
 
-function Login(props) {
+function ForgotPassword(props) {
   const { navigate } = props.navigation;
-  const details = metadata.loginPage;
 
-  const initialState = {
-    email: "tadesina90@gmail.com",
-    password: "8392198489712"
-  };
+  const [value, setValue] = useState({ email: "" });
 
-  const [values, setValues] = useState(initialState);
-
-  const handleChange = field => text => setValues({ ...values, [field]: text });
+  const handleChange = email => setValue({ ...email, email });
 
   return (
-    <ScrollView contentContainerStyle={styles.wrapper}>
+    <ScrollView contentContainerStyle={styles.content}>
       <KeyboardAvoidingView
         behavior="position"
-        contentContainerStyle={styles.content}
+        contentContainerStyle={styles.wrapper}
       >
         <View style={styles.header}>
-          <Text style={styles.title}>Login.</Text>
+          <Text style={styles.title}>Forgot Password</Text>
         </View>
         <View style={styles.imageWrapper}>
-          <Image style={styles.image} source={images.loginImg} />
+          <Image style={styles.image} source={images.forgotPasswordImg} />
         </View>
         <View style={styles.formWrapper}>
           <CustomInput
-            defaultValue={values[details[0].type]}
-            textContentType={details[0].text}
-            onChangeText={handleChange(details[0].type)}
-            {...details[0]}
+            defaultValue={value.email}
+            textContentType={"emailAddress"}
+            onChangeText={handleChange}
+            label="Email"
             style={{ marginBottom: 26 }}
           />
-        </View>
-        <View style={styles.formWrapper}>
-          <CustomInput
-            defaultValue={values[details[1].type]}
-            textContentType={details[1].text}
-            onChangeText={handleChange(details[1].type)}
-            {...details[1]}
-            style={{ marginBottom: 26 }}
-          />
-          <Text
-            onPress={() => {
-              navigate("ForgotPassword");
-            }}
-          >
-            Forgot Password?
-          </Text>
         </View>
         <View style={styles.buttonWrapper}>
           <SimpleLinearGradientButton
@@ -76,8 +51,8 @@ function Login(props) {
             onPress={() => navigate("Login")}
           />
           <SimpleButton
-            title="Don't have an account yet?"
-            onPress={() => navigate("Settings")}
+            title="Remembered your login"
+            onPress={() => navigate("Login")}
           />
         </View>
       </KeyboardAvoidingView>
@@ -86,20 +61,16 @@ function Login(props) {
 }
 
 const styles = StyleSheet.create({
-  border: {
-    borderWidth: 1
-  },
   title: {
     fontSize: 30
   },
   wrapper: {
-    flex: 1
-  },
-  content: {
     height: "100%",
     alignItems: "center",
-    justifyContent: "space-evenly",
-    paddingHorizontal: 5
+    justifyContent: "space-evenly"
+  },
+  content: {
+    flex: 1
   },
   header: {
     width: "80%"
@@ -151,12 +122,4 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  isLoading: state.Login.isLoading
-});
-
-const mapDispatchToProps = dispatch => ({
-  loginHandler: payload => dispatch(login(payload))
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Login);
+export default ForgotPassword;
