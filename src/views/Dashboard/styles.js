@@ -13,52 +13,42 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const Container = styled.ScrollView`
+export const Main = styled.ScrollView`
   flex: 1;
 `;
 
-export const Background = styled.View`
-  flex: 1;
+export const ImageBg = styled.ImageBackground`
   width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
-  font-weight: 800;
-  background-color: #ffffff;
-  align-items: center;
-  justify-content: center;
-  color: ${colors.rootBlack};
+  height: 100%;
+  position: relative;
+  padding: 20px;
+  justify-content: space-between
 `;
 
-export const Greeting = styled.Text`
-  width: 100%;
-  margin-top: 30px;
-  font-family: "Helvetica-Bold";
-  font-size: 26px;
-  line-height: 26px;
-  letter-spacing: 0.67px;
-  text-transform: capitalize;
+export const Container = styled.View`
 `;
 
-export const Description = styled.Text`
-  margin-top: 20px;
+export const Row = styled.View`
+  padding-top: 30px;
+  padding-bottom: 30px;
+  flex-direction: row;
   width: 100%;
-  font-family: "Helvetica";
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.07px;
 `;
 
-export const Form = styled.View`
-  flex: 1;
-  width: 100%;
-  margin-top: 40px;
+export const Avatar = styled.Image`
+  width: 40px;
+  height: 40px;
+  border-radius: 20;
 `;
 
-export const Signin = styled.Text`
-  font-size: 12px;
-  line-height: 18px;
-  margin-top: 10px;
-  text-decoration: underline;
-  text-decoration-color: #9da3b4;
-  color: #9da3b4;
+export const ImageView = styled.View`
+  flex-basis: 25%;
+`;
+export const OverviewImage = styled.Image`
+  width: 60px;
+  height: 60px;
+`;
+
+export const DetailsView = styled.View`
+  flex-basis: 75%;
 `;

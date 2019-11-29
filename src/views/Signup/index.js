@@ -1,19 +1,29 @@
 import React, { useState } from "react";
-import CustomInput from "../../components/Input";
-import { Container } from "./styles";
+import {CustomInput} from "../../components/Input";
+import { KeyboardAvoidingView, StyleSheet } from "react-native";
+import {
+  Container,
+  Background,
+  Greeting,
+  Description,
+  Form,
+  Signin
+} from "./styles";
 import metadata from "../../constants/meta";
+import { colors } from "../../constants/colors";
+
+import { SimpleLinearGradientButton } from "../../components/Buttons";
 
 export default function Signup(props) {
-  // setting header nav bar action for component
-
   const { navigate } = props.navigation;
+  const details = metadata.signupPage;
 
   const initialFormState = {
-    fullName: "",
-    email: "",
-    password: "",
-    countryOfResidence: "",
-    phone: ""
+    fullName: "John Doe",
+    email: "Lawson@gmail.com",
+    password: "8392198489712",
+    countryOfResidence: "London",
+    phone: "+2345678909876"
   };
   const [fields, setFields] = useState(initialFormState);
 
@@ -21,18 +31,52 @@ export default function Signup(props) {
     setFields({ ...fields, [field]: text });
   };
 
-  const { signupPage } = metadata;
-  const { type, text } = signupPage[0];
-
   return (
     <Container>
-      <CustomInput
-        defaultValue={fields[type]}
-        textContentType={text}
-        onChangeText={handleChange(type)}
-        editable={true}
-        {...signupPage[0]}
-      />
+      <KeyboardAvoidingView
+        behavior="position"
+        contentContainerStyle={StyleSheet.wrapper}
+      >
+        <Background>
+          <Greeting>welcome</Greeting>
+          <Description>
+            To verify your identity. please fill your personal information
+          </Description>
+          <Form>
+            {details.map((value, index) => (
+              <CustomInput
+                key={index}
+                defaultValue={fields[value.type]}
+                textContentType={value.text}
+                onChangeText={handleChange(value.type)}
+                {...value}
+                style={{ marginBottom: index != details.length - 1 ? 26 : 50 }}
+              />
+            ))}
+          </Form>
+
+          <SimpleLinearGradientButton
+            title="Submit"
+            class={{
+              width: "100%"
+            }}
+            textStyle={{
+              color: colors.rootWhite,
+              fontSize: 14
+            }}
+            onPress={() => navigate("Verify")}
+          />
+          <Signin onPress={() => navigate("Login")}>
+            Have an account signin?
+          </Signin>
+        </Background>
+      </KeyboardAvoidingView>
     </Container>
   );
 }
+
+const styles = StyleSheet.create({
+  wrapper: {
+    flex: 1
+  }
+});
