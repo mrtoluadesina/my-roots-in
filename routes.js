@@ -14,6 +14,7 @@ import Dashboard from "./src/views/Dashboard";
 import PlantTree from "./src/views/PlantTree";
 import OccasionTypes from "./src/views/Occasions";
 import HowToPlant from "./src/views/HowToPlant";
+import TypeOfTree from "./src/views/TypeOfTree";
 
 const MainNavigator = createStackNavigator(
   {
@@ -146,6 +147,22 @@ const MainNavigator = createStackNavigator(
     // How to plant a tree Route
     HowToPlant: {
       screen: HowToPlant,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            progressLevel={0.7}
+          />
+        ),
+        headerStyle: {
+          borderBottomWidth: 0
+        }
+      })
+    },
+
+    // How to plant a tree Route
+    TypeOfTree: {
+      screen: TypeOfTree,
       navigationOptions: ({ navigation }) => ({
         header: (
           <NavBackButton
