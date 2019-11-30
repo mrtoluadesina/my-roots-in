@@ -13,6 +13,7 @@ import ForgotPassword from "./src/views/ForgotPassword";
 import Dashboard from "./src/views/Dashboard";
 import PlantTree from "./src/views/PlantTree";
 import OccasionTypes from "./src/views/Occasions";
+import HowToPlant from "./src/views/HowToPlant";
 
 const MainNavigator = createStackNavigator(
   {
@@ -140,8 +141,25 @@ const MainNavigator = createStackNavigator(
           borderBottomWidth: 0
         }
       })
+    },
+
+    // How to plant a tree Route
+    HowToPlant: {
+      screen: HowToPlant,
+      navigationOptions: ({ navigation }) => ({
+        header: (
+          <NavBackButton
+            onPress={() => navigation.goBack()}
+            progressLevel={0.7}
+          />
+        ),
+        headerStyle: {
+          borderBottomWidth: 0
+        }
+      })
     }
   },
+
   {
     initialRouteName: "Home",
     defaultNavigationOptions: {
