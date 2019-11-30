@@ -11,6 +11,7 @@ export const Button = styled(TouchableOpacity)`
 export const LinearGradientButton = styled(LinearGradient)`
   width: 100%;
   padding: 15px;
-  align-items: center;
+  justify-content: center;
   border-radius: 5px;
+  flex-direction: row;
 `
