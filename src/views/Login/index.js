@@ -6,7 +6,7 @@ import {
   Text,
   Image,
   ScrollView,
-  AsyncStorage
+  ActivityIndicator
 } from "react-native";
 import {
   SimpleButton,
@@ -88,6 +88,7 @@ function Login(props) {
             class={styles.btnGradient}
             textStyle={styles.whiteText}
             title="Login"
+            loading={props.isLoading}
             onPress={() => handleSubmit()}
           />
           <SimpleButton
