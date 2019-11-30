@@ -16,32 +16,25 @@ import {SimpleLinearGradientButton} from "../../components/Buttons";
 import {SimpleCard} from '../../components/Cards';
 import {colors} from "../../constants/colors";
 
-function WhereToPlant() {
+function WhereToPlant(props) {
+  const {navigate} = props.navigation
   return(
     <Container>
       <Background>
         <Header>
-          <Greeting>Type of occasion</Greeting>
-          <Avater source={images.getDefaultAvater}></Avater>
+          <Greeting>Where to plant</Greeting>
+          <Avater source={images.getDefaultAvatar}></Avater>
         </Header>
         <Body>
-          <Description>Choose the type of occasion</Description>
+          <Description>Choose the location to plant your roots</Description>
           <Choices>
             <SimpleCard style={cardSizeStyle}>
               <images.GiftImage />
-              <CardTitle>birthdays</CardTitle>
+              <CardTitle>54 Countries</CardTitle>
             </SimpleCard>
             <SimpleCard style={cardSizeStyle}>
               <images.AnniversaryImage />
-              <CardTitle>anniversary</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <images.HolidayImage />
-              <CardTitle>holidays</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <images.OtherImage />
-              <CardTitle>others</CardTitle>
+              <CardTitle>Great green wall</CardTitle>
             </SimpleCard>
           </Choices>
         </Body>
@@ -54,7 +47,7 @@ function WhereToPlant() {
             color: colors.rootWhite,
             fontSize: 14
           }}
-          onPress={() => navigate("HowToPlant")}
+          onPress={() => navigate("PlantTree")}
         />
       </Background>
     </Container>
@@ -78,3 +71,5 @@ const cardSizeStyle = {
   shadowRadius: 2,
   elevation: 2
 };
+
+export default WhereToPlant;
