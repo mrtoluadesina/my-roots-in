@@ -1,1 +1,3 @@
-export const BASE_URL = process.env.REACT_APP_BASE_URL;
+import { ENDPOINT } from "react-native-dotenv";
+
+export const BASE_URL = ENDPOINT;
