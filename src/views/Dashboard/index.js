@@ -14,6 +14,7 @@ import {
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 function Dashboard(props) {
   const {navigate} = props.navigation;
@@ -22,7 +23,9 @@ function Dashboard(props) {
       <ImageBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
+          <TouchableOpacity onPress={() => navigate("Settings")}>
             <Avatar source={images.getDefaultAvatar}></Avatar>
+          </TouchableOpacity>
           </Row>
           <Row>
             <SimpleCard style={styles.overviewCard}>
@@ -77,8 +80,7 @@ function Dashboard(props) {
                 color: colors.rootBlack,
                 fontSize: 14
               }}
-              onPress={() => navigate("Settings")}
-              // onPress={() => Alert.alert("This option is not currently available")}
+              onPress={() => Alert.alert("This option is not currently available")}
             />
             <SimpleButton
               title="PLANT A TREE"
