@@ -37,8 +37,9 @@ function Login(props) {
       const payload = {
         ...values
       };
-      await props.loginHandler(payload);
-      if (AsyncStorage) navigate("Dashboard");
+      const {status, message} = await props.loginHandler(payload);
+      if (status >= 400) throw new Error(message);
+      navigate("Dashboard");
     } catch (error) {
       console.log(error)
     }
