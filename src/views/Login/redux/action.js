@@ -2,6 +2,7 @@ import {AsyncStorage} from 'react-native';
 import * as types from './types';
 import axios from 'axios';
 import { BASE_URL } from '../../../constants/api';
+// import {ENDPOINT} from 'react-native-dotenv';
 
 export const loading = isLoading => ({ type: types.SET_LOADING, isLoading });
 
@@ -12,7 +13,7 @@ export const setUser = token => ({ type: types.SET_USER, token });
 export const login = payload => dispatch => {
   dispatch(loading(true));
   return axios
-    .post('https://fathomless-badlands-69782.herokuapp.com/api' + '/user/login', payload)
+    .post(BASE_URL + '/user/login', payload)
     .then(res => {
       dispatch(loading(false));
       AsyncStorage.setItem('isLoggedIn', '1');
