@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import { StyleSheet, View, Text, Alert, AsyncStorage } from "react-native";
 import { SimpleCard } from "../../components/Cards";
 import {
   Main,
@@ -77,7 +77,8 @@ function Dashboard(props) {
                 color: colors.rootBlack,
                 fontSize: 14
               }}
-              onPress={() => Alert.alert("This option is not currently available")}
+              onPress={() => navigate("Settings")}
+              // onPress={() => Alert.alert("This option is not currently available")}
             />
             <SimpleButton
               title="PLANT A TREE"
