@@ -12,10 +12,11 @@ export const setUser = token => ({ type: types.SET_USER, token });
 export const login = payload => dispatch => {
   dispatch(loading(true));
   return axios
-    .post(BASE_URL + '/user/login', payload)
+    .post('https://fathomless-badlands-69782.herokuapp.com/api' + '/user/login', payload)
     .then(res => {
       dispatch(loading(false));
-      AsyncStorage.setItem('isLoggedIn', true);
+      AsyncStorage.setItem('isLoggedIn', '1');
+      AsyncStorage.setItem('userData', JSON.stringify(res.data.payload));
       return res.data;
     })
     .catch(error => {
