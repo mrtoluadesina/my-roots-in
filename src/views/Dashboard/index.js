@@ -16,6 +16,7 @@ import { colors } from "../../constants/colors";
 import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
 
 function Dashboard(props) {
+  const {navigate} = props.navigation;
   return (
     <Main contentContainerStyle={styles.dashboard}>
       <ImageBg source={images.dashboardBg}>
@@ -89,7 +90,7 @@ function Dashboard(props) {
                 color: colors.rootWhite,
                 fontSize: 14
               }}
-              onPress={() => Alert.alert("Plant a Tree")}
+              onPress={() => navigate("WhereToPlant")}
             />
           </Row>
         </Container>
