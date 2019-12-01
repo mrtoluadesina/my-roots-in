@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import { StyleSheet, View, Text, Alert, AsyncStorage } from "react-native";
 import { SimpleCard } from "../../components/Cards";
 import {
   Main,
@@ -14,6 +14,7 @@ import {
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 function Dashboard(props) {
   const {navigate} = props.navigation;
@@ -22,7 +23,9 @@ function Dashboard(props) {
       <ImageBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
+          <TouchableOpacity onPress={() => navigate("Settings")}>
             <Avatar source={images.getDefaultAvatar}></Avatar>
+          </TouchableOpacity>
           </Row>
           <Row>
             <SimpleCard style={styles.overviewCard}>

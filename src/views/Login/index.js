@@ -5,7 +5,8 @@ import {
   View,
   Text,
   Image,
-  ScrollView
+  ScrollView,
+  ActivityIndicator
 } from "react-native";
 import {
   SimpleButton,
@@ -31,6 +32,19 @@ function Login(props) {
 
   const handleChange = field => text => setValues({ ...values, [field]: text });
 
+  const handleSubmit = async () => {
+    try {
+      const payload = {
+        ...values
+      };
+      const {status, message} = await props.loginHandler(payload);
+      if (status >= 400) throw new Error(message);
+      navigate("Dashboard");
+    } catch (error) {
+      console.log(error)
+    }
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
       <KeyboardAvoidingView
@@ -47,7 +61,7 @@ function Login(props) {
           <CustomInput
             defaultValue={values[details[0].type]}
             textContentType={details[0].text}
-            keyboardType={'email-address'}
+            keyboardType={"email-address"}
             onChangeText={handleChange(details[0].type)}
             {...details[0]}
             style={{ marginBottom: 26 }}
@@ -74,7 +88,8 @@ function Login(props) {
             class={styles.btnGradient}
             textStyle={styles.whiteText}
             title="Login"
-            onPress={() => navigate("Dashboard")}
+            loading={props.isLoading}
+            onPress={() => handleSubmit()}
           />
           <SimpleButton
             title="Don't have an account yet?"
