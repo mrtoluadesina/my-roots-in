@@ -98,7 +98,7 @@ export const cardSizeStyle = {
   alignItems: "center",
   justifyContent: "center",
   borderRadius: 2,
-  shadowColor: `${colors.rootShadow}`,
+  shadowColor: colors.rootShadow,
   shadowOffset: { width: 2, height: 6 },
   shadowOpacity: 0.2,
   shadowRadius: 6,
