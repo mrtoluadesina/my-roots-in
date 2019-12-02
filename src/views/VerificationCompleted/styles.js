@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colors } from "../../constants/colors";
 
 export const Container = styled.View`
   flex: 1;
@@ -34,3 +35,32 @@ export const Paragraph = styled.Text`
   text-align: center;
   margin-top: 2;
 `;
+
+export const cardSizeStyle = {
+  borderColor: colors.rootShadow,
+  shadowColor: colors.rootShadow,
+  width: "80%",
+  height: "60%",
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 15
+  },
+  shadowOpacity: 0.4,
+  shadowRadius: 55,
+  elevation: 1,
+  borderRadius: 10
+};
+
+export const styles = StyleSheet.create({
+  fullWidth: {
+    marginTop: 35,
+    width: "100%"
+  },
+  textColor: {
+    color: "white",
+    fontSize: 14,
+    fontFamily: "Helvetica-Bold"
+  }
+});
