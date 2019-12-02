@@ -89,3 +89,18 @@ export const CardImage = styled.Image`
   width: 80%;
   height: 80%;
 `;
+
+export const cardSizeStyle = {
+  height: 105,
+  width: 110,
+  marginBottom: 50,
+  position: "relative",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: 2,
+  shadowColor: `${colors.rootShadow}`,
+  shadowOffset: { width: 2, height: 6 },
+  shadowOpacity: 0.2,
+  shadowRadius: 6,
+  elevation: 2
+};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {KeyboardAvoidingView, StyleSheet} from 'react-native';
+import { KeyboardAvoidingView } from "react-native";
 import { EditableInput } from "../../components/Input";
 import {
   Container,
@@ -11,7 +11,8 @@ import {
   Footer,
   Notification,
   NotificationTitle,
-  NotificationToggle
+  NotificationToggle,
+  KeyboardWrapper
 } from "./styles";
 
 import metadata from "../../constants/meta";
@@ -42,87 +43,81 @@ export default function Settings(props) {
 
   return (
     <Container>
-    <KeyboardAvoidingView
+      <KeyboardAvoidingView
         behavior="position"
-        contentContainerStyle={StyleSheet.wrapper}
+        contentContainerStyle={KeyboardWrapper}
       >
-      <Background>
-        <Header>
-          <Greeting>Settings</Greeting>
-          <Avater source={images.getDefaultAvatar}></Avater>
-        </Header>
-        <Form>
-          <EditableInput
-            defaultValue={fields[details[0].type]}
-            textContentType={details[0].text}
-            onChangeText={handleChange(details[0].type)}
-            editable={true}
-            {...details[0]}
-            style={{ marginBottom: 26 }}
+        <Background>
+          <Header>
+            <Greeting>Settings</Greeting>
+            <Avater source={images.getDefaultAvatar}></Avater>
+          </Header>
+          <Form>
+            <EditableInput
+              defaultValue={fields[details[0].type]}
+              textContentType={details[0].text}
+              onChangeText={handleChange(details[0].type)}
+              editable={true}
+              {...details[0]}
+              style={{ marginBottom: 26 }}
+            />
+            <EditableInput
+              defaultValue={fields[details[1].type]}
+              textContentType={details[1].text}
+              onChangeText={handleChange(details[1].type)}
+              editable={true}
+              {...details[1]}
+              style={{ marginBottom: 26 }}
+            />
+            <EditableInput
+              defaultValue={fields[details[2].type]}
+              textContentType={details[2].text}
+              onChangeText={handleChange(details[2].type)}
+              editable={true}
+              {...details[2]}
+              style={{ marginBottom: 26 }}
+            />
+            <EditableInput
+              defaultValue={fields[details[3].type]}
+              textContentType={details[3].text}
+              onChangeText={handleChange(details[3].type)}
+              editable={true}
+              {...details[3]}
+              style={{ marginBottom: 26 }}
+            />
+            <EditableInput
+              defaultValue={fields[details[4].type]}
+              textContentType={details[4].text}
+              onChangeText={handleChange(details[4].type)}
+              editable={true}
+              {...details[4]}
+              style={{ marginBottom: 50 }}
+            />
+          </Form>
+        </Background>
+        <Footer>
+          <Notification>
+            <NotificationTitle>notification</NotificationTitle>
+            <NotificationToggle
+              onValueChange={toggleNotification}
+              value={notification.toggle}
+              trackColor={{ true: colors.rootGreenDark }}
+              style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
+            />
+          </Notification>
+          <SimpleLinearGradientButton
+            title="Logout"
+            class={{
+              width: "100%"
+            }}
+            textStyle={{
+              color: colors.rootWhite,
+              fontSize: 14
+            }}
+            onPress={() => navigate("Home")}
           />
-          <EditableInput
-            defaultValue={fields[details[1].type]}
-            textContentType={details[1].text}
-            onChangeText={handleChange(details[1].type)}
-            editable={true}
-            {...details[1]}
-            style={{ marginBottom: 26 }}
-          />
-          <EditableInput
-            defaultValue={fields[details[2].type]}
-            textContentType={details[2].text}
-            onChangeText={handleChange(details[2].type)}
-            editable={true}
-            {...details[2]}
-            style={{ marginBottom: 26 }}
-          />
-          <EditableInput
-            defaultValue={fields[details[3].type]}
-            textContentType={details[3].text}
-            onChangeText={handleChange(details[3].type)}
-            editable={true}
-            {...details[3]}
-            style={{ marginBottom: 26 }}
-          />
-          <EditableInput
-            defaultValue={fields[details[4].type]}
-            textContentType={details[4].text}
-            onChangeText={handleChange(details[4].type)}
-            editable={true}
-            {...details[4]}
-            style={{ marginBottom: 50 }}
-          />
-        </Form>
-      </Background>
-      <Footer>
-        <Notification>
-          <NotificationTitle>notification</NotificationTitle>
-          <NotificationToggle
-            onValueChange={toggleNotification}
-            value={notification.toggle}
-            trackColor={{ true: colors.rootGreenDark }}
-            style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
-          />
-        </Notification>
-        <SimpleLinearGradientButton
-          title="Logout"
-          class={{
-            width: "100%"
-          }}
-          textStyle={{
-            color: colors.rootWhite,
-            fontSize: 14
-          }}
-          onPress={() => navigate("Home")}
-        />
-      </Footer>
+        </Footer>
       </KeyboardAvoidingView>
     </Container>
   );
 }
-
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  }
-});
