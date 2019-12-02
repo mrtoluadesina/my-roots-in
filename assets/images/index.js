@@ -20,6 +20,8 @@ export const images = {
   giftImg: require("./gift.png"),
   jobsImg: require("./jobs.jpg"),
   tickImg: require("./tick.png"),
+  allCountriesImg: require("./all-countries.jpg"),
+  greatGreenWallImg: require("./great-green-wall.png"),
   HolidayImage,
   GiftImage,
   OtherImage,
