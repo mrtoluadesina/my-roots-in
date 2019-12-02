@@ -22,6 +22,7 @@ export const images = {
   tickImg: require("./tick.png"),
   allCountriesImg: require("./all-countries.jpg"),
   greatGreenWallImg: require("./great-green-wall.png"),
+  verificationImg: require("./verification.png"),
   HolidayImage,
   GiftImage,
   OtherImage,
