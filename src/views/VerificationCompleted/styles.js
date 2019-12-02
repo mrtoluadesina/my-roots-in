@@ -53,7 +53,7 @@ export const cardSizeStyle = {
   borderRadius: 10
 };
 
-export const styles = StyleSheet.create({
+export const styles = {
   fullWidth: {
     marginTop: 35,
     width: "100%"
@@ -63,4 +63,4 @@ export const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: "Helvetica-Bold"
   }
-});
+};
