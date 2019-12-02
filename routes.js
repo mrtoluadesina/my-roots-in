@@ -137,7 +137,7 @@ const MainNavigator = createStackNavigator(
     //Dashboard
     Dashboard: {
       screen: Dashboard,
-      navigationOptions: ({ navigation }) => ({
+      navigationOptions: () => ({
         header: null,
         headerStyle: {
           borderBottomWidth: 0
