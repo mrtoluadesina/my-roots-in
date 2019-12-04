@@ -4,7 +4,6 @@ import * as Progress from 'react-native-progress';
 import { Image, Platform } from 'react-native';
 import { Container, ProgressContainer, TouchableOpacity } from './styles';
 import { colors } from '../../constants/colors';
-import { setRecoveryProps } from 'expo/build/ErrorRecovery/ErrorRecovery';
 
 export default function NavBackButton({
   onPress,
