@@ -1,7 +1,7 @@
 import React from "react";
+import { ImageBackground } from "react-native";
 import { images } from "../../../assets/images";
-import { SimpleLinearGradientButton } from "../../components/Buttons";
-import { SimpleCard } from "../../components/Cards/index";
+import { SimpleButton } from "../../components/Buttons";
 
 import {
   Container,
@@ -9,7 +9,6 @@ import {
   Section,
   Heading,
   Paragraph,
-  cardSizeStyle,
   styles
 } from "./styles";
 
@@ -17,21 +16,33 @@ export default function VerificationCompleted(props) {
   const { navigate } = props.navigation;
   return (
     <Container>
-      <SimpleCard style={cardSizeStyle}>
-        <ImageContainer source={images.verification}></ImageContainer>
-        <Section>
-          <Heading>Verification successful</Heading>
-          <Paragraph>
-            Your verification has been verified please login with your details
-          </Paragraph>
-          <SimpleLinearGradientButton
-            title="Got it!"
-            textStyle={styles.textColor}
-            class={styles.fullWidth}
-            onPress={() => navigate("Login")}
-          ></SimpleLinearGradientButton>
+      <ImageBackground
+        source={images.verificationCompleteBgImg}
+        style={{
+          flex: 1,
+          width: "100%",
+          height: "100%",
+          alignContent: "center"
+        }}
+        imageStyle={{ resizeMode: "stretch" }}
+      >
+        <Section style={{ flex: 1, width: "100%" }}>
+          <ImageContainer source={images.verificationImg}></ImageContainer>
+
+          <Section style={{ marginBottom: 250, marginTop: 60 }}>
+            <Heading>Verification successful</Heading>
+            <Paragraph>
+              Your verification has been verified please login with your details
+            </Paragraph>
+            <SimpleButton
+              title="Got it!"
+              textStyle={styles.textColor}
+              class={styles.fullWidth}
+              onPress={() => navigate("Login")}
+            ></SimpleButton>
+          </Section>
         </Section>
-      </SimpleCard>
+      </ImageBackground>
     </Container>
   );
 }
