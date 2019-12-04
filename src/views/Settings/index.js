@@ -1,5 +1,10 @@
-import React, { useState } from "react";
-import { KeyboardAvoidingView } from "react-native";
+import React, { useState, useEffect, useCallback } from "react";
+import {
+  KeyboardAvoidingView,
+  StyleSheet,
+  AsyncStorage,
+  Text
+} from "react-native";
 import { EditableInput } from "../../components/Input";
 import {
   Container,
@@ -22,16 +27,16 @@ import { SimpleLinearGradientButton } from "../../components/Buttons";
 
 export default function Settings(props) {
   const details = metadata.signupPage;
-
-  const initialFormState = {
-    fullName: "John Doe",
-    email: "Lawson@gmail.com",
-    password: "8392198489712",
-    countryOfResidence: "London",
-    phone: "+2345678909876"
-  };
-  const [fields, setFields] = useState(initialFormState);
+  const [fields, setFields] = useState({});
   const [notification, setNotification] = useState({ toggle: false });
+
+  useEffect(() => {
+    const loadUser = async () => {
+      const user = await AsyncStorage.getItem("userData");
+      setFields(JSON.parse(user));
+    };
+    loadUser();
+  }, []);
 
   toggleNotification = value => {
     setNotification({ toggle: value });
@@ -54,7 +59,7 @@ export default function Settings(props) {
           </Header>
           <Form>
             <EditableInput
-              defaultValue={fields[details[0].type]}
+              defaultValue={fields.name}
               textContentType={details[0].text}
               onChangeText={handleChange(details[0].type)}
               editable={true}
@@ -62,23 +67,16 @@ export default function Settings(props) {
               style={{ marginBottom: 26 }}
             />
             <EditableInput
-              defaultValue={fields[details[1].type]}
+              defaultValue={fields.email}
               textContentType={details[1].text}
               onChangeText={handleChange(details[1].type)}
-              editable={true}
+              editable={false}
               {...details[1]}
               style={{ marginBottom: 26 }}
             />
+
             <EditableInput
-              defaultValue={fields[details[2].type]}
-              textContentType={details[2].text}
-              onChangeText={handleChange(details[2].type)}
-              editable={true}
-              {...details[2]}
-              style={{ marginBottom: 26 }}
-            />
-            <EditableInput
-              defaultValue={fields[details[3].type]}
+              defaultValue={fields.country}
               textContentType={details[3].text}
               onChangeText={handleChange(details[3].type)}
               editable={true}
@@ -86,7 +84,7 @@ export default function Settings(props) {
               style={{ marginBottom: 26 }}
             />
             <EditableInput
-              defaultValue={fields[details[4].type]}
+              defaultValue={fields.phone}
               textContentType={details[4].text}
               onChangeText={handleChange(details[4].type)}
               editable={true}
