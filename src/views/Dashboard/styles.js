@@ -20,35 +20,21 @@ export const Main = styled.ScrollView`
 export const ImageBg = styled.ImageBackground`
   width: 100%;
   height: 100%;
-  position: relative;
   padding: 20px;
-  justify-content: space-between
+  flex: 1;
 `;
 
 export const Container = styled.View`
-`;
-
-export const Row = styled.View`
-  padding-top: 30px;
-  padding-bottom: 30px;
-  flex-direction: row;
+  flex: 1;
   width: 100%;
+  height: 100%;
+  align-items: center;
+  padding-top: 20;
 `;
 
-export const Avatar = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
-`;
-
-export const ImageView = styled.View`
-  flex-basis: 25%;
-`;
-export const OverviewImage = styled.Image`
-  width: 60px;
-  height: 60px;
-`;
-
-export const DetailsView = styled.View`
-  flex-basis: 75%;
+export const Title = styled.Text`
+  font-size: 20;
+  opacity: 0.7;
+  letter-spacing: 1;
+  color: ${colors.rootGreenDark};
 `;
