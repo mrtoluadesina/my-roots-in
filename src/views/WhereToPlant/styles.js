@@ -75,6 +75,25 @@ export const CardTitle = styled.Text`
 `;
 
 export const CardImage = styled.Image`
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
+  border-radius: 2;
 `;
+
+export const cardSizeStyle = {
+  height: 105,
+  width: 110,
+  marginBottom: 50,
+  position: "relative",
+  alignItems: "center",
+  justifyContent: "center",
+  borderWidth: 0.5,
+  borderRadius: 2,
+  borderColor: `${colors.boxShadow}`,
+  borderBottomWidth: 0,
+  shadowColor: `${colors.boxShadow}`,
+  shadowOffset: { width: 0, height: 2 },
+  shadowOpacity: 0.5,
+  shadowRadius: 2,
+  elevation: 2
+};

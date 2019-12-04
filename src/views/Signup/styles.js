@@ -62,3 +62,7 @@ export const Signin = styled.Text`
   text-decoration-color: #9da3b4;
   color: #9da3b4;
 `;
+
+export const KeyboardWrapper = {
+  flex: 1
+};
