@@ -18,21 +18,18 @@ export default function Home(props) {
           <Title>World's #1</Title>
           <Title>Climate Action App.</Title>
           <View style={{ ...styles.imageWrapper, ...styles.padUp }}>
-            <Image style={styles.image} source={images.getStartedImg} />
+            <Image source={images.getStartedImg} />
           </View>
           <Title>I can literally say</Title>
           <Title>i have roots in Africa!</Title>
         </View>
         <View style={{ ...styles.buttonWrapper, ...styles.padUp }}>
-          <SimpleLinearGradientButton
-            class={styles.btnGradient}
-            textStyle={styles.whiteText}
+          <SimpleButton
+            class={styles.btn}
             title="Login"
             onPress={() => navigate("Login")}
           />
           <SimpleButton
-            class={styles.btnWhite}
-            textStyle={styles.blackText}
             title="Signup"
             onPress={() => navigate("Signup")}
           />
@@ -58,45 +55,16 @@ const styles = StyleSheet.create({
   padUp: {
     paddingTop: 40
   },
-  btnGradient: {
-    marginVertical: 10
-  },
-  btnWhite: {
-    backgroundColor: colors.rootWhite,
-    paddingVertical: 15,
-    marginVertical: 10,
-    shadowOffset: {
-      width: 0,
-      height: 15
-    },
-    shadowRadius: 55,
-    shadowOpacity: 0.7,
-    shadowColor: colors.rootShadow,
-    elevation: 1
+  btn: {
+    backgroundColor: colors.rootGreenDark
   },
   imageWrapper: {
     width: "100%",
     alignItems: "center",
     justifyContent: "center"
   },
-  image: {
-    width: "100%",
-    resizeMode: "contain"
-  },
-  whiteText: {
-    color: colors.rootWhite
-  },
-  blackText: {
-    color: colors.rootBlack
-  },
   buttonWrapper: {
     width: "100%",
     alignItems: "center"
-  },
-  subtitle: {
-    fontSize: 20,
-    opacity: 0.7,
-    letterSpacing: 1,
-    color: colors.rootGreenDark
   }
 });
