@@ -4,8 +4,14 @@ import { Button, LinearGradientButton, Value, Link } from "./style";
 import { colors } from "../../constants/colors";
 
 export const SimpleButton = props => (
-  <Button style={props.class} onPress={props.onPress}>
-    <Value style={props.textStyle}>{props.title}</Value>
+  <Button style={props.class} onPress={props.onPress} disabled={props.loading ? true : false}>
+    {props.loading ? (
+      <ActivityIndicator
+        size="small"
+        color="#ffffff"
+        style={{ paddingRight: 10 }}
+      />
+    ) : <Value style={props.textStyle}>{props.title}</Value>}
   </Button>
 );
 
