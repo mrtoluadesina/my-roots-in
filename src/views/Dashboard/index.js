@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, Text, Alert, AsyncStorage } from 'react-native';
+import { StyleSheet, View, Text, Alert } from 'react-native';
 import { SimpleCard } from '../../components/Cards';
 
 import {
