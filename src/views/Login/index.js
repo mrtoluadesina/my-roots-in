@@ -13,7 +13,7 @@ import { connect } from "react-redux";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { login } from "./redux/action";
-import { ImageBg, Title, Container } from "../Dashboard/styles";
+import { ImageBg, BigTitle, Container } from "../Dashboard/styles";
 
 function Login(props) {
   const { navigate } = props.navigation;
@@ -42,60 +42,58 @@ function Login(props) {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.wrapper}>
-      <ImageBg imageStyle={styles.imageBg} source={images.loginBgImg}>
-        <KeyboardAvoidingView
-          behavior="position"
-          contentContainerStyle={styles.content}
-        >
-          <Container style={styles.container}>
-            <View style={styles.header}>
-              <Title>Login.</Title>
-            </View>
-            <View style={styles.formWrapper}>
-              <CustomInput
-                defaultValue={values[details[0].type]}
-                textContentType={details[0].text}
-                keyboardType={"email-address"}
-                onChangeText={handleChange(details[0].type)}
-                {...details[0]}
-                style={{ marginBottom: 26 }}
-              />
-              <CustomInput
-                defaultValue={values[details[1].type]}
-                textContentType={details[1].text}
-                onChangeText={handleChange(details[1].type)}
-                {...details[1]}
-                style={{ marginBottom: 26 }}
-              />
-            </View>
-            <View style={styles.forgotAuth}>
-              <Text
-                onPress={() => {
-                  navigate("ForgotPassword");
-                }}
-              >
-                Forgot Password?
-              </Text>
-            </View>
-            <View style={styles.buttonWrapper}>
-              <SimpleButton
-                class={styles.btn}
-                textStyle={styles.whiteText}
-                title="Login"
-                loading={props.isLoading}
-                onPress={() => handleSubmit()}
-              />
-              <LinkButton
-                title="Don't have an account yet?"
-                textStyle={styles.blackText}
-                onPress={() => navigate("Settings")}
-              />
-            </View>
-          </Container>
-        </KeyboardAvoidingView>
-      </ImageBg>
-    </ScrollView>
+    <ImageBg imageStyle={styles.imageBg} source={images.loginBgImg}>
+      <KeyboardAvoidingView
+        behavior="position"
+        contentContainerStyle={styles.content}
+      >
+        <Container style={styles.container}>
+          <View style={styles.header}>
+            <BigTitle>Login.</BigTitle>
+          </View>
+          <View style={styles.formWrapper}>
+            <CustomInput
+              defaultValue={values[details[0].type]}
+              textContentType={details[0].text}
+              keyboardType={"email-address"}
+              onChangeText={handleChange(details[0].type)}
+              {...details[0]}
+              style={{ marginBottom: 26 }}
+            />
+            <CustomInput
+              defaultValue={values[details[1].type]}
+              textContentType={details[1].text}
+              onChangeText={handleChange(details[1].type)}
+              {...details[1]}
+              style={{ marginBottom: 26 }}
+            />
+          </View>
+          <View style={styles.forgotAuth}>
+            <Text
+              onPress={() => {
+                navigate("ForgotPassword");
+              }}
+            >
+              Forgot Password?
+            </Text>
+          </View>
+          <View style={styles.buttonWrapper}>
+            <SimpleButton
+              class={styles.btn}
+              textStyle={styles.whiteText}
+              title="Login"
+              loading={props.isLoading}
+              onPress={() => handleSubmit()}
+            />
+            <LinkButton
+              title="Don't have an account yet?"
+              textStyle={styles.blackText}
+              onPress={() => navigate("Settings")}
+            />
+          </View>
+        </Container>
+      </KeyboardAvoidingView>
+    </ImageBg>
   );
 }
 
@@ -107,7 +105,7 @@ const styles = StyleSheet.create({
     flex: 1
   },
   content: {
-    height: "100%", 
+    height: "100%",
     alignItems: "center",
     paddingHorizontal: 5
   },
@@ -127,7 +125,7 @@ const styles = StyleSheet.create({
   },
   btn: {
     backgroundColor: colors.rootGreenDark,
-    paddingVertical: 15,
+    paddingVertical: 15
   },
   whiteText: {
     color: colors.rootWhite

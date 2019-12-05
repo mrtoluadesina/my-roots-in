@@ -38,3 +38,9 @@ export const Title = styled.Text`
   letter-spacing: 1;
   color: ${colors.rootGreenDark};
 `;
+
+export const BigTitle = styled.Text`
+  font-size: 26;
+  letter-spacing: 1;
+  color: ${colors.rootGreenDark}
+`;
