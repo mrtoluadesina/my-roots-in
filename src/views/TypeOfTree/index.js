@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import {
   Container,
@@ -12,13 +12,14 @@ import {
   CardTitle,
   CardImage,
   CardPrice,
-  cardSizeStyle
-} from "./styles";
+  cardSizeStyle,
+  GradientBtn,
+} from './styles';
 
-import { images } from "../../../assets/images";
-import { SimpleLinearGradientButton } from "../../components/Buttons";
-import { SimpleCard } from "../../components/Cards";
-import { colors } from "../../constants/colors";
+import { images } from '../../../assets/images';
+import { SimpleButton } from '../../components/Buttons';
+import { SimpleCard } from '../../components/Cards';
+import { colors } from '../../constants/colors';
 
 export default function OccasionTypes(props) {
   const { navigate } = props.navigation;
@@ -55,16 +56,14 @@ export default function OccasionTypes(props) {
             </SimpleCard>
           </Choices>
         </Body>
-        <SimpleLinearGradientButton
-          title="Next"
-          class={{
-            width: "90%"
-          }}
+        <SimpleButton
+          title="Submit"
+          class={GradientBtn}
           textStyle={{
             color: colors.rootWhite,
-            fontSize: 14
+            fontSize: 14,
           }}
-          onPress={() => navigate("Payment")}
+          onPress={() => navigate('Payment')}
         />
       </Background>
     </Container>
