@@ -2,7 +2,7 @@ export default metadata = {
   signupPage: [
     {
       label: "Full Name",
-      type: "fullName",
+      type: "name",
       text: "name" // input field textContentType
     },
     {
@@ -27,6 +27,7 @@ export default metadata = {
       text: "telephoneNumber" // input field textContentType
     }
   ],
+
   loginPage: [
     {
       label: "Email",
