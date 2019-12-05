@@ -14,6 +14,7 @@ import {connect} from 'react-redux';
 import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
 import { SimpleButton } from "../../components/Buttons";
+import { register } from "./redux/action";
 
 function Signup(props) {
   const { navigate } = props.navigation;
@@ -85,7 +86,7 @@ const mapStateToProps = ({Login}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  SignupHandler: dispatch = payload => signup(payload)
+  SignupHandler: dispatch = payload => register(payload)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
