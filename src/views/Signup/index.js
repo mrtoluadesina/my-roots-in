@@ -38,7 +38,7 @@ export default function Signup(props) {
       source={images.signUpBgImg}
       style={{
         flex: 1,
-        width: "100%",
+        width: "100%"
       }}
       imageStyle={{ resizeMode: "stretch" }}
     >
@@ -46,36 +46,38 @@ export default function Signup(props) {
         behavior="position"
         contentContainerStyle={KeyboardWrapper}
       >
-        <Background>
-          <Greeting>welcome</Greeting>
-          <Description>
-            To verify your identity. please fill your personal information
-          </Description>
-          <Form>
-            {details.map((value, index) => (
-              <CustomInput
-                key={index}
-                defaultValue={fields[value.type]}
-                textContentType={value.text}
-                onChangeText={handleChange(value.type)}
-                {...value}
-                style={{
-                  marginBottom: index != details.length - 1 ? 25 : 20
-                }}
-              />
-            ))}
-          </Form>
+        <Container>
+          <Background>
+            <Greeting>welcome</Greeting>
+            <Description>
+              To verify your identity. please fill your personal information
+            </Description>
+            <Form>
+              {details.map((value, index) => (
+                <CustomInput
+                  key={index}
+                  defaultValue={fields[value.type]}
+                  textContentType={value.text}
+                  onChangeText={handleChange(value.type)}
+                  {...value}
+                  style={{
+                    marginBottom: index != details.length - 1 ? 25 : 20
+                  }}
+                />
+              ))}
+            </Form>
 
-          <SimpleButton
-            title="Submit"
-            class={styles.fullWidth}
-            textStyle={styles.textColor}
-            onPress={() => navigate("Verify")}
-          />
-          <Signin onPress={() => navigate("Login")}>
-            Have an account signin?
-          </Signin>
-        </Background>
+            <SimpleButton
+              title="Submit"
+              class={styles.fullWidth}
+              textStyle={styles.textColor}
+              onPress={() => navigate("Verify")}
+            />
+            <Signin onPress={() => navigate("Login")}>
+              Have an account signin?
+            </Signin>
+          </Background>
+        </Container>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
