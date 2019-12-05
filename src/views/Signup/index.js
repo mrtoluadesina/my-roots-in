@@ -33,6 +33,15 @@ function Signup(props) {
     setFields({ ...fields, [field]: text });
   };
 
+  const handleSubmit = async () => {
+    const payload = {
+      ...fields
+    };
+    console.log(payload)
+    await props.SignupHandler(payload);
+    navigate("Verify");
+  };
+
   return (
     <ImageBackground
       source={images.signUpBgImg}
@@ -70,7 +79,8 @@ function Signup(props) {
             title="Submit"
             class={styles.fullWidth}
             textStyle={styles.textColor}
-            onPress={() => navigate("Verify")}
+            loading={props.isLoading}
+            onPress={() => handleSubmit()}
           />
           <Signin onPress={() => navigate("Login")}>
             Have an account signin?
@@ -86,7 +96,7 @@ const mapStateToProps = ({ Register }) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  SignupHandler: (dispatch = payload => register(payload))
+  SignupHandler: payload => dispatch(register(payload))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
