@@ -1,8 +1,7 @@
 import React from "react";
-import { StyleSheet, Text, View, Image } from "react-native";
+import { StyleSheet, View, Image } from "react-native";
 import {
-  SimpleButton,
-  SimpleLinearGradientButton
+  SimpleButton
 } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 import { images } from "../../../assets/images";
@@ -45,7 +44,6 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    marginTop: 20,
     alignItems: "center"
   },
   header: {
@@ -53,7 +51,7 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   padUp: {
-    paddingTop: 40
+    paddingTop: 50
   },
   btn: {
     backgroundColor: colors.rootGreenDark
