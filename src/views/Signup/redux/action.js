@@ -12,13 +12,11 @@ export const register = payload => dispatch => {
   return axios
     .post(BASE_URL + "/user", payload)
     .then(res => {
-      console.log(res.data);
       dispatch(loading(false));
       AsyncStorage.setItem("token", res.data.token);
       return res.data
     })
     .catch(error => {
-      console.log(error);
       dispatch(loading(true));
       const {message} = error;
       dispatch(errorMethod(message));
