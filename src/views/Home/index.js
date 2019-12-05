@@ -42,10 +42,6 @@ const styles = StyleSheet.create({
   imageBg: {
     resizeMode: "stretch"
   },
-  content: {
-    flex: 1,
-    alignItems: "center"
-  },
   header: {
     width: "100%",
     alignItems: "center"
