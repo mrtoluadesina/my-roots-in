@@ -13,12 +13,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const Container = styled.ScrollView`
-  flex: 1;
-`;
-
 export const Background = styled.View`
-  flex: 1;
   width: 100%;
   padding: 0 50px;
   font-family: "Helvetica-Bold";
@@ -45,14 +40,7 @@ export const Header = styled.View`
   align-items: center;
 `;
 
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
-`;
-
 export const Form = styled.View`
-  flex: 1;
   width: 100%;
   margin-top: 40px;
 `;
@@ -83,5 +71,32 @@ export const Footer = styled.View`
 `;
 
 export const KeyboardWrapper = {
-  flex: 1
+  height: "100%"
+};
+
+export const buttonStyle = {
+  shadowColor: colors.rootGreenDark,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 10
+  },
+  shadowOpacity: 0.6,
+  shadowRadius: 15,
+  elevation: 1
+};
+
+export const styles = {
+  fullWidth: {
+    width: "100%",
+    height: 52,
+    backgroundColor: colors.rootGreenDark,
+    ...buttonStyle
+  },
+  textColor: {
+    color: "white",
+    fontSize: 14,
+    fontFamily: "Helvetica-Bold"
+  }
 };
