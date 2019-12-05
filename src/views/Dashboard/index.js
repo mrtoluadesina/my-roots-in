@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { StyleSheet, View, Text, Alert, AsyncStorage } from "react-native";
-import { SimpleCard } from "../../components/Cards";
+import React, { useState } from 'react';
+import { StyleSheet, View, Text, Alert, AsyncStorage } from 'react-native';
+import { SimpleCard } from '../../components/Cards';
+
 import {
   Main,
   ImageBg,
@@ -9,12 +10,12 @@ import {
   Avatar,
   OverviewImage,
   DetailsView,
-  ImageView
-} from "./styles";
-import { images } from "../../../assets/images";
-import { colors } from "../../constants/colors";
-import { SimpleButton } from "../../components/Buttons";
-import { TouchableOpacity } from "react-native-gesture-handler";
+  ImageView,
+} from './styles';
+import { images } from '../../../assets/images';
+import { colors } from '../../constants/colors';
+import { SimpleButton } from '../../components/Buttons';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
 function Dashboard(props) {
   const { navigate } = props.navigation;
@@ -23,7 +24,7 @@ function Dashboard(props) {
       <ImageBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
+            <TouchableOpacity onPress={() => navigate('Settings')}>
               <Avatar source={images.getDefaultAvatar}></Avatar>
             </TouchableOpacity>
           </Row>
@@ -33,7 +34,7 @@ function Dashboard(props) {
                 style={{
                   ...styles.details,
                   ...styles.padAll,
-                  ...styles.cardSizeStyle
+                  ...styles.cardSizeStyle,
                 }}
               >
                 <ImageView>
@@ -53,7 +54,7 @@ function Dashboard(props) {
                 style={{
                   ...styles.details,
                   ...styles.padAll,
-                  ...styles.cardSizeStyle
+                  ...styles.cardSizeStyle,
                 }}
               >
                 <ImageView>
@@ -83,31 +84,31 @@ function Dashboard(props) {
             <SimpleButton
               title="GEOTAG A TREE"
               class={{
-                width: "45%",
+                width: '45%',
                 backgroundColor: colors.rootWhite,
-                justifyContent: "center",
-                paddingVertical: 15
+                justifyContent: 'center',
+                paddingVertical: 15,
               }}
               textStyle={{
                 color: colors.rootBlack,
-                fontSize: 14
+                fontSize: 14,
               }}
               onPress={() =>
-                Alert.alert("This option is not currently available")
+                Alert.alert('This option is not currently available')
               }
             />
             <SimpleButton
               title="PLANT A TREE"
               class={{
-                width: "45%",
+                width: '45%',
                 backgroundColor: colors.rootGreenDark,
-                justifyContent: "center"
+                justifyContent: 'center',
               }}
               textStyle={{
                 color: colors.rootWhite,
-                fontSize: 14
+                fontSize: 14,
               }}
-              onPress={() => navigate("WhereToPlant")}
+              onPress={() => navigate('WhereToPlant')}
             />
           </Row>
         </Container>
@@ -120,59 +121,59 @@ export default Dashboard;
 
 const styles = StyleSheet.create({
   dashboard: {
-    height: "100%"
+    height: '100%',
   },
   header: {
-    justifyContent: "flex-end"
+    justifyContent: 'flex-end',
   },
   overviewCard: {
-    width: "100%",
+    width: '100%',
     paddingHorizontal: 20,
-    paddingVertical: 20
+    paddingVertical: 20,
   },
   details: {
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center"
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
   },
   padAll: {
     paddingHorizontal: 15,
     paddingVertical: 10,
-    marginVertical: 10
+    marginVertical: 10,
   },
   spanTitle: {
     color: colors.rootDashboardSpanTitle,
     fontSize: 16,
-    letterSpacing: 1
+    letterSpacing: 1,
   },
   quantity: {
     fontSize: 40,
     paddingRight: 10,
-    width: "15%"
+    width: '15%',
   },
   description: {
-    flexWrap: "wrap",
-    width: "85%",
-    fontSize: 12
+    flexWrap: 'wrap',
+    width: '85%',
+    fontSize: 12,
   },
   salut: {
     fontSize: 24,
-    fontWeight: "800",
+    fontWeight: '800',
     color: colors.rootWhite,
-    paddingBottom: 15
+    paddingBottom: 15,
   },
   column: {
-    flexDirection: "column",
-    paddingBottom: "30%"
+    flexDirection: 'column',
+    paddingBottom: '30%',
   },
   info: {
     color: colors.rootWhite,
-    width: "55%",
+    width: '55%',
     fontSize: 16,
-    paddingBottom: 15
+    paddingBottom: 15,
   },
   btns: {
-    justifyContent: "space-between"
+    justifyContent: 'space-between',
   },
   cardSizeStyle: {
     borderRadius: 2,
@@ -180,6 +181,6 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.2,
     shadowRadius: 55,
-    elevation: 2
-  }
+    elevation: 2,
+  },
 });

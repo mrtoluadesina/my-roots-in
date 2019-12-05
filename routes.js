@@ -1,21 +1,21 @@
-import React from "react";
-import { createStackNavigator } from "react-navigation-stack";
-import { createAppContainer } from "react-navigation";
-import NavBackButton from "./src/components/navBackButton";
+import React from 'react';
+import { createStackNavigator } from 'react-navigation-stack';
+import { createAppContainer } from 'react-navigation';
+import NavBackButton from './src/components/navBackButton';
 
-import Signup from "./src/views/Signup";
-import Home from "./src/views/Home";
-import VerificationCompleted from "./src/views/VerificationCompleted/index";
-import Login from "./src/views/Login";
-import Settings from "./src/views/Settings";
-import Verify from "./src/views/Verify";
-import ForgotPassword from "./src/views/ForgotPassword";
-import Dashboard from "./src/views/Dashboard";
-import PlantTree from "./src/views/PlantTree";
-import OccasionTypes from "./src/views/Occasions";
-import HowToPlant from "./src/views/HowToPlant";
-import TypeOfTree from "./src/views/TypeOfTree";
-import WhereToPlant from "./src/views/WhereToPlant";
+import Signup from './src/views/Signup';
+import Home from './src/views/Home';
+import VerificationCompleted from './src/views/VerificationCompleted/index';
+import Login from './src/views/Login';
+import Settings from './src/views/Settings';
+import Verify from './src/views/Verify';
+import ForgotPassword from './src/views/ForgotPassword';
+import Dashboard from './src/views/Dashboard';
+import PlantTree from './src/views/PlantTree';
+import OccasionTypes from './src/views/Occasions';
+import HowToPlant from './src/views/HowToPlant';
+import TypeOfTree from './src/views/TypeOfTree';
+import WhereToPlant from './src/views/WhereToPlant';
 
 const MainNavigator = createStackNavigator(
   {
@@ -37,10 +37,10 @@ const MainNavigator = createStackNavigator(
           borderBottomWidth: 0,
           elevation: 0,
           shadowOpacity: 0,
-          borderBottomWidth: 0
+          borderBottomWidth: 0,
         },
-        headerTintColor: "#ffffff"
-      })
+        headerTintColor: '#ffffff',
+      }),
     },
 
     // Login Route
@@ -54,10 +54,10 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
+          borderBottomWidth: 0,
         },
-        headerTintColor: "#ffffff"
-      })
+        headerTintColor: '#ffffff',
+      }),
     },
     VerificationCompleted: { screen: VerificationCompleted },
 
@@ -72,9 +72,9 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
+          borderBottomWidth: 0,
+        },
+      }),
     },
 
     // Forget Password Route
@@ -88,10 +88,10 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
+          borderBottomWidth: 0,
         },
-        headerTintColor: "#ffffff"
-      })
+        headerTintColor: '#ffffff',
+      }),
     },
 
     // Verify Account Route
@@ -102,9 +102,10 @@ const MainNavigator = createStackNavigator(
           <NavBackButton
             onPress={() => navigation.goBack()}
             progressLevel={1}
+            showProgress={true}
           />
-        )
-      })
+        ),
+      }),
     },
 
     PlantTree: {
@@ -115,8 +116,8 @@ const MainNavigator = createStackNavigator(
             onPress={() => navigation.goBack()}
             progressLevel={0.5}
           />
-        )
-      })
+        ),
+      }),
     },
 
     // Occasion Type Route
@@ -130,9 +131,9 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
+          borderBottomWidth: 0,
+        },
+      }),
     },
 
     //Dashboard
@@ -141,9 +142,9 @@ const MainNavigator = createStackNavigator(
       navigationOptions: () => ({
         header: null,
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
+          borderBottomWidth: 0,
+        },
+      }),
     },
 
     //Where to plant
@@ -157,9 +158,9 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
+          borderBottomWidth: 0,
+        },
+      }),
     },
 
     // How to plant a tree Route
@@ -173,9 +174,9 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
+          borderBottomWidth: 0,
+        },
+      }),
     },
 
     // How to plant a tree Route
@@ -189,23 +190,23 @@ const MainNavigator = createStackNavigator(
           />
         ),
         headerStyle: {
-          borderBottomWidth: 0
-        }
-      })
-    }
+          borderBottomWidth: 0,
+        },
+      }),
+    },
   },
 
   {
-    initialRouteName: "Home",
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
         elevation: 0,
-        shadowOpacity: 0
+        shadowOpacity: 0,
       },
-      headerTintColor: "#ffffff"
-    }
-  }
+      headerTintColor: '#ffffff',
+    },
+  },
 );
 
 export default AppRoutes = createAppContainer(MainNavigator);
