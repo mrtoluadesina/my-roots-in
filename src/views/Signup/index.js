@@ -37,7 +37,6 @@ function Signup(props) {
     const payload = {
       ...fields
     };
-    console.log(payload)
     await props.SignupHandler(payload);
     navigate("Verify");
   };
