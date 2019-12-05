@@ -8,10 +8,8 @@ import {
   ScrollView
 } from "react-native";
 import { CustomInput } from "../../components/Input";
-import {
-  SimpleLinearGradientButton,
-  SimpleButton
-} from "../../components/Buttons";
+import { Container, BigTitle } from "../Dashboard/styles";
+import { SimpleButton, LinkButton } from "../../components/Buttons";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 
@@ -23,13 +21,13 @@ function ForgotPassword(props) {
   const handleChange = email => setValue({ ...email, email });
 
   return (
-    <ScrollView contentContainerStyle={styles.content}>
-      <KeyboardAvoidingView
-        behavior="position"
-        contentContainerStyle={styles.wrapper}
-      >
+    <KeyboardAvoidingView
+      behavior="position"
+      contentContainerStyle={styles.wrapper}
+    >
+      <Container style={styles.content}>
         <View style={styles.header}>
-          <Text style={styles.title}>Forgot Password</Text>
+          <BigTitle>Forgot Password</BigTitle>
         </View>
         <View style={styles.imageWrapper}>
           <Image style={styles.image} source={images.forgotPasswordImg} />
@@ -44,40 +42,37 @@ function ForgotPassword(props) {
           />
         </View>
         <View style={styles.buttonWrapper}>
-          <SimpleLinearGradientButton
-            class={styles.btnGradient}
+          <SimpleButton
+            class={styles.btn}
             textStyle={styles.whiteText}
             title="Login"
             onPress={() => navigate("Login")}
           />
-          <SimpleButton
+          <LinkButton
             title="Remembered your login"
+            textStyle={styles.blackText}
             onPress={() => navigate("Login")}
           />
         </View>
-      </KeyboardAvoidingView>
-    </ScrollView>
+      </Container>
+    </KeyboardAvoidingView>
   );
 }
 
 const styles = StyleSheet.create({
-  title: {
-    fontSize: 30
-  },
   wrapper: {
     height: "100%",
-    alignItems: "center",
-    justifyContent: "space-evenly"
+    alignItems: "center"
   },
   content: {
-    flex: 1
+    marginTop: 50
   },
   header: {
-    width: "80%"
+    width: "100%",
+    alignItems: "center"
   },
   imageWrapper: {
     width: "80%",
-    height: 150,
     marginVertical: 50,
     alignItems: "center",
     justifyContent: "center"
@@ -91,34 +86,21 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   btn: {
-    backgroundColor: colors.rootGreenLight,
+    backgroundColor: colors.rootGreenDark,
     paddingVertical: 15,
     marginVertical: 10
-  },
-  btnGradient: {
-    marginVertical: 10
-  },
-  btnWhite: {
-    backgroundColor: colors.rootWhite,
-    paddingVertical: 15,
-    marginVertical: 10,
-    shadowOffset: {
-      width: 0,
-      height: 15
-    },
-    shadowRadius: 55,
-    shadowOpacity: 0.7,
-    shadowColor: colors.rootShadow,
-    elevation: 1
   },
   whiteText: {
     color: colors.rootWhite
   },
   blackText: {
-    color: colors.rootBlack
+    color: colors.rootBlack,
+    fontSize: 14,
+    opacity: 0.5,
+    textDecorationLine: "underline"
   },
   formWrapper: {
-    width: "80%"
+    width: "70%"
   }
 });
 
