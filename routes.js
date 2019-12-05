@@ -102,6 +102,7 @@ const MainNavigator = createStackNavigator(
           <NavBackButton
             onPress={() => navigation.goBack()}
             progressLevel={1}
+            showProgress={true}
           />
         ),
       }),
@@ -196,7 +197,7 @@ const MainNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: 'Verify',
+    initialRouteName: 'Home',
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
