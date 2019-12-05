@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CustomInput } from "../../components/Input";
 import { KeyboardAvoidingView, ImageBackground } from "react-native";
 import {
-  Container,
   Background,
   Greeting,
   Description,
@@ -11,12 +10,12 @@ import {
   KeyboardWrapper,
   styles
 } from "./styles";
-
+import {connect} from 'react-redux';
 import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
 import { SimpleButton } from "../../components/Buttons";
 
-export default function Signup(props) {
+function Signup(props) {
   const { navigate } = props.navigation;
   const details = metadata.signupPage;
 
@@ -80,3 +79,13 @@ export default function Signup(props) {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({Login}) => ({
+  isLoading: Login.isLoading,
+})
+
+const mapDispatchToProps = dispatch => ({
+  SignupHandler: dispatch = payload => signup(payload)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
