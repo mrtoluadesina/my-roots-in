@@ -15,6 +15,7 @@ import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
 import { SimpleButton } from "../../components/Buttons";
 import { register } from "./redux/action";
+import { Container } from "../Dashboard/styles";
 
 function Signup(props) {
   const { navigate } = props.navigation;
