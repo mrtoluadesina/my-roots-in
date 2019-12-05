@@ -10,7 +10,7 @@ import {
   KeyboardWrapper,
   styles
 } from "./styles";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
 import { SimpleButton } from "../../components/Buttons";
@@ -38,7 +38,7 @@ function Signup(props) {
       source={images.signUpBgImg}
       style={{
         flex: 1,
-        width: "100%",
+        width: "100%"
       }}
       imageStyle={{ resizeMode: "stretch" }}
     >
@@ -81,12 +81,12 @@ function Signup(props) {
   );
 }
 
-const mapStateToProps = ({Login}) => ({
-  isLoading: Register.isLoading,
-})
+const mapStateToProps = ({ Register }) => ({
+  isLoading: Register.isLoading
+});
 
 const mapDispatchToProps = dispatch => ({
-  SignupHandler: dispatch = payload => register(payload)
-})
+  SignupHandler: (dispatch = payload => register(payload))
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(Signup);
