@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { ScrollView, View, Alert, TextInput, StyleSheet } from 'react-native';
-import { ImageBg } from '../Dashboard/styles';
+import React, { useState } from "react";
+import { View, AsyncStorage, TextInput, StyleSheet } from "react-native";
+import { ImageBg } from "../Dashboard/styles";
 import {
   Header,
   HeaderImage,
@@ -11,18 +11,20 @@ import {
   FormField,
   FormInputFields,
   GradientBtn,
-  scrollViewStyle,
-} from './styles';
+  scrollViewStyle
+} from "./styles";
+import { connect } from "react-redux";
+import { colors } from "../../constants/colors";
+import { images } from "../../../assets/images";
+import { SimpleButton } from "../../components/Buttons";
+import { SimpleCard } from "../../components/Cards";
+import PasscodeInputs from "../../components/PasscodeInputs";
+import { verifyMethod } from "./redux/action";
 
-import { colors } from '../../constants/colors';
-import { images } from '../../../assets/images';
-import { SimpleButton } from '../../components/Buttons';
-import { SimpleCard } from '../../components/Cards';
-import PasscodeInputs from '../../components/PasscodeInputs';
-
-export default function(props) {
+function Verify(props) {
   const { navigate } = props.navigation;
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
+  const [token, setToken] = useState("");
   const [isFocused, setIsFocused] = useState({ focused: true, index: 0 });
 
   //Refactor later to make it work with a loop
@@ -40,7 +42,7 @@ export default function(props) {
           }
           autoFocus={index === 0 ? true : false}
           key={index}
-          keyboardType={'number-pad'}
+          keyboardType={"number-pad"}
           onChangeText={event => {
             event && nextFocus.focus();
           }}
@@ -55,17 +57,25 @@ export default function(props) {
       );
     });
   }
-
+  
   function inputChangeHandler(event) {
     setOtp(`${otp}${event}`);
   }
+
+  const handleSubmit = async () => {
+    const payload = {
+      code: otp
+    };
+
+    await props.verificationHandler(payload);
+    navigate("Login");
+  };
 
   return (
     <ImageBg
       imageStyle={[styles.imageBg, scrollViewStyle]}
       source={images.verificationBgImg}
     >
-      {/* <ScrollView contentContainerStyle={scrollViewStyle}> */}
       <Header>
         <HeaderImage
           source={images.verificationEmailImg}
@@ -88,14 +98,14 @@ export default function(props) {
                 event && passcode2.focus();
                 inputChangeHandler(event);
               }}
-              keyboardType={'number-pad'}
+              keyboardType={"number-pad"}
             />
             <PasscodeInputs
               style={FormInputFields}
               inputRef={r => {
                 this.passcode2 = r;
               }}
-              keyboardType={'number-pad'}
+              keyboardType={"number-pad"}
               onChangeText={event => {
                 event && this.passcode3.focus();
                 inputChangeHandler(event);
@@ -106,7 +116,7 @@ export default function(props) {
               inputRef={r => {
                 this.passcode3 = r;
               }}
-              keyboardType={'number-pad'}
+              keyboardType={"number-pad"}
               onChangeText={event => {
                 event && this.passcode4.focus();
                 inputChangeHandler(event);
@@ -117,7 +127,7 @@ export default function(props) {
               inputRef={r => {
                 passcode4 = r;
               }}
-              keyboardType={'number-pad'}
+              keyboardType={"number-pad"}
               onChangeText={event => inputChangeHandler(event)}
             />
           </>
@@ -125,18 +135,28 @@ export default function(props) {
         <SimpleButton
           class={GradientBtn}
           textStyle={colors.rootWhite}
-          title="Submit"
-          onPress={() => Alert.alert('Gradient button clicked')}
+          title="Verify"
+          onPress={() => handleSubmit()}
         />
       </View>
-      {/* </ScrollView> */}
     </ImageBg>
   );
 }
 const styles = StyleSheet.create({
   imageBg: {
-    resizeMode: 'stretch',
-    display: 'flex',
-    alignItems: 'center',
-  },
+    resizeMode: "stretch",
+    display: "flex",
+    alignItems: "center"
+  }
 });
+
+const mapStateToProps = ({Verify, Register}) => ({
+  isLoading: Verify.isLoading,
+  token: Register.token
+});
+
+const mapDispatchToProps = dispatch => ({
+  verificationHandler: payload => dispatch(verifyMethod(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Verify);
