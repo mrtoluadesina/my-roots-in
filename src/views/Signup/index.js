@@ -81,7 +81,7 @@ function Signup(props) {
 }
 
 const mapStateToProps = ({Login}) => ({
-  isLoading: Login.isLoading,
+  isLoading: Register.isLoading,
 })
 
 const mapDispatchToProps = dispatch => ({
