@@ -61,77 +61,82 @@ export default function(props) {
   }
 
   return (
-    <ImageBg imageStyle={styles.imageBg} source={images.verificationBgImg}>
-      <ScrollView contentContainerStyle={scrollViewStyle}>
-        <Header>
-          <HeaderImage
-            source={images.verificationEmailImg}
-            resizeMode="contain"
-          />
-        </Header>
-        <PageHeader>
-          <HeaderVerification>Verification</HeaderVerification>
-          <HeaderSubtitle>
-            Enter the 4 digit sent to your email address
-          </HeaderSubtitle>
-        </PageHeader>
-        <View style={CardSizeStyle}>
-          <SimpleCard style={FormField}>
-            <>
-              <PasscodeInputs
-                style={FormInputFields}
-                autoFocus={true}
-                onChangeText={event => {
-                  event && passcode2.focus();
-                  inputChangeHandler(event);
-                }}
-                keyboardType={'number-pad'}
-              />
-              <PasscodeInputs
-                style={FormInputFields}
-                inputRef={r => {
-                  this.passcode2 = r;
-                }}
-                keyboardType={'number-pad'}
-                onChangeText={event => {
-                  event && this.passcode3.focus();
-                  inputChangeHandler(event);
-                }}
-              />
-              <PasscodeInputs
-                style={FormInputFields}
-                inputRef={r => {
-                  this.passcode3 = r;
-                }}
-                keyboardType={'number-pad'}
-                onChangeText={event => {
-                  event && this.passcode4.focus();
-                  inputChangeHandler(event);
-                }}
-              />
-              <PasscodeInputs
-                style={FormInputFields}
-                inputRef={r => {
-                  passcode4 = r;
-                }}
-                keyboardType={'number-pad'}
-                onChangeText={event => inputChangeHandler(event)}
-              />
-            </>
-          </SimpleCard>
-          <SimpleButton
-            class={GradientBtn}
-            textStyle={colors.rootWhite}
-            title="Submit"
-            onPress={() => Alert.alert('Gradient button clicked')}
-          />
-        </View>
-      </ScrollView>
+    <ImageBg
+      imageStyle={[styles.imageBg, scrollViewStyle]}
+      source={images.verificationBgImg}
+    >
+      {/* <ScrollView contentContainerStyle={scrollViewStyle}> */}
+      <Header>
+        <HeaderImage
+          source={images.verificationEmailImg}
+          resizeMode="contain"
+        />
+      </Header>
+      <PageHeader>
+        <HeaderVerification>Verification</HeaderVerification>
+        <HeaderSubtitle>
+          Enter the 4 digit sent to your email address
+        </HeaderSubtitle>
+      </PageHeader>
+      <View style={CardSizeStyle}>
+        <SimpleCard style={FormField}>
+          <>
+            <PasscodeInputs
+              style={FormInputFields}
+              autoFocus={true}
+              onChangeText={event => {
+                event && passcode2.focus();
+                inputChangeHandler(event);
+              }}
+              keyboardType={'number-pad'}
+            />
+            <PasscodeInputs
+              style={FormInputFields}
+              inputRef={r => {
+                this.passcode2 = r;
+              }}
+              keyboardType={'number-pad'}
+              onChangeText={event => {
+                event && this.passcode3.focus();
+                inputChangeHandler(event);
+              }}
+            />
+            <PasscodeInputs
+              style={FormInputFields}
+              inputRef={r => {
+                this.passcode3 = r;
+              }}
+              keyboardType={'number-pad'}
+              onChangeText={event => {
+                event && this.passcode4.focus();
+                inputChangeHandler(event);
+              }}
+            />
+            <PasscodeInputs
+              style={FormInputFields}
+              inputRef={r => {
+                passcode4 = r;
+              }}
+              keyboardType={'number-pad'}
+              onChangeText={event => inputChangeHandler(event)}
+            />
+          </>
+        </SimpleCard>
+        <SimpleButton
+          class={GradientBtn}
+          textStyle={colors.rootWhite}
+          title="Submit"
+          onPress={() => Alert.alert('Gradient button clicked')}
+        />
+      </View>
+      {/* </ScrollView> */}
     </ImageBg>
   );
 }
 const styles = StyleSheet.create({
   imageBg: {
     resizeMode: 'stretch',
+    display: 'flex',
+    alignItems: 'center',
   },
 });

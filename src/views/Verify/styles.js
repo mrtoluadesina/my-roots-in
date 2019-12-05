@@ -14,12 +14,13 @@ import styled from 'styled-components';
 import { colors } from '../../constants/colors';
 
 export const Header = styled.View`
-  width: 220px;
-  height: 220px;
+  width: 150px;
+  height: 150px;
   align-items: center;
   justify-content: center;
   border-radius: 110px;
   overflow: hidden;
+  width: 100%;
 `;
 
 export const HeaderImage = styled.Image`
@@ -29,7 +30,10 @@ export const HeaderImage = styled.Image`
 
 export const PageHeader = styled.View`
   align-items: center;
-  width: 70%;
+  justify-content: center;
+  text-align: center;
+  display: flex;
+  width: 100%;
 `;
 
 export const HeaderVerification = styled.Text`
@@ -37,6 +41,7 @@ export const HeaderVerification = styled.Text`
   font-weight: 600;
   padding: 15px;
   color: ${colors.rootGreenDark};
+  text-align: center;
 `;
 
 export const HeaderSubtitle = styled.Text`
@@ -47,14 +52,13 @@ export const HeaderSubtitle = styled.Text`
 
 export const CardSizeStyle = {
   backgroundColor: colors.rootWhite,
-  width: '80%',
+  width: '100%',
   height: 'auto',
-  elevation: 17,
   borderRadius: 10,
   padding: 5,
   flexDirection: 'column',
   justifyContent: 'space-between',
-  paddingHorizontal: 30,
+  paddingHorizontal: 10,
   paddingVertical: 30,
 };
 
@@ -86,4 +90,5 @@ export const scrollViewStyle = {
   marginTop: 10,
   alignItems: 'center',
   justifyContent: 'space-evenly',
+  backgroundColor: 'transparent',
 };

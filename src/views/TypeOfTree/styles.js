@@ -10,8 +10,8 @@
  ** CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  *****/
 
-import styled from "styled-components";
-import { colors } from "../../constants/colors";
+import styled from 'styled-components';
+import { colors } from '../../constants/colors';
 export const Container = styled.ScrollView`
   flex: 1;
 `;
@@ -20,7 +20,7 @@ export const Background = styled.View`
   flex: 1;
   width: 100%;
   padding: 0 50px;
-  font-family: "Helvetica-Bold";
+  font-family: 'Helvetica-Bold';
   font-weight: 800;
   background-color: #ffffff;
   align-items: center;
@@ -29,9 +29,10 @@ export const Background = styled.View`
 `;
 
 export const Greeting = styled.Text`
-  font-family: "Helvetica";
+  font-family: 'Helvetica';
   font-size: 26px;
   line-height: 31px;
+  color: ${colors.rootGreenDark};
 `;
 
 export const Header = styled.View`
@@ -56,7 +57,7 @@ export const Body = styled.View`
 
 export const Description = styled.Text`
   width: 90%;
-  font-family: "Helvetica-Bold";
+  font-family: 'Helvetica-Bold';
   font-size: 20px;
   line-height: 24px;
   text-align: center;
@@ -82,7 +83,7 @@ export const CardTitle = styled.Text`
   position: absolute;
   bottom: -20;
   width: 120%;
-  font-family: "Helvetica-Bold";
+  font-family: 'Helvetica-Bold';
 `;
 
 export const CardPrice = styled.Text`
@@ -95,7 +96,7 @@ export const CardPrice = styled.Text`
   bottom: 5;
   right: 0;
   padding-right: 7px;
-  font-family: "Helvetica-Bold";
+  font-family: 'Helvetica-Bold';
 `;
 
 export const CardImage = styled.Image`
@@ -107,13 +108,18 @@ export const cardSizeStyle = {
   height: 105,
   width: 110,
   marginBottom: 50,
-  position: "relative",
-  alignItems: "center",
-  justifyContent: "center",
+  position: 'relative',
+  alignItems: 'center',
+  justifyContent: 'center',
   borderRadius: 2,
   shadowColor: `${colors.boxShadow}`,
   shadowOffset: { width: 0, height: 3 },
   shadowOpacity: 1,
   shadowRadius: 6,
-  elevation: 10
+  elevation: 10,
+};
+export const GradientBtn = {
+  marginVertical: 10,
+  width: '100%',
+  backgroundColor: colors.rootGreenDark,
 };
