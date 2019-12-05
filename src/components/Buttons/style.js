@@ -26,3 +26,7 @@ export const LinearGradientButton = styled(LinearGradient)`
   border-radius: 25px;
   flex-direction: row;
 `;
+
+export const Link = styled.TouchableOpacity`
+  padding: 15px;
+`;
