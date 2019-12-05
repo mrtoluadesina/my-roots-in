@@ -27,31 +27,34 @@ export const Background = styled.View`
   align-items: center;
   justify-content: center;
   color: ${colors.rootBlack};
+  margin-top: 20px;
 `;
 
 export const Greeting = styled.Text`
   width: 100%;
-  margin-top: 30px;
   font-family: "Helvetica-Bold";
   font-size: 26px;
   line-height: 26px;
   letter-spacing: 0.67px;
   text-transform: capitalize;
+  color: ${colors.rootGreenDark};
+  text-align: center;
 `;
 
 export const Description = styled.Text`
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   font-family: "Helvetica";
-  font-size: 18px;
+  font-size: 20px;
   line-height: 22px;
   letter-spacing: 0.07px;
+  text-align: center;
 `;
 
 export const Form = styled.View`
   flex: 1;
   width: 100%;
-  margin-top: 40px;
+  margin-top: 20px;
 `;
 
 export const Signin = styled.Text`
@@ -65,4 +68,31 @@ export const Signin = styled.Text`
 
 export const KeyboardWrapper = {
   flex: 1
+};
+
+export const buttonStyle = {
+  shadowColor: colors.rootGreenDark,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 10
+  },
+  shadowOpacity: 0.6,
+  shadowRadius: 15,
+  elevation: 1
+};
+
+export const styles = {
+  fullWidth: {
+    width: "80%",
+    height: 52,
+    backgroundColor: colors.rootGreenDark,
+    ...buttonStyle
+  },
+  textColor: {
+    color: "white",
+    fontSize: 14,
+    fontFamily: "Helvetica-Bold"
+  }
 };

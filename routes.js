@@ -29,6 +29,7 @@ const MainNavigator = createStackNavigator(
         header: (
           <NavBackButton
             onPress={() => navigation.goBack()}
+            showProgress
             progressLevel={0.5}
           />
         ),

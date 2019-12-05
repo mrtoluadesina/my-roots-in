@@ -16,7 +16,7 @@ import { colors } from "../../constants/colors";
 export const Container = styled.View`
   background-color: ${colors.rootWhite};
   flex-direction: row;
-  height: 80;
+  height: 60;
   align-items: flex-end;
   padding: 10px 32px;
 `;

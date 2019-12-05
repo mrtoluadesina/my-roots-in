@@ -38,6 +38,7 @@ export const images = {
   whatTypeOfTreeBgImg: require("./what_type_of_tree_bg.png"),
   whereToPlantATreeBgImg: require("./where_to_plant_a_tree_bg.png"),
   whyPlantATreeBgImg: require("./why_plant_a_tree_bg.png"),
+  backButtonImg: require("./nav-back-button.png"),
   HolidayImage,
   GiftImage,
   OtherImage,
