@@ -11,7 +11,8 @@ import {
   Choices,
   CardTitle,
   CardImage,
-  CardPrice
+  CardPrice,
+  cardSizeStyle
 } from "./styles";
 
 import { images } from "../../../assets/images";
@@ -69,18 +70,3 @@ export default function OccasionTypes(props) {
     </Container>
   );
 }
-
-const cardSizeStyle = {
-  height: 105,
-  width: 110,
-  marginBottom: 50,
-  position: "relative",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: 2,
-  shadowColor: `${colors.boxShadow}`,
-  shadowOffset: { width: 0, height: 3 },
-  shadowOpacity: 1,
-  shadowRadius: 6,
-  elevation: 10
-};

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, Alert } from "react-native";
+import { StyleSheet, View, Text, Alert, AsyncStorage } from "react-native";
 import { SimpleCard } from "../../components/Cards";
 import {
   Main,
@@ -13,19 +13,29 @@ import {
 } from "./styles";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
-import { SimpleButton, SimpleLinearGradientButton } from "../../components/Buttons";
+import { SimpleButton } from "../../components/Buttons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 
 function Dashboard(props) {
+  const { navigate } = props.navigation;
   return (
     <Main contentContainerStyle={styles.dashboard}>
       <ImageBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
-            <Avatar source={images.getDefaultAvatar}></Avatar>
+            <TouchableOpacity onPress={() => navigate("Settings")}>
+              <Avatar source={images.getDefaultAvatar}></Avatar>
+            </TouchableOpacity>
           </Row>
           <Row>
             <SimpleCard style={styles.overviewCard}>
-              <SimpleCard style={{ ...styles.details, ...styles.padAll }}>
+              <SimpleCard
+                style={{
+                  ...styles.details,
+                  ...styles.padAll,
+                  ...styles.cardSizeStyle
+                }}
+              >
                 <ImageView>
                   <OverviewImage source={images.getStartedImg} />
                 </ImageView>
@@ -39,7 +49,13 @@ function Dashboard(props) {
                   </View>
                 </DetailsView>
               </SimpleCard>
-              <SimpleCard style={{ ...styles.details, ...styles.padAll }}>
+              <SimpleCard
+                style={{
+                  ...styles.details,
+                  ...styles.padAll,
+                  ...styles.cardSizeStyle
+                }}
+              >
                 <ImageView>
                   <OverviewImage source={images.getStartedImg} />
                 </ImageView>
@@ -63,7 +79,7 @@ function Dashboard(props) {
               Plant a tree save the planet and support Africa by creating a job
             </Text>
           </Row>
-          <Row style={styles.btns}>
+          <Row style={[styles.cardSizeStyle, styles.btns]}>
             <SimpleButton
               title="GEOTAG A TREE"
               class={{
@@ -76,7 +92,9 @@ function Dashboard(props) {
                 color: colors.rootBlack,
                 fontSize: 14
               }}
-              onPress={() => Alert.alert("This option is not currently available")}
+              onPress={() =>
+                Alert.alert("This option is not currently available")
+              }
             />
             <SimpleButton
               title="PLANT A TREE"
@@ -89,7 +107,7 @@ function Dashboard(props) {
                 color: colors.rootWhite,
                 fontSize: 14
               }}
-              onPress={() => Alert.alert("Plant a Tree")}
+              onPress={() => navigate("WhereToPlant")}
             />
           </Row>
         </Container>
@@ -155,5 +173,13 @@ const styles = StyleSheet.create({
   },
   btns: {
     justifyContent: "space-between"
+  },
+  cardSizeStyle: {
+    borderRadius: 2,
+    shadowColor: colors.rootShadow,
+    shadowOffset: { width: 0, height: 5 },
+    shadowOpacity: 0.2,
+    shadowRadius: 55,
+    elevation: 2
   }
 });

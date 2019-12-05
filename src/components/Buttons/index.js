@@ -1,11 +1,11 @@
 import React from "react";
-import { Text } from "react-native";
-import { Button, LinearGradientButton } from "./style";
+import { Text, ActivityIndicator } from "react-native";
+import { Button, LinearGradientButton, Value } from "./style";
 import {colors} from '../../constants/colors';
 
 export const SimpleButton = props => (
   <Button style={props.class} onPress={props.onPress}>
-    <Text style={props.textStyle}>{props.title}</Text>
+    <Value style={props.textStyle}>{props.title}</Value>
   </Button>
 );
 
@@ -16,7 +16,8 @@ export const SimpleLinearGradientButton = props => (
       end={{ x: 1, y: 0 }}
       colors={[colors.linearGradientFrom, colors.linearGradientTo]}
     >
-      <Text style={props.textStyle}>{props.title}</Text>
+      {props.loading ? <ActivityIndicator size="small" color="#ffffff" style={{paddingRight: 10}} /> : null}
+      <Value style={props.textStyle}>{props.title}</Value>
     </LinearGradientButton>
   </Button>
 );

@@ -13,56 +13,18 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const Container = styled.ScrollView`
-  flex: 1;
-`;
-
-export const Background = styled.View`
-  flex: 1;
-  width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
-  font-weight: 800;
-  background-color: #ffffff;
-  align-items: center;
+export const Container = styled.TouchableOpacity`
+  width: 36px;
+  height: 36px;
   justify-content: center;
-  color: ${colors.rootBlack};
+  align-items: center;
+  background-color: ${props =>
+    props.checked ? colors.rootGreenLight : colors.rootWhite};
+  justify-content: center;
+  padding: 8px;
 `;
 
-export const Greeting = styled.Text`
+export const Check = styled.Image`
   width: 100%;
-  margin-top: 30px;
-  font-family: "Helvetica-Bold";
-  font-size: 26px;
-  line-height: 26px;
-  letter-spacing: 0.67px;
-  text-transform: capitalize;
+  height: 100%;
 `;
-
-export const Description = styled.Text`
-  margin-top: 20px;
-  width: 100%;
-  font-family: "Helvetica";
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.07px;
-`;
-
-export const Form = styled.View`
-  flex: 1;
-  width: 100%;
-  margin-top: 40px;
-`;
-
-export const Signin = styled.Text`
-  font-size: 12px;
-  line-height: 18px;
-  margin-top: 10px;
-  text-decoration: underline;
-  text-decoration-color: #9da3b4;
-  color: #9da3b4;
-`;
-
-export const KeyboardWrapper = {
-  flex: 1
-};

@@ -1,14 +1,16 @@
 import React, { useState } from "react";
-import {CustomInput} from "../../components/Input";
-import { KeyboardAvoidingView, StyleSheet } from "react-native";
+import { CustomInput } from "../../components/Input";
+import { KeyboardAvoidingView } from "react-native";
 import {
   Container,
   Background,
   Greeting,
   Description,
   Form,
-  Signin
+  Signin,
+  KeyboardWrapper
 } from "./styles";
+
 import metadata from "../../constants/meta";
 import { colors } from "../../constants/colors";
 
@@ -35,7 +37,7 @@ export default function Signup(props) {
     <Container>
       <KeyboardAvoidingView
         behavior="position"
-        contentContainerStyle={StyleSheet.wrapper}
+        contentContainerStyle={KeyboardWrapper}
       >
         <Background>
           <Greeting>welcome</Greeting>
@@ -75,8 +77,3 @@ export default function Signup(props) {
   );
 }
 
-const styles = StyleSheet.create({
-  wrapper: {
-    flex: 1
-  }
-});

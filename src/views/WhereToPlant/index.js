@@ -10,40 +10,38 @@ import {
   Body,
   Choices,
   CardTitle,
+  CardImage,
   cardSizeStyle
 } from "./styles";
-
 import { images } from "../../../assets/images";
 import { SimpleLinearGradientButton } from "../../components/Buttons";
 import { SimpleCard } from "../../components/Cards";
 import { colors } from "../../constants/colors";
 
-export default function OccasionTypes() {
+function WhereToPlant(props) {
+  const { navigate } = props.navigation;
   return (
     <Container>
       <Background>
         <Header>
-          <Greeting>Type of occasion</Greeting>
-          <Avater source={images.getDefaultAvater}></Avater>
+          <Greeting>Where to plant</Greeting>
+          <Avater source={images.getDefaultAvatar}></Avater>
         </Header>
         <Body>
-          <Description>Choose the type of occasion</Description>
+          <Description>Choose the location to plant your roots</Description>
           <Choices>
             <SimpleCard style={cardSizeStyle}>
-              <images.GiftImage />
-              <CardTitle>birthdays</CardTitle>
+              <CardImage source={images.allCountriesImg} />
+              <CardTitle>54 Countries</CardTitle>
             </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <images.AnniversaryImage />
-              <CardTitle>anniversary</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <images.HolidayImage />
-              <CardTitle>holidays</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <images.OtherImage />
-              <CardTitle>others</CardTitle>
+            <SimpleCard
+              style={{
+                ...cardSizeStyle,
+                backgroundColor: "#79C700"
+              }}
+            >
+              <CardImage source={images.greatGreenWallImg} />
+              <CardTitle>Great green wall</CardTitle>
             </SimpleCard>
           </Choices>
         </Body>
@@ -56,9 +54,11 @@ export default function OccasionTypes() {
             color: colors.rootWhite,
             fontSize: 14
           }}
-          onPress={() => navigate("HowToPlant")}
+          onPress={() => navigate("PlantTree")}
         />
       </Background>
     </Container>
   );
 }
+
+export default WhereToPlant;

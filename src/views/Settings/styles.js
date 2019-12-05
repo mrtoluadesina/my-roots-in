@@ -81,3 +81,7 @@ export const Footer = styled.View`
   width: 100%;
   padding: 30px 50px;
 `;
+
+export const KeyboardWrapper = {
+  flex: 1
+};
