@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { CustomInput } from "../../components/Input";
 import { KeyboardAvoidingView, ImageBackground } from "react-native";
 import {
-  Container,
   Background,
   Greeting,
   Description,
@@ -11,12 +10,13 @@ import {
   KeyboardWrapper,
   styles
 } from "./styles";
-
+import { connect } from "react-redux";
 import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
 import { SimpleButton } from "../../components/Buttons";
+import { register } from "./redux/action";
 
-export default function Signup(props) {
+function Signup(props) {
   const { navigate } = props.navigation;
   const details = metadata.signupPage;
 
@@ -31,6 +31,15 @@ export default function Signup(props) {
 
   const handleChange = field => text => {
     setFields({ ...fields, [field]: text });
+  };
+
+  const handleSubmit = async () => {
+    const payload = {
+      ...fields
+    };
+    console.log(payload)
+    await props.SignupHandler(payload);
+    navigate("Verify");
   };
 
   return (
@@ -66,19 +75,29 @@ export default function Signup(props) {
                 />
               ))}
             </Form>
-
-            <SimpleButton
-              title="Submit"
-              class={styles.fullWidth}
-              textStyle={styles.textColor}
-              onPress={() => navigate("Verify")}
-            />
-            <Signin onPress={() => navigate("Login")}>
-              Have an account signin?
-            </Signin>
-          </Background>
+          <SimpleButton
+            title="Submit"
+            class={styles.fullWidth}
+            textStyle={styles.textColor}
+            loading={props.isLoading}
+            onPress={() => handleSubmit()}
+          />
+          <Signin onPress={() => navigate("Login")}>
+            Have an account signin?
+          </Signin>
+        </Background>
         </Container>
       </KeyboardAvoidingView>
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({ Register }) => ({
+  isLoading: Register.isLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  SignupHandler: payload => dispatch(register(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Signup);
