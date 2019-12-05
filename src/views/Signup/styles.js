@@ -13,6 +13,10 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
+export const Container = styled.ScrollView`
+  flex: 1;
+`;
+
 export const Background = styled.View`
   width: 100%;
   padding: 0 50px;
