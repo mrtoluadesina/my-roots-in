@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { CustomInput } from "../../components/Input";
-import { KeyboardAvoidingView } from "react-native";
+import { KeyboardAvoidingView, ImageBackground } from "react-native";
 import {
   Container,
   Background,
@@ -8,13 +8,13 @@ import {
   Description,
   Form,
   Signin,
-  KeyboardWrapper
+  KeyboardWrapper,
+  styles
 } from "./styles";
 
+import { images } from "../../../assets/images";
 import metadata from "../../constants/meta";
-import { colors } from "../../constants/colors";
-
-import { SimpleLinearGradientButton } from "../../components/Buttons";
+import { SimpleButton } from "../../components/Buttons";
 
 export default function Signup(props) {
   const { navigate } = props.navigation;
@@ -24,7 +24,7 @@ export default function Signup(props) {
     fullName: "John Doe",
     email: "Lawson@gmail.com",
     password: "8392198489712",
-    countryOfResidence: "London",
+    country: "London",
     phone: "+2345678909876"
   };
   const [fields, setFields] = useState(initialFormState);
@@ -34,46 +34,53 @@ export default function Signup(props) {
   };
 
   return (
-    <Container>
-      <KeyboardAvoidingView
-        behavior="position"
-        contentContainerStyle={KeyboardWrapper}
-      >
-        <Background>
-          <Greeting>welcome</Greeting>
-          <Description>
-            To verify your identity. please fill your personal information
-          </Description>
-          <Form>
-            {details.map((value, index) => (
-              <CustomInput
-                key={index}
-                defaultValue={fields[value.type]}
-                textContentType={value.text}
-                onChangeText={handleChange(value.type)}
-                {...value}
-                style={{ marginBottom: index != details.length - 1 ? 26 : 50 }}
-              />
-            ))}
-          </Form>
+    <ImageBackground
+      source={images.signUpBgImg}
+      style={{
+        flex: 1,
+        width: "100%",
+        height: "100%",
+        alignContent: "center"
+      }}
+      imageStyle={{ resizeMode: "stretch" }}
+    >
+      <Container>
+        <KeyboardAvoidingView
+          behavior="position"
+          contentContainerStyle={KeyboardWrapper}
+        >
+          <Background>
+            <Greeting>welcome</Greeting>
+            <Description>
+              To verify your identity. please fill your personal information
+            </Description>
+            <Form>
+              {details.map((value, index) => (
+                <CustomInput
+                  key={index}
+                  defaultValue={fields[value.type]}
+                  textContentType={value.text}
+                  onChangeText={handleChange(value.type)}
+                  {...value}
+                  style={{
+                    marginBottom: index != details.length - 1 ? 25 : 20
+                  }}
+                />
+              ))}
+            </Form>
 
-          <SimpleLinearGradientButton
-            title="Submit"
-            class={{
-              width: "100%"
-            }}
-            textStyle={{
-              color: colors.rootWhite,
-              fontSize: 14
-            }}
-            onPress={() => navigate("Verify")}
-          />
-          <Signin onPress={() => navigate("Login")}>
-            Have an account signin?
-          </Signin>
-        </Background>
-      </KeyboardAvoidingView>
-    </Container>
+            <SimpleButton
+              title="Submit"
+              class={styles.fullWidth}
+              textStyle={styles.textColor}
+              onPress={() => navigate("Verify")}
+            />
+            <Signin onPress={() => navigate("Login")}>
+              Have an account signin?
+            </Signin>
+          </Background>
+        </KeyboardAvoidingView>
+      </Container>
+    </ImageBackground>
   );
 }
-
