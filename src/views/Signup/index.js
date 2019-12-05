@@ -21,7 +21,7 @@ export default function Signup(props) {
   const details = metadata.signupPage;
 
   const initialFormState = {
-    fullName: "John Doe",
+    name: "John Doe",
     email: "Lawson@gmail.com",
     password: "8392198489712",
     country: "London",
@@ -39,48 +39,44 @@ export default function Signup(props) {
       style={{
         flex: 1,
         width: "100%",
-        height: "100%",
-        alignContent: "center"
       }}
       imageStyle={{ resizeMode: "stretch" }}
     >
-      <Container>
-        <KeyboardAvoidingView
-          behavior="position"
-          contentContainerStyle={KeyboardWrapper}
-        >
-          <Background>
-            <Greeting>welcome</Greeting>
-            <Description>
-              To verify your identity. please fill your personal information
-            </Description>
-            <Form>
-              {details.map((value, index) => (
-                <CustomInput
-                  key={index}
-                  defaultValue={fields[value.type]}
-                  textContentType={value.text}
-                  onChangeText={handleChange(value.type)}
-                  {...value}
-                  style={{
-                    marginBottom: index != details.length - 1 ? 25 : 20
-                  }}
-                />
-              ))}
-            </Form>
+      <KeyboardAvoidingView
+        behavior="position"
+        contentContainerStyle={KeyboardWrapper}
+      >
+        <Background>
+          <Greeting>welcome</Greeting>
+          <Description>
+            To verify your identity. please fill your personal information
+          </Description>
+          <Form>
+            {details.map((value, index) => (
+              <CustomInput
+                key={index}
+                defaultValue={fields[value.type]}
+                textContentType={value.text}
+                onChangeText={handleChange(value.type)}
+                {...value}
+                style={{
+                  marginBottom: index != details.length - 1 ? 25 : 20
+                }}
+              />
+            ))}
+          </Form>
 
-            <SimpleButton
-              title="Submit"
-              class={styles.fullWidth}
-              textStyle={styles.textColor}
-              onPress={() => navigate("Verify")}
-            />
-            <Signin onPress={() => navigate("Login")}>
-              Have an account signin?
-            </Signin>
-          </Background>
-        </KeyboardAvoidingView>
-      </Container>
+          <SimpleButton
+            title="Submit"
+            class={styles.fullWidth}
+            textStyle={styles.textColor}
+            onPress={() => navigate("Verify")}
+          />
+          <Signin onPress={() => navigate("Login")}>
+            Have an account signin?
+          </Signin>
+        </Background>
+      </KeyboardAvoidingView>
     </ImageBackground>
   );
 }
