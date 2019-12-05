@@ -7,7 +7,7 @@ export const loading = isLoading => ({type: types.SET_LOADING, isLoading})
 
 export const errorMethod = message => ({type: types.SET_ERROR, message})
 
-export const signup = payload => dispatch => {
+export const register = payload => dispatch => {
   dispatch(loading(true));
   return axios
     .post(BASE_URL + "/user", payload)
