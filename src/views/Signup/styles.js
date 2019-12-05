@@ -13,12 +13,7 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
-export const Container = styled.ScrollView`
-  flex: 1;
-`;
-
 export const Background = styled.View`
-  flex: 1;
   width: 100%;
   padding: 0 50px;
   font-family: "Helvetica-Bold";
@@ -52,9 +47,8 @@ export const Description = styled.Text`
 `;
 
 export const Form = styled.View`
-  flex: 1;
   width: 100%;
-  margin-top: 20px;
+  margin-top: 30px;
 `;
 
 export const Signin = styled.Text`
@@ -67,7 +61,7 @@ export const Signin = styled.Text`
 `;
 
 export const KeyboardWrapper = {
-  flex: 1
+  height: "100%"
 };
 
 export const buttonStyle = {
