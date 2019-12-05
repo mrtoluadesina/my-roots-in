@@ -12,6 +12,7 @@ import {
   NotificationTitle,
   NotificationToggle,
   KeyboardWrapper,
+  Container,
   styles
 } from "./styles";
 
@@ -62,43 +63,45 @@ export default function Settings(props) {
         behavior="position"
         contentContainerStyle={KeyboardWrapper}
       >
-        <Background>
-          <Header>
-            <Greeting>Settings</Greeting>
-          </Header>
-          <Form>
-            {details.map((value, index) => (
-              <EditableInput
-                defaultValue={fields[value.type]}
-                textContentType={value.text}
-                onChangeText={handleChange(value.type)}
-                editable
-                {...value}
-                key={index}
-                style={{
-                  marginBottom: index != details.length - 1 ? 25 : 60
-                }}
+        <Container>
+          <Background>
+            <Header>
+              <Greeting>Settings</Greeting>
+            </Header>
+            <Form>
+              {details.map((value, index) => (
+                <EditableInput
+                  defaultValue={fields[value.type]}
+                  textContentType={value.text}
+                  onChangeText={handleChange(value.type)}
+                  editable
+                  {...value}
+                  key={index}
+                  style={{
+                    marginBottom: index != details.length - 1 ? 25 : 60
+                  }}
+                />
+              ))}
+            </Form>
+          </Background>
+          <Footer>
+            <Notification>
+              <NotificationTitle>notification</NotificationTitle>
+              <NotificationToggle
+                onValueChange={toggleNotification}
+                value={notification.toggle}
+                trackColor={{ true: colors.rootGreenDark }}
+                style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
               />
-            ))}
-          </Form>
-        </Background>
-        <Footer>
-          <Notification>
-            <NotificationTitle>notification</NotificationTitle>
-            <NotificationToggle
-              onValueChange={toggleNotification}
-              value={notification.toggle}
-              trackColor={{ true: colors.rootGreenDark }}
-              style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}
+            </Notification>
+            <SimpleButton
+              title="Logout"
+              class={styles.fullWidth}
+              textStyle={styles.textColor}
+              onPress={() => navigate("Home")}
             />
-          </Notification>
-          <SimpleButton
-            title="Logout"
-            class={styles.fullWidth}
-            textStyle={styles.textColor}
-            onPress={() => navigate("Home")}
-          />
-        </Footer>
+          </Footer>
+        </Container>
       </KeyboardAvoidingView>
     </ImageBackground>
   );

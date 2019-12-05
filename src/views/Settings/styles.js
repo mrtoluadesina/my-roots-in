@@ -13,12 +13,15 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
+export const Container = styled.ScrollView`
+  flex: 1;
+`;
+
 export const Background = styled.View`
   width: 100%;
   padding: 0 50px;
   font-family: "Helvetica-Bold";
   font-weight: 800;
-  background-color: #ffffff;
   align-items: center;
   justify-content: center;
   color: ${colors.rootBlack};
