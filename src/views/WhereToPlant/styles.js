@@ -113,11 +113,3 @@ export const ImageContainer = styled.ImageBackground`
   height: 100%;
   flex: 1;
 `;
-
-export const selectOption = {
-  position: "absolute",
-  left: 0,
-  right: 0,
-  width: "100%",
-  borderColor: "black"
-};

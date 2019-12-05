@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Picker, View } from "react-native";
 import {
   Container,
@@ -13,16 +13,35 @@ import {
   CardImage,
   cardSizeStyle,
   CountrySize,
-  ImageContainer,
-  selectOption
+  ImageContainer
 } from "./styles";
 import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { SimpleCard } from "../../components/Cards";
 import { colors } from "../../constants/colors";
 import RNPickerSelect from "react-native-picker-select";
+import axios from "axios";
 function WhereToPlant(props) {
   const { navigate } = props.navigation;
+  const [countries, setCoutries] = useState([]);
+  useEffect(() => {
+    let obj = {};
+    axios
+      .get("https://restcountries.eu/rest/v2/region/africa")
+      .then(res => {
+        let data = res.data.reduce((acc, item, index) => {
+          let value = item.name;
+          let label = item.name;
+          obj = { value, label };
+          return acc.concat(obj);
+        }, []);
+        setCoutries(data);
+      })
+      .catch(error => {
+        console.log("wsedrtgybh", error);
+      });
+  }, []);
+  console.log(countries);
   return (
     <ImageContainer source={images.whereToPlantATreeBgImg}>
       <Container>
@@ -38,11 +57,7 @@ function WhereToPlant(props) {
                 <RNPickerSelect
                   style={{}}
                   onValueChange={value => console.log(value)}
-                  items={[
-                    { label: "Football", value: "football" },
-                    { label: "Baseball", value: "baseball" },
-                    { label: "Hockey", value: "hockey" }
-                  ]}
+                  items={countries}
                 >
                   <CardImage source={images.allCountriesImg} />
                   <CardTitle>54 Countries</CardTitle>
