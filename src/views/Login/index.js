@@ -4,20 +4,16 @@ import {
   StyleSheet,
   View,
   Text,
-  Image,
-  ScrollView,
-  ActivityIndicator
+  ScrollView
 } from "react-native";
-import {
-  SimpleButton,
-  SimpleLinearGradientButton
-} from "../../components/Buttons";
+import { SimpleButton, LinkButton } from "../../components/Buttons";
 import { CustomInput } from "../../components/Input";
 import metadata from "../../constants/meta";
 import { connect } from "react-redux";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { login } from "./redux/action";
+import { ImageBg, Title, Container } from "../Dashboard/styles";
 
 function Login(props) {
   const { navigate } = props.navigation;
@@ -37,124 +33,101 @@ function Login(props) {
       const payload = {
         ...values
       };
-      const {status, message} = await props.loginHandler(payload);
+      const { status, message } = await props.loginHandler(payload);
       if (status >= 400) throw new Error(message);
       navigate("Dashboard");
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   };
 
   return (
     <ScrollView contentContainerStyle={styles.wrapper}>
-      <KeyboardAvoidingView
-        behavior="position"
-        contentContainerStyle={styles.content}
-      >
-        <View style={styles.header}>
-          <Text style={styles.title}>Login.</Text>
-        </View>
-        <View style={styles.imageWrapper}>
-          <Image style={styles.image} source={images.loginImg} />
-        </View>
-        <View style={styles.formWrapper}>
-          <CustomInput
-            defaultValue={values[details[0].type]}
-            textContentType={details[0].text}
-            keyboardType={"email-address"}
-            onChangeText={handleChange(details[0].type)}
-            {...details[0]}
-            style={{ marginBottom: 26 }}
-          />
-        </View>
-        <View style={styles.formWrapper}>
-          <CustomInput
-            defaultValue={values[details[1].type]}
-            textContentType={details[1].text}
-            onChangeText={handleChange(details[1].type)}
-            {...details[1]}
-            style={{ marginBottom: 26 }}
-          />
-          <Text
-            onPress={() => {
-              navigate("ForgotPassword");
-            }}
-          >
-            Forgot Password?
-          </Text>
-        </View>
-        <View style={styles.buttonWrapper}>
-          <SimpleLinearGradientButton
-            class={styles.btnGradient}
-            textStyle={styles.whiteText}
-            title="Login"
-            loading={props.isLoading}
-            onPress={() => handleSubmit()}
-          />
-          <SimpleButton
-            title="Don't have an account yet?"
-            onPress={() => navigate("Settings")}
-          />
-        </View>
-      </KeyboardAvoidingView>
+      <ImageBg imageStyle={styles.imageBg} source={images.loginBgImg}>
+        <KeyboardAvoidingView
+          behavior="position"
+          contentContainerStyle={styles.content}
+        >
+          <Container style={styles.container}>
+            <View style={styles.header}>
+              <Title>Login.</Title>
+            </View>
+            <View style={styles.formWrapper}>
+              <CustomInput
+                defaultValue={values[details[0].type]}
+                textContentType={details[0].text}
+                keyboardType={"email-address"}
+                onChangeText={handleChange(details[0].type)}
+                {...details[0]}
+                style={{ marginBottom: 26 }}
+              />
+              <CustomInput
+                defaultValue={values[details[1].type]}
+                textContentType={details[1].text}
+                onChangeText={handleChange(details[1].type)}
+                {...details[1]}
+                style={{ marginBottom: 26 }}
+              />
+            </View>
+            <View style={styles.forgotAuth}>
+              <Text
+                onPress={() => {
+                  navigate("ForgotPassword");
+                }}
+              >
+                Forgot Password?
+              </Text>
+            </View>
+            <View style={styles.buttonWrapper}>
+              <SimpleButton
+                class={styles.btn}
+                textStyle={styles.whiteText}
+                title="Login"
+                loading={props.isLoading}
+                onPress={() => handleSubmit()}
+              />
+              <LinkButton
+                title="Don't have an account yet?"
+                textStyle={styles.blackText}
+                onPress={() => navigate("Settings")}
+              />
+            </View>
+          </Container>
+        </KeyboardAvoidingView>
+      </ImageBg>
     </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  border: {
-    borderWidth: 1
-  },
-  title: {
-    fontSize: 30
+  imageBg: {
+    resizeMode: "stretch"
   },
   wrapper: {
     flex: 1
   },
   content: {
-    height: "100%",
+    height: "100%", 
     alignItems: "center",
-    justifyContent: "space-evenly",
     paddingHorizontal: 5
   },
+  container: {
+    paddingTop: 100
+    // justifyContent: "center"
+  },
   header: {
-    width: "80%"
-  },
-  imageWrapper: {
     width: "80%",
-    height: 150,
-    marginVertical: 50,
     alignItems: "center",
-    justifyContent: "center"
-  },
-  image: {
-    width: "100%",
-    resizeMode: "contain"
+    paddingVertical: 50
   },
   buttonWrapper: {
     width: "100%",
-    alignItems: "center"
+    alignItems: "center",
+    paddingTop: 20
   },
   btn: {
-    backgroundColor: colors.rootGreenLight,
+    backgroundColor: colors.rootGreenDark,
     paddingVertical: 15,
-    marginVertical: 10
-  },
-  btnGradient: {
-    marginVertical: 10
-  },
-  btnWhite: {
-    backgroundColor: colors.rootWhite,
-    paddingVertical: 15,
-    marginVertical: 10,
-    shadowOffset: {
-      width: 0,
-      height: 15
-    },
-    shadowRadius: 55,
-    shadowOpacity: 0.7,
-    shadowColor: colors.rootShadow,
-    elevation: 1
   },
   whiteText: {
     color: colors.rootWhite
@@ -163,7 +136,12 @@ const styles = StyleSheet.create({
     color: colors.rootBlack
   },
   formWrapper: {
-    width: "80%"
+    width: "80%",
+    paddingTop: 10
+  },
+  forgotAuth: {
+    width: "80%",
+    alignItems: "flex-end"
   }
 });
 
