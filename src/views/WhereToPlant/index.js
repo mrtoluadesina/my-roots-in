@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Picker, View } from "react-native";
+import axios from "axios";
+import RNPickerSelect from "react-native-picker-select";
+
 import {
   Container,
   Background,
@@ -13,35 +15,40 @@ import {
   CardImage,
   cardSizeStyle,
   CountrySize,
-  ImageContainer
+  ImageContainer,
+  checkBoxStyle
 } from "./styles";
+
 import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { SimpleCard } from "../../components/Cards";
 import { colors } from "../../constants/colors";
-import RNPickerSelect from "react-native-picker-select";
-import axios from "axios";
+import { CheckBox } from "../../components/CheckBox";
+
 function WhereToPlant(props) {
   const { navigate } = props.navigation;
-  const [countries, setCoutries] = useState([]);
+  const [countries, setCountries] = useState([]);
+  const [whereToPlant, setWhereToPlant] = useState({ selected: "" });
+  const [selected, setSelected] = useState({ isSelected: "", label: "" });
+
+  const handleChange = selected => setWhereToPlant({ selected });
+
+  const handleChecked = ({ label, value }) => {
+    setSelected({ ...selected, isSelected: value, label });
+  };
+
   useEffect(() => {
-    let obj = {};
     axios
       .get("https://restcountries.eu/rest/v2/region/africa")
-      .then(res => {
-        let data = res.data.reduce((acc, item, index) => {
-          let value = item.name;
-          let label = item.name;
-          obj = { value, label };
-          return acc.concat(obj);
+      .then(({ data }) => {
+        const countries = data.reduce((acc, { name }) => {
+          const country = { value: name, label: name };
+          return [...acc, country];
         }, []);
-        setCoutries(data);
+        setCountries(countries);
       })
-      .catch(error => {
-        console.log("wsedrtgybh", error);
-      });
+      .catch(console.log);
   }, []);
-  console.log(countries);
   return (
     <ImageContainer source={images.whereToPlantATreeBgImg}>
       <Container>
@@ -53,22 +60,39 @@ function WhereToPlant(props) {
             <Greeting>Where to plant</Greeting>
             <Description>Choose the location to plant your roots</Description>
             <Choices>
-              <SimpleCard style={cardSizeStyle}>
-                <RNPickerSelect
-                  style={{}}
-                  onValueChange={value => console.log(value)}
-                  items={countries}
-                >
-                  <CardImage source={images.allCountriesImg} />
-                  <CardTitle>54 Countries</CardTitle>
+              <CheckBox
+                label="54Countries"
+                value="is54Countries"
+                checked={selected.isSelected == "is54Countries" ? true : false}
+                shadowColor={colors.rootShadow}
+                handleChange={handleChecked}
+                styles={checkBoxStyle}
+              >
+                <RNPickerSelect onValueChange={handleChange} items={countries}>
+                  <CardImage
+                    source={images.allCountriesImg}
+                    resizeMode="contain"
+                  />
+                  <CardTitle>54 countries</CardTitle>
                 </RNPickerSelect>
-              </SimpleCard>
-              <SimpleCard style={CountrySize}>
-                <CardTitle>Great green wall</CardTitle>
-                <CardTitle style={{ color: colors.rootGreenDark }}>
-                  Learn more
-                </CardTitle>
-              </SimpleCard>
+              </CheckBox>
+
+              <CheckBox
+                label="greatGreenWall"
+                value="isGreatGreenWall"
+                checked={
+                  selected.isSelected == "isGreatGreenWall" ? true : false
+                }
+                shadowColor={colors.rootShadow}
+                handleChange={handleChecked}
+                styles={checkBoxStyle}
+              >
+                <CardImage
+                  source={images.greatGreenWallImg}
+                  resizeMode="contain"
+                />
+                <CardTitle>great green wall</CardTitle>
+              </CheckBox>
             </Choices>
           </Body>
           <SimpleButton
