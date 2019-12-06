@@ -19,7 +19,7 @@ export const Container = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   background-color: ${props =>
-    props.checked ? colors.rootGreenLight : colors.rootWhite};
+    props.checked ? colors.rootGreenDark : colors.rootWhite};
   justify-content: center;
   padding: 8px;
 `;

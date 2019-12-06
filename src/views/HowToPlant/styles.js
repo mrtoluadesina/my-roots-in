@@ -22,7 +22,6 @@ export const Background = styled.View`
   padding: 0 50px;
   font-family: "Helvetica-Bold";
   font-weight: 800;
-  background-color: #ffffff;
   align-items: center;
   justify-content: center;
   color: ${colors.rootBlack};
@@ -32,13 +31,15 @@ export const Greeting = styled.Text`
   font-family: "Helvetica";
   font-size: 26px;
   line-height: 31px;
+  margin-bottom: 30px;
+  color: ${colors.rootGreenDark};
 `;
 
 export const Header = styled.View`
-  padding-top: 30px;
+  padding-top: 10px;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -85,6 +86,11 @@ export const CardTitle = styled.Text`
   font-family: "Helvetica-Bold";
 `;
 
+export const CardImage = styled.Image`
+  width: 70%;
+  height: 70%;
+`;
+
 export const cardSizeStyle = {
   height: 105,
   width: 110,
@@ -94,6 +100,50 @@ export const cardSizeStyle = {
   justifyContent: "center",
   borderRadius: 2,
   shadowColor: `${colors.rootShadow}`,
+  shadowOffset: { width: 2, height: 6 },
+  shadowOpacity: 0.2,
+  shadowRadius: 6,
+  elevation: 2
+};
+
+export const buttonShadows = {
+  shadowColor: colors.rootShadow,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowOpacity: 0.4,
+  shadowRadius: 15,
+  elevation: 3
+};
+
+export const buttonStyle = {
+  fullWidth: {
+    marginTop: 50,
+    width: "90%",
+    height: 52,
+    backgroundColor: colors.rootGreenDark,
+    ...buttonShadows
+  },
+  textColor: {
+    color: colors.rootWhite,
+    fontSize: 14,
+    fontFamily: "Helvetica-Bold"
+  }
+};
+
+export const checkBoxStyle = {
+  height: 105,
+  width: 110,
+  marginBottom: 50,
+  marginLeft: 0,
+  position: "relative",
+  alignItems: "center",
+  justifyContent: "center",
+  borderRadius: 2,
+  shadowColor: colors.rootShadow,
   shadowOffset: { width: 2, height: 6 },
   shadowOpacity: 0.2,
   shadowRadius: 6,

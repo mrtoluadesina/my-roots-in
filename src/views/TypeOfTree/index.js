@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from "react";
+import { ImageBackground, TouchableOpacity, Alert } from "react-native";
 
 import {
   Container,
@@ -12,60 +13,100 @@ import {
   CardTitle,
   CardImage,
   CardPrice,
-  cardSizeStyle,
   GradientBtn,
-} from './styles';
+  checkBoxStyle
+} from "./styles";
 
-import { images } from '../../../assets/images';
-import { SimpleButton } from '../../components/Buttons';
-import { SimpleCard } from '../../components/Cards';
-import { colors } from '../../constants/colors';
+import { images } from "../../../assets/images";
+import { SimpleButton } from "../../components/Buttons";
+import { colors } from "../../constants/colors";
+import { CheckBox } from "../../components/CheckBox";
 
 export default function OccasionTypes(props) {
+  const [selected, setSelected] = useState({ isSelected: "", label: "" });
+
+  const handleChecked = ({ label, value }) => {
+    setSelected({ ...selected, isSelected: value, label });
+  };
+
   const { navigate } = props.navigation;
 
   return (
-    <Container>
-      <Background>
-        <Header>
-          <Greeting>What type of tree</Greeting>
-          <Avater source={images.getDefaultAvater}></Avater>
-        </Header>
-        <Body>
-          <Description>
-            Choose the type of tree for planting your roots
-          </Description>
-          <Choices>
-            <SimpleCard style={cardSizeStyle}>
-              <CardImage source={images.decorationImg} resizeMode="contain" />
-              <CardPrice>$50</CardPrice>
-              <CardTitle>decoration trees</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <CardImage source={images.fruitsImg} resizeMode="contain" />
-              <CardPrice>$50</CardPrice>
-              <CardTitle>fruit trees</CardTitle>
-            </SimpleCard>
-            <SimpleCard style={cardSizeStyle}>
-              <CardImage
-                source={images.environmentalImg}
-                resizeMode="contain"
-              />
-              <CardPrice>$50</CardPrice>
-              <CardTitle>environmental trees</CardTitle>
-            </SimpleCard>
-          </Choices>
-        </Body>
-        <SimpleButton
-          title="Submit"
-          class={GradientBtn}
-          textStyle={{
-            color: colors.rootWhite,
-            fontSize: 14,
-          }}
-          onPress={() => navigate('Payment')}
-        />
-      </Background>
-    </Container>
+    <ImageBackground
+      source={images.whatTypeOfTreeBgImg}
+      style={{
+        flex: 1,
+        width: "100%"
+      }}
+      imageStyle={{ resizeMode: "stretch" }}
+    >
+      <Container>
+        <Background>
+          <Header>
+            <TouchableOpacity onPress={() => navigate("Settings")}>
+              <Avater source={images.getDefaultAvatar}></Avater>
+            </TouchableOpacity>
+          </Header>
+          <Body>
+            <Greeting>What type of tree</Greeting>
+            <Description>
+              Choose the type of tree for planting your roots
+            </Description>
+            <Choices>
+              <CheckBox
+                label="decoration"
+                value="isDecoration"
+                checked={selected.isSelected == "isDecoration" ? true : false}
+                shadowColor={colors.rootShadow}
+                handleChange={handleChecked}
+                styles={checkBoxStyle}
+              >
+                <CardImage source={images.decorationImg} resizeMode="contain" />
+                <CardPrice>$50</CardPrice>
+                <CardTitle>decoration trees</CardTitle>
+              </CheckBox>
+              <CheckBox
+                label="fruit"
+                value="isFruit"
+                checked={selected.isSelected == "isFruit" ? true : false}
+                shadowColor={colors.rootShadow}
+                handleChange={handleChecked}
+                styles={checkBoxStyle}
+              >
+                <CardImage source={images.fruitsImg} resizeMode="contain" />
+                <CardPrice>$50</CardPrice>
+                <CardTitle>fruit trees</CardTitle>
+              </CheckBox>
+              <CheckBox
+                label="environmental"
+                value="isEnvironmental"
+                checked={
+                  selected.isSelected == "isEnvironmental" ? true : false
+                }
+                shadowColor={colors.rootShadow}
+                handleChange={handleChecked}
+                styles={checkBoxStyle}
+              >
+                <CardImage
+                  source={images.environmentalImg}
+                  resizeMode="contain"
+                />
+                <CardPrice>$50</CardPrice>
+                <CardTitle>environmental trees</CardTitle>
+              </CheckBox>
+            </Choices>
+          </Body>
+          <SimpleButton
+            title="Submit"
+            class={GradientBtn}
+            textStyle={{
+              color: colors.rootWhite,
+              fontSize: 14
+            }}
+            onPress={() => Alert.alert("Registration Completed")}
+          />
+        </Background>
+      </Container>
+    </ImageBackground>
   );
 }
