@@ -1,10 +1,16 @@
-import { SET_LOADING, SET_ERROR, SET_USER } from "./types";
+import { SET_LOADING, SET_ERROR, SET_USER, SET_TOKEN } from "./types";
 import isEmpty from "lodash/isEmpty";
 
 const intialState = {
   isLoading: false,
   error: "",
-  isAuthenticated: false
+  isAuthenticated: false,
+  token: "",
+  user: {
+    name: "",
+    email: "",
+    token: ""
+  }
 };
 
 export default (state = intialState, action = {}) => {
@@ -22,8 +28,14 @@ export default (state = intialState, action = {}) => {
     case SET_USER:
       return {
         ...state,
-        isAuthenticated: !isEmpty(action.token)
+        isAuthenticated: !isEmpty(action.token),
+        user: action.user
       };
+    case SET_TOKEN:
+      return {
+        ...state,
+        token: action.token
+      }
     default:
       return state;
   }
