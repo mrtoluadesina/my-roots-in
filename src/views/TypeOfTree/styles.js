@@ -118,6 +118,7 @@ export const cardSizeStyle = {
   shadowRadius: 6,
   elevation: 10
 };
+
 export const GradientBtn = {
   marginVertical: 10,
   width: "100%",

@@ -16,6 +16,7 @@ import OccasionTypes from "./src/views/Occasions";
 import HowToPlant from "./src/views/HowToPlant";
 import TypeOfTree from "./src/views/TypeOfTree";
 import WhereToPlant from "./src/views/WhereToPlant";
+import PlantedSuccessfully from "./src/views/PlantedSuccessfully";
 
 const MainNavigator = createStackNavigator(
   {
@@ -193,11 +194,14 @@ const MainNavigator = createStackNavigator(
           borderBottomWidth: 0
         }
       })
-    }
+    },
+
+    // Planting successful Route
+    PlantedSuccessfully: { screen: PlantedSuccessfully }
   },
 
   {
-    initialRouteName: "Home",
+    initialRouteName: "WhereToPlant",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,

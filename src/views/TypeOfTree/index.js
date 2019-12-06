@@ -12,7 +12,6 @@ import {
   Choices,
   CardTitle,
   CardImage,
-  CardPrice,
   GradientBtn,
   checkBoxStyle
 } from "./styles";
@@ -62,7 +61,6 @@ export default function OccasionTypes(props) {
                 styles={checkBoxStyle}
               >
                 <CardImage source={images.decorationImg} resizeMode="contain" />
-                <CardPrice>$50</CardPrice>
                 <CardTitle>decoration trees</CardTitle>
               </CheckBox>
               <CheckBox
@@ -74,7 +72,6 @@ export default function OccasionTypes(props) {
                 styles={checkBoxStyle}
               >
                 <CardImage source={images.fruitsImg} resizeMode="contain" />
-                <CardPrice>$50</CardPrice>
                 <CardTitle>fruit trees</CardTitle>
               </CheckBox>
               <CheckBox
@@ -91,7 +88,6 @@ export default function OccasionTypes(props) {
                   source={images.environmentalImg}
                   resizeMode="contain"
                 />
-                <CardPrice>$50</CardPrice>
                 <CardTitle>environmental trees</CardTitle>
               </CheckBox>
             </Choices>
@@ -103,7 +99,7 @@ export default function OccasionTypes(props) {
               color: colors.rootWhite,
               fontSize: 14
             }}
-            onPress={() => Alert.alert("Registration Completed")}
+            onPress={() => navigate("PlantedSuccessfully")}
           />
         </Background>
       </Container>
