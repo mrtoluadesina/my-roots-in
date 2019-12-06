@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { StyleSheet, View, Text, Alert } from 'react-native';
 import { SimpleCard } from '../../components/Cards';
 
 import {
   Main,
-  ImageBg,
+  DashboardBg,
   Container,
   Row,
   Avatar,
@@ -21,7 +21,7 @@ function Dashboard(props) {
   const { navigate } = props.navigation;
   return (
     <Main contentContainerStyle={styles.dashboard}>
-      <ImageBg source={images.dashboardBg}>
+      <DashboardBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
             <TouchableOpacity onPress={() => navigate('Settings')}>
@@ -112,7 +112,7 @@ function Dashboard(props) {
             />
           </Row>
         </Container>
-      </ImageBg>
+      </DashboardBg>
     </Main>
   );
 }
