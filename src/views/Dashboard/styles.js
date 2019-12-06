@@ -54,7 +54,7 @@ export const DashboardBg = styled.ImageBackground`
 `;
 
 export const Row = styled.View`
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
   flex-direction: row;
   width: 100%;
