@@ -68,7 +68,7 @@ function Dashboard(props) {
                   <View style={styles.details}>
                     <Text style={styles.quantity}>{countries ? countries.length : 0}</Text>
                     <Text style={styles.description}>
-                      You have {countries ? countries.length : 0} trees planted on the 54 countries of Africa
+                      You have {countries ? countries.length : 0} trees planted in the 54 countries of Africa
                     </Text>
                   </View>
                 </DetailsView>
