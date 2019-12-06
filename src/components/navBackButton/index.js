@@ -1,4 +1,5 @@
 import React from "react";
+import * as Progress from "react-native-progress";
 
 import { Image, Platform } from "react-native";
 import { Container, ProgressContainer, TouchableOpacity } from "./styles";
