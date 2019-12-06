@@ -57,8 +57,14 @@ export default function HowToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                {/* <images.RemoteImage /> */}
-                <CardImage source={images.remoteImg} resizeMode={"contain"} />
+                <CardImage
+                  source={
+                    selected.isSelected == "isRemote"
+                      ? images.remoteImg
+                      : images.remote2xImg
+                  }
+                  resizeMode={"contain"}
+                />
                 <CardTitle>birthdays</CardTitle>
               </CheckBox>
               <CheckBox
@@ -69,7 +75,15 @@ export default function HowToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.InPersonImage />
+                {selected.isSelected == "isPerson" ? (
+                  <CardImage
+                    source={images.inPerson2xImg}
+                    resizeMode={"contain"}
+                  />
+                ) : (
+                  <images.InPersonImage />
+                )}
+
                 <CardTitle>birthdays</CardTitle>
               </CheckBox>
             </Choices>

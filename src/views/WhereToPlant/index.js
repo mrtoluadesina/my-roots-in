@@ -89,7 +89,10 @@ function WhereToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <RNPickerSelect onValueChange={handleChange} items={greatGreenWallCountries}>
+                <RNPickerSelect
+                  onValueChange={handleChange}
+                  items={greatGreenWallCountries}
+                >
                   <CardImage
                     source={images.greatGreenWallImg}
                     resizeMode="contain"
