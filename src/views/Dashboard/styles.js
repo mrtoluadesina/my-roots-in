@@ -44,3 +44,36 @@ export const BigTitle = styled.Text`
   letter-spacing: 1;
   color: ${colors.rootGreenDark}
 `;
+
+export const DashboardBg = styled.ImageBackground`
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding: 20px;
+  justify-content: space-between
+`;
+
+export const Row = styled.View`
+  padding-top: 30px;
+  padding-bottom: 30px;
+  flex-direction: row;
+  width: 100%;
+`;
+
+export const Avatar = styled.Image`
+  width: 40px;
+  height: 40px;
+  border-radius: 20;
+`;
+
+export const ImageView = styled.View`
+  flex-basis: 25%;
+`;
+export const OverviewImage = styled.Image`
+  width: 60px;
+  height: 60px;
+`;
+
+export const DetailsView = styled.View`
+  flex-basis: 75%;
+`;
