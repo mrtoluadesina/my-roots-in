@@ -2,8 +2,8 @@ import React from "react";
 import { Container } from "./styles";
 
 export const CheckBox = props => {
-  const toggleCheck = ({ value }) => {
-    props.handleChange(value);
+  const toggleCheck = selected => {
+    props.handleChange(selected);
   };
 
   const checkBoxStyles = {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground } from "react-native";
+import { ImageBackground, TouchableOpacity } from "react-native";
 
 import {
   Container,
@@ -21,12 +21,12 @@ import { CheckBox } from "../../components/CheckBox";
 import { colors } from "../../constants/colors";
 
 export default function OccasionTypes(props) {
-  const { navigate } = props.navigation;
+  const { navigate, getParam } = props.navigation;
 
-  const [selected, setSelected] = useState({ isSelected: "" });
+  const [selected, setSelected] = useState({ isSelected: "", label: "" });
 
-  const handleChecked = key => {
-    setSelected({ ...selected, isSelected: key });
+  const handleChecked = ({ label, value }) => {
+    setSelected({ ...selected, isSelected: value, label });
   };
 
   return (
@@ -41,14 +41,18 @@ export default function OccasionTypes(props) {
       <Container>
         <Background>
           <Header>
-            <Avater source={images.getDefaultAvatar}></Avater>
+            <TouchableOpacity onPress={() => navigate("Settings")}>
+              <Avater source={images.getDefaultAvatar}></Avater>
+            </TouchableOpacity>
           </Header>
           <Body>
             <Greeting>
-              Type of {props.title ? props.title : "occasion"}
+              Type of
+              {JSON.stringify(getParam("label", "occasion")).slice(1, -1)}
             </Greeting>
             <Description>
-              Choose the type of {props.title ? props.title : "occasion"}
+              Choose the type of
+              {JSON.stringify(getParam("label", "occasion")).slice(1, -1)}
             </Description>
             <Choices>
               <CheckBox

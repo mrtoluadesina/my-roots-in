@@ -1,117 +1,133 @@
 import React, { useState } from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ImageBackground
+} from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { Check } from "../../components/CheckBox/styles";
+import { buttonStyle } from "./styles";
 
 export default function PlantTree(props) {
   const { navigate } = props.navigation;
 
-  const [options, setOptions] = useState({ isOccasion: false, isGift: false });
+  const [options, setOptions] = useState({ isSelected: "", label: "" });
 
-  const handleChecked = key => {
-    setOptions({ ...options, [key]: !options[key] });
+  const handleChecked = ({ value, label }) => {
+    setOptions({ ...options, isSelected: value, label });
   };
 
   return (
-    <ScrollView>
-      <View style={styles.pageHeader}>
-        <Text style={styles.headerText}>Why plant a tree</Text>
-        <Image style={styles.imageStyle} source={images.getDefaultAvatar} />
-      </View>
-      <View style={styles.briefView}>
-        <Text style={styles.mainBrief}>
-          Choose the reason for planting your roots
-        </Text>
-      </View>
-      <View style={styles.selectOptions}>
-        <View style={styles.singleSelect}>
-          <Image style={styles.singleSelectImage} source={images.climateImg} />
-          <View style={styles.description}>
-            <Text style={styles.reason}>Climate action</Text>
-            <Text style={styles.action}>To support climate action</Text>
-          </View>
-          <CheckBox
-            label="climate"
-            value="isClimate"
-            checked={true}
-            shadowColor={colors.rootShadow}
-            backgroundColor={colors.rootGreenDark}
-            handleChange={handleChecked}
-          >
-            <Check source={images.tickImg} resizeMode="contain"></Check>
-          </CheckBox>
+    <ImageBackground
+      source={images.howToPlantBgImg}
+      style={{
+        flex: 1,
+        width: "100%"
+      }}
+      imageStyle={{ resizeMode: "stretch" }}
+    >
+      <ScrollView>
+        <View style={styles.pageHeader}>
+          <TouchableOpacity onPress={() => navigate("Settings")}>
+            <Image style={styles.imageStyle} source={images.getDefaultAvatar} />
+          </TouchableOpacity>
         </View>
-        <View style={styles.singleSelect}>
-          <Image style={styles.singleSelectImage} source={images.jobsImg} />
-          <View style={styles.description}>
-            <Text style={styles.reason}>Create a job</Text>
-            <Text style={styles.action}>To create jobs inside africa</Text>
-          </View>
-          <CheckBox
-            label="job"
-            value="isJob"
-            checked={true}
-            shadowColor={colors.rootShadow}
-            backgroundColor={colors.rootGreenDark}
-            handleChange={handleChecked}
-          >
-            <Check source={images.tickImg} resizeMode="contain"></Check>
-          </CheckBox>
+        <View style={styles.briefView}>
+          <Text style={styles.headerText}>Why plant a tree</Text>
+          <Text style={styles.mainBrief}>
+            Choose the reason for planting your roots
+          </Text>
         </View>
-        <View style={styles.singleSelect}>
-          <Image style={styles.singleSelectImage} source={images.occasionImg} />
-          <View style={styles.description}>
-            <Text style={styles.reason}>For occasion</Text>
-            <Text style={styles.action}>To mark a special occasion </Text>
+        <View style={styles.selectOptions}>
+          <View style={styles.singleSelect}>
+            <Image
+              style={styles.singleSelectImage}
+              source={images.climateImg}
+            />
+            <View style={styles.description}>
+              <Text style={styles.reason}>Climate action</Text>
+              <Text style={styles.action}>To support climate action</Text>
+            </View>
+            <CheckBox
+              label="climate"
+              value="isClimate"
+              checked={true}
+              shadowColor={colors.rootShadow}
+              backgroundColor={colors.rootGreenDark}
+              handleChange={handleChecked}
+            >
+              <Check source={images.tickImg} resizeMode="contain"></Check>
+            </CheckBox>
           </View>
-          <CheckBox
-            label="occasion"
-            value="isOccasion"
-            shadowColor={colors.rootShadow}
-            backgroundColor={colors.rootGreenDark}
-            checked={options.isOccasion}
-            handleChange={handleChecked}
-          >
-            <Check source={images.tickImg} resizeMode="contain"></Check>
-          </CheckBox>
-        </View>
-        <View style={styles.singleSelect}>
-          <Image style={styles.singleSelectImage} source={images.giftImg} />
-          <View style={styles.description}>
-            <Text style={styles.reason}>For gift</Text>
-            <Text style={styles.action}>To gift to self or loved one</Text>
+          <View style={styles.singleSelect}>
+            <Image style={styles.singleSelectImage} source={images.jobsImg} />
+            <View style={styles.description}>
+              <Text style={styles.reason}>Create a job</Text>
+              <Text style={styles.action}>To create jobs inside africa</Text>
+            </View>
+            <CheckBox
+              label="job"
+              value="isJob"
+              checked={true}
+              shadowColor={colors.rootShadow}
+              backgroundColor={colors.rootGreenDark}
+              handleChange={handleChecked}
+            >
+              <Check source={images.tickImg} resizeMode="contain"></Check>
+            </CheckBox>
           </View>
-          <CheckBox
-            label="gift"
-            value="isGift"
-            shadowColor={colors.rootShadow}
-            backgroundColor={colors.rootGreenDark}
-            checked={options.isGift}
-            handleChange={handleChecked}
-          >
-            <Check source={images.tickImg} resizeMode="contain"></Check>
-          </CheckBox>
+          <View style={styles.singleSelect}>
+            <images.AnniversaryImg width={50} height={50} />
+            <View style={styles.description}>
+              <Text style={styles.reason}>For occasion</Text>
+              <Text style={styles.action}>To mark a special occasion </Text>
+            </View>
+            <CheckBox
+              label="occasion"
+              value="isOccasion"
+              shadowColor={colors.rootShadow}
+              backgroundColor={colors.rootGreenDark}
+              checked={options.isSelected == "isOccasion" ? true : false}
+              handleChange={handleChecked}
+            >
+              <Check source={images.tickImg} resizeMode="contain"></Check>
+            </CheckBox>
+          </View>
+          <View style={styles.singleSelect}>
+            <images.GiftImage width={50} height={50} />
+            <View style={styles.description}>
+              <Text style={styles.reason}>For gift</Text>
+              <Text style={styles.action}>To gift to self or loved one</Text>
+            </View>
+            <CheckBox
+              label="gift"
+              value="isGift"
+              shadowColor={colors.rootShadow}
+              backgroundColor={colors.rootGreenDark}
+              checked={options.isSelected == "isGift" ? true : false}
+              handleChange={handleChecked}
+            >
+              <Check source={images.tickImg} resizeMode="contain"></Check>
+            </CheckBox>
+          </View>
         </View>
-      </View>
-      <View style={styles.briefView}>
-        <SimpleButton
-          title="Next"
-          class={{
-            marginTop: 50,
-            width: "70%"
-          }}
-          textStyle={{
-            color: colors.rootWhite,
-            fontSize: 14
-          }}
-          onPress={() => navigate("HowToPlant")}
-        />
-      </View>
-    </ScrollView>
+        <View style={styles.briefView}>
+          <SimpleButton
+            title="Next"
+            class={buttonStyle.fullWidth}
+            textStyle={buttonStyle.textColor}
+            onPress={() => navigate("OccasionTypes", { ...options })}
+          />
+        </View>
+      </ScrollView>
+    </ImageBackground>
   );
 }
 
@@ -119,9 +135,8 @@ const styles = StyleSheet.create({
   pageHeader: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
-    paddingHorizontal: 30,
-    paddingVertical: 20
+    justifyContent: "flex-end",
+    paddingHorizontal: 30
   },
   imageStyle: {
     width: 40,
@@ -130,7 +145,8 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 25,
-    fontWeight: "300"
+    fontWeight: "300",
+    marginBottom: 20
   },
   briefView: {
     alignItems: "center",
