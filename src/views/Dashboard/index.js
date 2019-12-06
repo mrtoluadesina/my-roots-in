@@ -121,7 +121,8 @@ function Dashboard(props) {
 }
 
 const mapStateToProps = ({ Login }) => ({
-  token: Login.token
+  token: Login.token,
+  user: Login.user
 });
 
 const mapDispatchToProps = dispatch => ({
