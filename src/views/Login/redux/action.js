@@ -7,7 +7,7 @@ export const loading = isLoading => ({ type: types.SET_LOADING, isLoading });
 
 export const errorMethod = message => ({ type: types.SET_ERROR, message });
 
-export const setUser = token => ({ type: types.SET_USER, token });
+export const setUser = (token, user) => ({ type: types.SET_USER, token, user });
 
 export const setToken = token => ({ type: types.SET_TOKEN, token });
 
@@ -20,7 +20,12 @@ export const login = payload => dispatch => {
       AsyncStorage.setItem("isLoggedIn", "1");
       AsyncStorage.setItem("userData", JSON.stringify(res.data.payload));
       AsyncStorage.setItem("token", res.data.token);
-      dispatch(setUser(res.data.token));
+      const {name, email} = res.data.payload;
+      const token = res.data.token;
+      const user = {
+        name, email, token
+      }
+      dispatch(setUser(res.data.token, user));
       dispatch(setToken(res.data.token));
       return res.data;
     })
