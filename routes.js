@@ -201,7 +201,7 @@ const MainNavigator = createStackNavigator(
   },
 
   {
-    initialRouteName: "WhereToPlant",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,
