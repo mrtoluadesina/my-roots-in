@@ -2,7 +2,6 @@ import GiftImage from "./gift";
 import OtherImage from "./other";
 import AnniversaryImg from "./anniversary";
 import InPersonImage from "./inPerson";
-import RemoteImage from "./remote";
 import HolidayImage from "./holidays";
 
 export const images = {
@@ -37,10 +36,12 @@ export const images = {
   whereToPlantATreeBgImg: require("./where_to_plant_a_tree_bg.png"),
   whyPlantATreeBgImg: require("./why_plant_a_tree_bg.png"),
   backButtonImg: require("./nav-back-button.png"),
+  remoteImg: require("./remote.png"),
+  remote2xImg: require("./remote2x.png"),
+  inPerson2xImg: require("./inPerson2x.png"),
   HolidayImage,
   GiftImage,
   AnniversaryImg,
   OtherImage,
   InPersonImage,
-  RemoteImage
 };

@@ -47,11 +47,11 @@ export default function OccasionTypes(props) {
           </Header>
           <Body>
             <Greeting>
-              Type of
+              Type of{" "}
               {JSON.stringify(getParam("label", "occasion")).slice(1, -1)}
             </Greeting>
             <Description>
-              Choose the type of
+              Choose the type of{" "}
               {JSON.stringify(getParam("label", "occasion")).slice(1, -1)}
             </Description>
             <Choices>
