@@ -80,30 +80,6 @@ export const CardImage = styled.Image`
   border-radius: 2;
 `;
 
-export const cardSizeStyle = {
-  height: 120,
-  width: 120,
-  position: "relative",
-  alignItems: "center",
-  justifyContent: "center",
-  borderWidth: 0.5,
-  borderColor: `${colors.boxShadow}`,
-  borderBottomWidth: 0,
-  shadowColor: `${colors.boxShadow}`,
-  shadowOffset: { width: 0, height: 2 },
-  shadowOpacity: 0.5,
-  shadowRadius: 2,
-  elevation: 2
-};
-
-export const CountrySize = {
-  width: 120,
-  height: 120,
-  position: "relative",
-  borderWidth: 1,
-  ...cardSizeStyle
-};
-
 export const ImageContainer = styled.ImageBackground`
   width: 100%;
   height: 100%;
@@ -111,8 +87,8 @@ export const ImageContainer = styled.ImageBackground`
 `;
 
 export const checkBoxStyle = {
-  height: 105,
-  width: 110,
+  width: 120,
+  height: 120,
   marginBottom: 50,
   marginLeft: 0,
   position: "relative",
@@ -126,28 +102,25 @@ export const checkBoxStyle = {
   elevation: 2
 };
 
-export const buttonStyle = {
+export const buttonShadow = {
   shadowColor: colors.rootShadow,
   justifyContent: "center",
   alignItems: "center",
-  shadowOffset: {
-    width: 0,
-    height: 4
-  },
+  shadowOffset: { width: 0, height: 4 },
   shadowOpacity: 0.4,
   shadowRadius: 15,
   elevation: 3
 };
 
-export const styles = {
+export const buttonStyle = {
   fullWidth: {
     width: "80%",
     height: 52,
-    backgroundColor: colors.rootWhite,
-    ...buttonStyle
+    backgroundColor: colors.rootGreenDark,
+    ...buttonShadow
   },
   textColor: {
-    color: colors.rootGreenDark,
+    color: colors.rootWhite,
     fontSize: 14,
     fontFamily: "Helvetica-Bold"
   }

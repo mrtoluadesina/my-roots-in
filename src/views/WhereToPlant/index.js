@@ -13,20 +13,18 @@ import {
   Choices,
   CardTitle,
   CardImage,
-  cardSizeStyle,
-  CountrySize,
   ImageContainer,
-  checkBoxStyle
+  checkBoxStyle,
+  buttonStyle
 } from "./styles";
 
 import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
-import { SimpleCard } from "../../components/Cards";
 import { colors } from "../../constants/colors";
+import metadata from "../../constants/meta";
 import { CheckBox } from "../../components/CheckBox";
 
 function WhereToPlant(props) {
-  const { navigate } = props.navigation;
   const [countries, setCountries] = useState([]);
   const [whereToPlant, setWhereToPlant] = useState({ selected: "" });
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
@@ -36,6 +34,10 @@ function WhereToPlant(props) {
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
   };
+
+  const { navigate } = props.navigation;
+
+  const { greatGreenWallCountries } = metadata;
 
   useEffect(() => {
     axios
@@ -87,32 +89,20 @@ function WhereToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <CardImage
-                  source={images.greatGreenWallImg}
-                  resizeMode="contain"
-                />
-                <CardTitle>great green wall</CardTitle>
+                <RNPickerSelect onValueChange={handleChange} items={greatGreenWallCountries}>
+                  <CardImage
+                    source={images.greatGreenWallImg}
+                    resizeMode="contain"
+                  />
+                  <CardTitle>great green wall</CardTitle>
+                </RNPickerSelect>
               </CheckBox>
             </Choices>
           </Body>
           <SimpleButton
             title="Next"
-            class={{
-              width: "90%",
-              backgroundColor: colors.rootGreenDark,
-              shadowColor: colors.rootGreenDark,
-              shadowOffset: {
-                width: 0,
-                height: 10
-              },
-              shadowOpacity: 0.51,
-              shadowRadius: 16.16,
-              elevation: 24
-            }}
-            textStyle={{
-              color: colors.rootWhite,
-              fontSize: 14
-            }}
+            class={buttonStyle.fullWidth}
+            textStyle={buttonStyle.textColor}
             onPress={() => navigate("PlantTree")}
           />
         </Background>

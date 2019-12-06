@@ -11,7 +11,8 @@ import {
   Choices,
   CardTitle,
   buttonStyle,
-  checkBoxStyle
+  checkBoxStyle,
+  CardImage
 } from "./styles";
 
 import { images } from "../../../assets/images";
@@ -56,7 +57,8 @@ export default function HowToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.RemoteImage />
+                {/* <images.RemoteImage /> */}
+                <CardImage source={images.remoteImg} resizeMode={"contain"} />
                 <CardTitle>birthdays</CardTitle>
               </CheckBox>
               <CheckBox
