@@ -9,6 +9,8 @@ export const errorMethod = message => ({ type: types.SET_ERROR, message });
 
 export const setUser = token => ({ type: types.SET_USER, token });
 
+export const setToken = token => ({ type: types.SET_TOKEN, token });
+
 export const login = payload => dispatch => {
   dispatch(loading(true));
   return axios
@@ -18,6 +20,8 @@ export const login = payload => dispatch => {
       AsyncStorage.setItem("isLoggedIn", "1");
       AsyncStorage.setItem("userData", JSON.stringify(res.data.payload));
       AsyncStorage.setItem("token", res.data.token);
+      dispatch(setUser(res.data.token));
+      dispatch(setToken(res.data.token));
       return res.data;
     })
     .catch(error => {
