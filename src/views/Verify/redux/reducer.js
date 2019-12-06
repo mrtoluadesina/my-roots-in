@@ -1,13 +1,13 @@
-import { SET_LOADING, SET_ERROR, SET_TOKEN } from "./types";
+import {SET_LOADING, SET_ERROR, SET_TOKEN} from './types';
 
 const initialState = {
   isLoading: false,
   error: "",
   token: ""
-};
+}
 
 export default (state = initialState, action = {}) => {
-  switch (action.type) {
+  switch(action.type) {
     case SET_LOADING:
       return {
         ...state,
@@ -24,6 +24,6 @@ export default (state = initialState, action = {}) => {
         token: action.token
       };
     default:
-      return state;
+      return state
   }
-};
+}

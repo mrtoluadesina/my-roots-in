@@ -143,8 +143,8 @@ const styles = StyleSheet.create({
   }
 });
 
-const mapStateToProps = state => ({
-  isLoading: state.Login.isLoading
+const mapStateToProps = ({ Login }) => ({
+  isLoading: Login.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
