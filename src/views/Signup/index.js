@@ -75,7 +75,6 @@ function Signup(props) {
                 />
               ))}
             </Form>
-
           <SimpleButton
             title="Submit"
             class={styles.fullWidth}
