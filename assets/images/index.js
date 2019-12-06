@@ -1,9 +1,9 @@
-import AnniversaryImage from "./anniversary";
 import GiftImage from "./gift";
-import HolidayImage from "./holidays";
 import OtherImage from "./other";
+import AnniversaryImg from "./anniversary";
 import InPersonImage from "./inPerson";
 import RemoteImage from "./remote";
+import HolidayImage from "./holidays";
 
 export const images = {
   loginImg: require("./login.png"),
@@ -14,7 +14,6 @@ export const images = {
   decorationImg: require("./decorationTreeImg.png"),
   fruitsImg: require("./fruitTreesImg.png"),
   climateImg: require("./climate.jpg"),
-  occasionImg: require("./occasion.png"),
   giftImg: require("./gift.png"),
   jobsImg: require("./jobs.jpg"),
   tickImg: require("./tick.png"),
@@ -40,8 +39,8 @@ export const images = {
   backButtonImg: require("./nav-back-button.png"),
   HolidayImage,
   GiftImage,
+  AnniversaryImg,
   OtherImage,
-  AnniversaryImage,
   InPersonImage,
   RemoteImage
 };
