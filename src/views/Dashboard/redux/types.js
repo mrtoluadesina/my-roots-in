@@ -1,0 +1,8 @@
+export const SET_LOADING = 'SET_LOADING';
+export const SET_ERROR = 'SET_ERROR';
+export const SET_WHERE_TO_PLANT = 'SET_WHERE_TO_PLANT';
+export const SET_WHY_PLANT_A_TREE = 'SET_WHY_PLANT_A_TREE';
+export const SET_TYPE_OF_OCCASSION = 'SET_TYPE_OF_OCCASSION';
+export const SET_HOW_TO_PLANT = 'SET_HOW_TO_PLANT';
+export const SET_WHAT_TYPE_OF_TREE = 'SET_WHAT_TYPE_OF_TREE';
+
