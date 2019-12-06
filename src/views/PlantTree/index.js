@@ -3,8 +3,9 @@ import { View, Text, Image, StyleSheet } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
-import { SimpleLinearGradientButton } from "../../components/Buttons";
+import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
+import { Check } from "../../components/CheckBox/styles";
 
 export default function PlantTree(props) {
   const { navigate } = props.navigation;
@@ -37,8 +38,12 @@ export default function PlantTree(props) {
             label="climate"
             value="isClimate"
             checked={true}
+            shadowColor={colors.rootShadow}
+            backgroundColor={colors.rootGreenDark}
             handleChange={handleChecked}
-          />
+          >
+            <Check source={images.tickImg} resizeMode="contain"></Check>
+          </CheckBox>
         </View>
         <View style={styles.singleSelect}>
           <Image style={styles.singleSelectImage} source={images.jobsImg} />
@@ -50,8 +55,12 @@ export default function PlantTree(props) {
             label="job"
             value="isJob"
             checked={true}
+            shadowColor={colors.rootShadow}
+            backgroundColor={colors.rootGreenDark}
             handleChange={handleChecked}
-          />
+          >
+            <Check source={images.tickImg} resizeMode="contain"></Check>
+          </CheckBox>
         </View>
         <View style={styles.singleSelect}>
           <Image style={styles.singleSelectImage} source={images.occasionImg} />
@@ -62,9 +71,13 @@ export default function PlantTree(props) {
           <CheckBox
             label="occasion"
             value="isOccasion"
+            shadowColor={colors.rootShadow}
+            backgroundColor={colors.rootGreenDark}
             checked={options.isOccasion}
             handleChange={handleChecked}
-          />
+          >
+            <Check source={images.tickImg} resizeMode="contain"></Check>
+          </CheckBox>
         </View>
         <View style={styles.singleSelect}>
           <Image style={styles.singleSelectImage} source={images.giftImg} />
@@ -75,13 +88,17 @@ export default function PlantTree(props) {
           <CheckBox
             label="gift"
             value="isGift"
+            shadowColor={colors.rootShadow}
+            backgroundColor={colors.rootGreenDark}
             checked={options.isGift}
             handleChange={handleChecked}
-          />
+          >
+            <Check source={images.tickImg} resizeMode="contain"></Check>
+          </CheckBox>
         </View>
       </View>
       <View style={styles.briefView}>
-        <SimpleLinearGradientButton
+        <SimpleButton
           title="Next"
           class={{
             marginTop: 50,

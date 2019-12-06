@@ -17,28 +17,28 @@ export const Container = styled.ScrollView`
 `;
 
 export const Background = styled.View`
-  flex: 1;
   width: 100%;
   padding: 0 50px;
   font-family: "Helvetica-Bold";
   font-weight: 800;
-  background-color: #ffffff;
   align-items: center;
   justify-content: center;
-  color: ${colors.rootBlack};
 `;
 
 export const Greeting = styled.Text`
   font-family: "Helvetica";
   font-size: 26px;
   line-height: 31px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  color: ${colors.rootBlack};
 `;
 
 export const Header = styled.View`
-  padding-top: 30px;
   flex-direction: row;
   width: 100%;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -49,7 +49,7 @@ export const Avater = styled.Image`
 `;
 
 export const Body = styled.View`
-  margin-top: 40px;
+  margin-top: 10px;
   width: 80%;
   align-items: center;
 `;
@@ -60,12 +60,13 @@ export const Description = styled.Text`
   font-size: 20px;
   line-height: 24px;
   text-align: center;
+  color: ${colors.rootBlack};
 `;
 
 export const Choices = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 50px;
+  margin-top: 20px;
   margin-bottom: 80px;
   width: 100%;
   justify-content: space-around;
@@ -76,8 +77,7 @@ export const CardTitle = styled.Text`
   text-transform: capitalize;
   font-size: 12px;
   line-height: 14px;
-  color: #323643;
-  opacity: 0.5;
+  color: ${colors.rootBlack};
   text-align: center;
   position: absolute;
   bottom: -20;
@@ -86,14 +86,15 @@ export const CardTitle = styled.Text`
 `;
 
 export const CardImage = styled.Image`
-  width: 80%;
-  height: 80%;
+  width: 70%;
+  height: 70%;
 `;
 
-export const cardSizeStyle = {
+export const checkBoxStyle = {
   height: 105,
   width: 110,
   marginBottom: 50,
+  marginLeft: 0,
   position: "relative",
   alignItems: "center",
   justifyContent: "center",
@@ -103,4 +104,31 @@ export const cardSizeStyle = {
   shadowOpacity: 0.2,
   shadowRadius: 6,
   elevation: 2
+};
+
+export const buttonStyle = {
+  shadowColor: colors.rootShadow,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowOpacity: 0.4,
+  shadowRadius: 15,
+  elevation: 3
+};
+
+export const styles = {
+  fullWidth: {
+    width: "80%",
+    height: 52,
+    backgroundColor: colors.rootWhite,
+    ...buttonStyle
+  },
+  textColor: {
+    color: colors.rootGreenDark,
+    fontSize: 14,
+    fontFamily: "Helvetica-Bold"
+  }
 };

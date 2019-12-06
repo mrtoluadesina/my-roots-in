@@ -1,5 +1,4 @@
 import React from "react";
-import * as Progress from "react-native-progress";
 
 import { Image, Platform } from "react-native";
 import { Container, ProgressContainer, TouchableOpacity } from "./styles";
@@ -9,10 +8,11 @@ import { images } from "../../../assets/images";
 export default function NavBackButton({
   onPress,
   showProgress,
-  progressLevel
+  progressLevel,
+  styles
 }) {
   return (
-    <Container Platform={Platform}>
+    <Container Platform={Platform} style={styles}>
       <TouchableOpacity onPress={onPress}>
         <Image source={images.backButtonImg} />
       </TouchableOpacity>
