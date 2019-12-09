@@ -38,7 +38,7 @@ export default function PlantedSuccessfully(props) {
               title="Got it!"
               textStyle={styles.textColor}
               class={styles.fullWidth}
-              onPress={() => navigate("Home")}
+              onPress={() => navigate("Dashboard")}
             ></SimpleButton>
           </Section>
         </Section>
