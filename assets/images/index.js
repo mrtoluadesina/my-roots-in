@@ -1,8 +1,4 @@
-import GiftImage from "./gift";
-import OtherImage from "./other";
-import AnniversaryImg from "./anniversary";
 import InPersonImage from "./inPerson";
-import HolidayImage from "./holidays";
 
 export const images = {
   loginImg: require("./login.png"),
@@ -38,9 +34,9 @@ export const images = {
   remoteImg: require("./remote.png"),
   remote2xImg: require("./remote2x.png"),
   inPerson2xImg: require("./inPerson2x.png"),
-  HolidayImage,
-  GiftImage,
-  AnniversaryImg,
-  OtherImage,
-  InPersonImage,
+  holidayImage: require("./holiday.png"),
+  giftImage: require("./gift.png"),
+  anniversaryImg: require("./anniversary.png"),
+  otherImage: require("./other.png"),
+  InPersonImage
 };
