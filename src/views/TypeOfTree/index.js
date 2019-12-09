@@ -1,18 +1,16 @@
 import React, { useState } from "react";
-import { ImageBackground, TouchableOpacity, Alert } from "react-native";
+import { ImageBackground } from "react-native";
 
 import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
   CardTitle,
   CardImage,
-  GradientBtn,
+  buttonStyle,
   checkBoxStyle
 } from "./styles";
 
@@ -41,11 +39,6 @@ export default function OccasionTypes(props) {
     >
       <Container>
         <Background>
-          <Header>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
-              <Avater source={images.getDefaultAvatar}></Avater>
-            </TouchableOpacity>
-          </Header>
           <Body>
             <Greeting>What type of tree</Greeting>
             <Description>
@@ -94,11 +87,8 @@ export default function OccasionTypes(props) {
           </Body>
           <SimpleButton
             title="Submit"
-            class={GradientBtn}
-            textStyle={{
-              color: colors.rootWhite,
-              fontSize: 14
-            }}
+            class={buttonStyle.fullWidth}
+            textStyle={buttonStyle.textColor}
             onPress={() => navigate("PlantedSuccessfully")}
           />
         </Background>
