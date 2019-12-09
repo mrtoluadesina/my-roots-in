@@ -49,7 +49,7 @@ export const Avater = styled.Image`
 `;
 
 export const Body = styled.View`
-  margin-top: 10px;
+  margin-top: 30px;
   width: 100%;
   align-items: center;
 `;
@@ -78,6 +78,7 @@ export const CardTitle = styled.Text`
   font-size: 12px;
   line-height: 14px;
   color: ${colors.rootBlack};
+  opacity: 0.5;
   text-align: center;
   position: absolute;
   bottom: -20;
@@ -121,7 +122,7 @@ export const buttonStyle = {
 
 export const styles = {
   fullWidth: {
-    width: "100%",
+    width: "90%",
     height: 52,
     backgroundColor: colors.rootGreenDark,
     ...buttonStyle
