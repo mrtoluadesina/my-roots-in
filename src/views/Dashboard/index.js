@@ -1,41 +1,64 @@
-import React, { useState } from 'react';
-import { StyleSheet, View, Text, Alert } from 'react-native';
-import { SimpleCard } from '../../components/Cards';
-
+import React, { useState, useEffect } from "react";
+import { StyleSheet, View, Text } from "react-native";
+import { SimpleCard } from "../../components/Cards";
+import axios from "axios";
+import { connect } from "react-redux";
 import {
   Main,
-  ImageBg,
+  DashboardBg,
   Container,
   Row,
   Avatar,
   OverviewImage,
   DetailsView,
-  ImageView,
-} from './styles';
-import { images } from '../../../assets/images';
-import { colors } from '../../constants/colors';
-import { SimpleButton } from '../../components/Buttons';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+  ImageView
+} from "./styles";
+import { images } from "../../../assets/images";
+import { colors } from "../../constants/colors";
+import { SimpleButton } from "../../components/Buttons";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import { BASE_URL } from "../../constants/api";
 
 function Dashboard(props) {
   const { navigate } = props.navigation;
+  const [trees, setTrees] = useState({});
+
+  const config = {
+    headers: {
+      Authorization: `Bearer ${props.token}`
+    }
+  };
+
+  useEffect(() => {
+    const loadTree = async () => {
+      try {
+        const userTree = await axios.get(BASE_URL + "/tree/user/tree", config);
+        if (userTree) setTrees(userTree.data.payload);
+      } catch (error) {
+        console.log(error);
+        throw new Error(error);
+      }
+    };
+    loadTree();
+  }, []);
+
+  console.log(trees);
+
+  const {countries, greenWall} = trees;
+
   return (
     <Main contentContainerStyle={styles.dashboard}>
-      <ImageBg source={images.dashboardBg}>
+      <DashboardBg source={images.dashboardBg}>
         <Container>
           <Row style={styles.header}>
-            <TouchableOpacity onPress={() => navigate('Settings')}>
+            <TouchableOpacity onPress={() => navigate("Settings")}>
               <Avatar source={images.getDefaultAvatar}></Avatar>
             </TouchableOpacity>
           </Row>
           <Row>
-            <SimpleCard style={styles.overviewCard}>
+            <View style={styles.overviewCard}>
               <SimpleCard
-                style={{
-                  ...styles.details,
-                  ...styles.padAll,
-                  ...styles.cardSizeStyle,
-                }}
+                style={[styles.details, styles.padAll, styles.cardSizeStyle]}
               >
                 <ImageView>
                   <OverviewImage source={images.getStartedImg} />
@@ -43,19 +66,15 @@ function Dashboard(props) {
                 <DetailsView>
                   <Text style={styles.spanTitle}>The 54 Countries</Text>
                   <View style={styles.details}>
-                    <Text style={styles.quantity}>0</Text>
+                    <Text style={styles.quantity}>{countries ? countries.length : 0}</Text>
                     <Text style={styles.description}>
-                      You have 0 trees planted on the 54 countries of Africa
+                      You have {countries ? countries.length : 0} trees planted in the 54 countries of Africa
                     </Text>
                   </View>
                 </DetailsView>
               </SimpleCard>
               <SimpleCard
-                style={{
-                  ...styles.details,
-                  ...styles.padAll,
-                  ...styles.cardSizeStyle,
-                }}
+                style={[styles.details, styles.padAll, styles.cardSizeStyle]}
               >
                 <ImageView>
                   <OverviewImage source={images.getStartedImg} />
@@ -63,14 +82,14 @@ function Dashboard(props) {
                 <DetailsView>
                   <Text style={styles.spanTitle}>The Green Great Wall</Text>
                   <View style={styles.details}>
-                    <Text style={styles.quantity}>5</Text>
+                    <Text style={styles.quantity}>{greenWall ? greenWall.length : 0}</Text>
                     <Text style={styles.description}>
-                      You have 5 trees planted on the great green wall
+                      You have {greenWall ? greenWall.length : 0} trees planted on the great green wall
                     </Text>
                   </View>
                 </DetailsView>
               </SimpleCard>
-            </SimpleCard>
+            </View>
           </Row>
         </Container>
         <Container>
@@ -82,98 +101,91 @@ function Dashboard(props) {
           </Row>
           <Row style={[styles.cardSizeStyle, styles.btns]}>
             <SimpleButton
-              title="GEOTAG A TREE"
+              title="RESERVE A TREE"
               class={{
-                width: '45%',
-                backgroundColor: colors.rootWhite,
-                justifyContent: 'center',
-                paddingVertical: 15,
-              }}
-              textStyle={{
-                color: colors.rootBlack,
-                fontSize: 14,
-              }}
-              onPress={() =>
-                Alert.alert('This option is not currently available')
-              }
-            />
-            <SimpleButton
-              title="PLANT A TREE"
-              class={{
-                width: '45%',
+                width: "45%",
                 backgroundColor: colors.rootGreenDark,
-                justifyContent: 'center',
+                justifyContent: "center"
               }}
               textStyle={{
                 color: colors.rootWhite,
-                fontSize: 14,
+                fontSize: 14
               }}
-              onPress={() => navigate('WhereToPlant')}
+              onPress={() => navigate("WhereToPlant")}
             />
           </Row>
         </Container>
-      </ImageBg>
+      </DashboardBg>
     </Main>
   );
 }
 
-export default Dashboard;
+const mapStateToProps = ({ Login }) => ({
+  token: Login.token,
+  user: Login.user
+});
+
+const mapDispatchToProps = dispatch => ({
+  plantTreeHandler: payload => dispatch(plantTreeMethod(payload))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
 
 const styles = StyleSheet.create({
   dashboard: {
-    height: '100%',
+    height: "100%"
   },
   header: {
-    justifyContent: 'flex-end',
+    justifyContent: "flex-end"
   },
   overviewCard: {
-    width: '100%',
-    paddingHorizontal: 20,
-    paddingVertical: 20,
+    width: "100%",
+    paddingHorizontal: 20
   },
   details: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center"
   },
   padAll: {
     paddingHorizontal: 15,
     paddingVertical: 10,
     marginVertical: 10,
+    borderRadius: 20
   },
   spanTitle: {
     color: colors.rootDashboardSpanTitle,
     fontSize: 16,
-    letterSpacing: 1,
+    letterSpacing: 1
   },
   quantity: {
     fontSize: 40,
     paddingRight: 10,
-    width: '15%',
+    width: "15%"
   },
   description: {
-    flexWrap: 'wrap',
-    width: '85%',
-    fontSize: 12,
+    flexWrap: "wrap",
+    width: "85%",
+    fontSize: 12
   },
   salut: {
     fontSize: 24,
-    fontWeight: '800',
-    color: colors.rootWhite,
-    paddingBottom: 15,
+    fontWeight: "800",
+    color: colors.rootBlack,
+    paddingBottom: 15
   },
   column: {
-    flexDirection: 'column',
-    paddingBottom: '30%',
+    flexDirection: "column",
+    paddingBottom: "30%"
   },
   info: {
-    color: colors.rootWhite,
-    width: '55%',
+    color: colors.rootBlack,
+    width: "55%",
     fontSize: 16,
-    paddingBottom: 15,
+    paddingBottom: 15
   },
   btns: {
-    justifyContent: 'space-between',
+    justifyContent: "space-between"
   },
   cardSizeStyle: {
     borderRadius: 2,
@@ -181,6 +193,9 @@ const styles = StyleSheet.create({
     shadowOffset: { width: 0, height: 5 },
     shadowOpacity: 0.2,
     shadowRadius: 55,
-    elevation: 2,
+    elevation: 2
   },
+  blackText: {
+    color: colors.rootBlack
+  }
 });
