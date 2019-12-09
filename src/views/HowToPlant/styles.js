@@ -19,7 +19,6 @@ export const Container = styled.ScrollView`
 export const Background = styled.View`
   width: 100%;
   padding: 0 40px;
-  font-weight: 800;
   align-items: center;
   justify-content: center;
 `;
@@ -33,20 +32,6 @@ export const Greeting = styled.Text`
   margin-bottom: 30px;
   font-weight: 500;
   color: ${colors.rootBlack};
-`;
-
-export const Header = styled.View`
-  padding-top: 10px;
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
 `;
 
 export const Body = styled.View`

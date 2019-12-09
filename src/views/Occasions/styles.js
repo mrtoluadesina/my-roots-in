@@ -35,19 +35,6 @@ export const Greeting = styled.Text`
   color: ${colors.rootBlack};
 `;
 
-export const Header = styled.View`
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
-`;
-
 export const Body = styled.View`
   margin-top: 30px;
   width: 100%;
