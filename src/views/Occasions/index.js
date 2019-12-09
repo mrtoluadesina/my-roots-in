@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { ImageBackground, TouchableOpacity } from "react-native";
+import { ImageBackground } from "react-native";
 
 import {
   Container,
