@@ -17,50 +17,36 @@ export const Container = styled.ScrollView`
 `;
 
 export const Background = styled.View`
-  flex: 1;
   width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
-  font-weight: 800;
+  padding: 0 40px;
   align-items: center;
   justify-content: center;
-  color: ${colors.rootBlack};
 `;
 
 export const Greeting = styled.Text`
   font-family: "Helvetica";
   font-size: 26px;
   line-height: 31px;
-  color: ${colors.rootGreenDark};
-  margin-bottom: 30px;
-`;
-
-export const Header = styled.View`
-  padding-top: 10px;
-  flex-direction: row;
+  text-align: center;
   width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
+  margin-bottom: 30px;
+  font-weight: 500;
+  color: ${colors.rootBlack};
 `;
 
 export const Body = styled.View`
-  margin-top: 10px;
-  width: 80%;
+  margin-top: 30px;
+  width: 100%;
   align-items: center;
 `;
 
 export const Description = styled.Text`
-  width: 90%;
+  width: 100%;
   font-family: "Helvetica-Bold";
-  font-size: 20px;
+  font-size: 15px;
   line-height: 24px;
   text-align: center;
+  color: ${colors.rootBlack};
 `;
 
 export const Choices = styled.View`
@@ -104,30 +90,9 @@ export const CardImage = styled.Image`
   height: 80%;
 `;
 
-export const cardSizeStyle = {
-  height: 105,
-  width: 110,
-  marginBottom: 50,
-  position: "relative",
-  alignItems: "center",
-  justifyContent: "center",
-  borderRadius: 2,
-  shadowColor: `${colors.boxShadow}`,
-  shadowOffset: { width: 0, height: 3 },
-  shadowOpacity: 1,
-  shadowRadius: 6,
-  elevation: 10
-};
-
-export const GradientBtn = {
-  marginVertical: 10,
-  width: "100%",
-  backgroundColor: colors.rootGreenDark
-};
-
 export const checkBoxStyle = {
   height: 105,
-  width: 110,
+  width: "40%",
   marginBottom: 50,
   marginLeft: 0,
   position: "relative",
@@ -141,7 +106,7 @@ export const checkBoxStyle = {
   elevation: 2
 };
 
-export const buttonStyle = {
+export const buttonShadows = {
   shadowColor: colors.rootShadow,
   justifyContent: "center",
   alignItems: "center",
@@ -154,15 +119,15 @@ export const buttonStyle = {
   elevation: 3
 };
 
-export const styles = {
+export const buttonStyle = {
   fullWidth: {
-    width: "80%",
+    width: "90%",
     height: 52,
-    backgroundColor: colors.rootWhite,
-    ...buttonStyle
+    backgroundColor: colors.rootGreenDark,
+    ...buttonShadows
   },
   textColor: {
-    color: colors.rootGreenDark,
+    color: colors.rootWhite,
     fontSize: 14,
     fontFamily: "Helvetica-Bold"
   }
