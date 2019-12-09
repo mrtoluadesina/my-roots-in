@@ -4,8 +4,6 @@ import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
@@ -40,11 +38,6 @@ export default function HowToPlant(props) {
     >
       <Container>
         <Background>
-          <Header>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
-              <Avater source={images.getDefaultAvatar}></Avater>
-            </TouchableOpacity>
-          </Header>
           <Body>
             <Greeting>How to plant a tree</Greeting>
             <Description>Choose how to plant your roots</Description>
@@ -65,7 +58,7 @@ export default function HowToPlant(props) {
                   }
                   resizeMode={"contain"}
                 />
-                <CardTitle>birthdays</CardTitle>
+                <CardTitle>remote</CardTitle>
               </CheckBox>
               <CheckBox
                 label="person"
@@ -84,7 +77,7 @@ export default function HowToPlant(props) {
                   <images.InPersonImage />
                 )}
 
-                <CardTitle>birthdays</CardTitle>
+                <CardTitle>in person</CardTitle>
               </CheckBox>
             </Choices>
           </Body>
