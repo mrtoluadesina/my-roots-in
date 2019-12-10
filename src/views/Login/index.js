@@ -21,7 +21,7 @@ function Login(props) {
 
   const initialState = {
     email: "tadesina90@gmail.com",
-    password: "8392198489712"
+    password: "thisdev.co"
   };
 
   const [values, setValues] = useState(initialState);
