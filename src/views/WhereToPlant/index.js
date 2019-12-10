@@ -6,8 +6,6 @@ import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
@@ -55,9 +53,6 @@ function WhereToPlant(props) {
     <ImageContainer source={images.whereToPlantATreeBgImg}>
       <Container>
         <Background>
-          <Header>
-            <Avater source={images.getDefaultAvatar}></Avater>
-          </Header>
           <Body>
             <Greeting>Where to plant</Greeting>
             <Description>Choose the location to plant your roots</Description>
@@ -70,7 +65,14 @@ function WhereToPlant(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <RNPickerSelect onValueChange={handleChange} items={countries}>
+                <RNPickerSelect
+                  onValueChange={handleChange}
+                  items={countries}
+                  style={{
+                    width: "100%",
+                    height: "100%"
+                  }}
+                >
                   <CardImage
                     source={images.allCountriesImg}
                     resizeMode="contain"

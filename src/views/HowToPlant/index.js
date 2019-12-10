@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
+
 import {
   Container,
   Background,
@@ -19,12 +21,21 @@ import { colors } from "../../constants/colors";
 import { CheckBox } from "../../components/CheckBox";
 
 export default function HowToPlant(props) {
-  const { navigate, getParam } = props.navigation;
+  const { navigate } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("TypeOfTree");
   };
 
   return (
@@ -85,10 +96,11 @@ export default function HowToPlant(props) {
             title="Next"
             class={buttonStyle.fullWidth}
             textStyle={buttonStyle.textColor}
-            onPress={() => navigate("TypeOfTree")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }

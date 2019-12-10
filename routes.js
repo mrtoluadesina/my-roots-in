@@ -199,11 +199,11 @@ const MainNavigator = createStackNavigator(
     },
 
     // Planting successful Route
-    PlantedSuccessfully: { screen: PlantedSuccessfully }
+    PlantedSuccessfully: { screen: PlantedSuccessfully, header: null }
   },
 
   {
-    initialRouteName: "OccasionTypes",
+    initialRouteName: "Home",
     defaultNavigationOptions: {
       headerStyle: {
         borderBottomWidth: 0,

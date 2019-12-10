@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
 
 import {
   Container,
@@ -21,9 +22,18 @@ import { CheckBox } from "../../components/CheckBox";
 
 export default function OccasionTypes(props) {
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("PlantedSuccessfully");
   };
 
   const { navigate } = props.navigation;
@@ -89,10 +99,11 @@ export default function OccasionTypes(props) {
             title="Submit"
             class={buttonStyle.fullWidth}
             textStyle={buttonStyle.textColor}
-            onPress={() => navigate("PlantedSuccessfully")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }

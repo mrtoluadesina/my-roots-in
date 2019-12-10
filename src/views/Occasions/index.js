@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
 
 import {
   Container,
@@ -23,9 +24,18 @@ export default function OccasionTypes(props) {
   const { navigate, getParam } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("HowToPlant");
   };
 
   return (
@@ -105,10 +115,11 @@ export default function OccasionTypes(props) {
             title="Next"
             class={styles.fullWidth}
             textStyle={styles.textColor}
-            onPress={() => navigate("HowToPlant")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }
