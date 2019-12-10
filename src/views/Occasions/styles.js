@@ -32,7 +32,7 @@ export const Greeting = styled.Text`
   width: 100%;
   margin-bottom: 30px;
   font-weight: 500;
-  color: ${colors.rootBlack};
+  color: ${colors.rootGreenDark};
 `;
 
 export const Body = styled.View`

@@ -7,56 +7,42 @@ export const Container = styled.ScrollView`
 `;
 
 export const Background = styled.View`
-  flex: 1;
   width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
-  font-weight: 800;
+  padding: 0 40px;
   align-items: center;
   justify-content: center;
-  color: ${colors.rootBlack};
 `;
 
 export const Greeting = styled.Text`
   font-family: "Helvetica";
   font-size: 26px;
   line-height: 31px;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 30px;
+  font-weight: 500;
   color: ${colors.rootGreenDark};
 `;
 
-export const Header = styled.View`
-  padding-top: 5px;
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
-`;
-
 export const Body = styled.View`
-  margin-top: 40px;
-  width: 80%;
+  margin-top: 30px;
+  width: 100%;
   align-items: center;
 `;
 
 export const Description = styled.Text`
-  width: 90%;
+  width: 100%;
   font-family: "Helvetica-Bold";
-  font-size: 20px;
+  font-size: 15px;
   line-height: 24px;
   text-align: center;
-  padding-top: 40px;
+  color: ${colors.rootBlack};
 `;
 
 export const Choices = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
-  margin-top: 70px;
+  margin-top: 50px;
   margin-bottom: 80px;
   width: 100%;
   justify-content: space-around;
@@ -67,23 +53,23 @@ export const CardTitle = styled.Text`
   text-transform: capitalize;
   font-size: 12px;
   line-height: 14px;
-  color: #323643;
+  color: ${colors.rootBlack};
   opacity: 0.5;
   text-align: center;
-  width: 120%;
+  /* position: relative;
+  bottom: 0; */
+  width: 100%;
   font-family: "Helvetica-Bold";
 `;
 
 export const CardImage = styled.Image`
-  width: 90%;
-  height: 90%;
-  border-radius: 2;
+  width: 100%;
+  height: 100%;
 `;
 
 export const ImageContainer = styled.ImageBackground`
-  width: 100%;
-  height: 100%;
   flex: 1;
+  width: 100%;
 `;
 
 export const checkBoxStyle = {
