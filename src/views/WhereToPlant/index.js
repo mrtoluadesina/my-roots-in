@@ -26,20 +26,17 @@ function WhereToPlant(props) {
   const { navigate } = props.navigation;
 
   const [whereToPlant, setWhereToPlant] = useState({ selected: "" });
-  const [selected, setSelected] = useState({ isSelected: "", label: "" });
   const [toast, setToast] = useState({});
 
   const handleChange = selected => {
+    console.log(selected);
     setWhereToPlant({ ...whereToPlant, selected });
   };
 
-  const handleChecked = ({ label, value }) => {
-    setSelected({ ...selected, isSelected: value, label });
-  };
-
   const handleSubmit = () => {
-    const { isSelected, label } = selected;
-    if (!isSelected.length && !label.length) {
+    console.log(selected);
+    const { selected } = whereToPlant;
+    if (!selected.length) {
       return toast.show("Please select an option!");
     }
     navigate("PlantTree");
@@ -58,9 +55,7 @@ function WhereToPlant(props) {
               <CheckBox
                 label="54Countries"
                 value="is54Countries"
-                checked={selected.isSelected == "is54Countries" ? true : false}
                 shadowColor={colors.rootShadow}
-                handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
                 <RNPickerSelect
@@ -82,11 +77,7 @@ function WhereToPlant(props) {
               <CheckBox
                 label="greatGreenWall"
                 value="isGreatGreenWall"
-                checked={
-                  selected.isSelected == "isGreatGreenWall" ? true : false
-                }
                 shadowColor={colors.rootShadow}
-                handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
                 <RNPickerSelect
