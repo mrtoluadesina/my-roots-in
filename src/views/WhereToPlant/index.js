@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
+import Toaster from "react-native-easy-toast";
 
 import {
   Container,
@@ -23,32 +23,30 @@ import metadata from "../../constants/meta";
 import { CheckBox } from "../../components/CheckBox";
 
 function WhereToPlant(props) {
-  const [countries, setCountries] = useState([]);
+  const { navigate } = props.navigation;
+
   const [whereToPlant, setWhereToPlant] = useState({ selected: "" });
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
-  const handleChange = selected => setWhereToPlant({ selected });
+  const handleChange = selected => {
+    setWhereToPlant({ ...whereToPlant, selected });
+  };
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
   };
 
-  const { navigate } = props.navigation;
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("PlantTree");
+  };
 
-  const { greatGreenWallCountries } = metadata;
+  const { greatGreenWallCountries, allAfricanCountries } = metadata;
 
-  useEffect(() => {
-    axios
-      .get("https://restcountries.eu/rest/v2/region/africa")
-      .then(({ data }) => {
-        const countries = data.reduce((acc, { name }) => {
-          const country = { value: name, label: name };
-          return [...acc, country];
-        }, []);
-        setCountries(countries);
-      })
-      .catch(console.log);
-  }, []);
   return (
     <ImageContainer source={images.whereToPlantATreeBgImg}>
       <Container>
@@ -67,7 +65,7 @@ function WhereToPlant(props) {
               >
                 <RNPickerSelect
                   onValueChange={handleChange}
-                  items={countries}
+                  items={allAfricanCountries}
                   style={{
                     width: "100%",
                     height: "100%"
@@ -108,10 +106,11 @@ function WhereToPlant(props) {
             title="Next"
             class={buttonStyle.fullWidth}
             textStyle={buttonStyle.textColor}
-            onPress={() => navigate("PlantTree")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageContainer>
   );
 }
