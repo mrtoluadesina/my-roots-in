@@ -1,4 +1,5 @@
 import InPersonImage from "./inPerson";
+import Tree from "./tree";
 
 export const images = {
   loginImg: require("./login.png"),
@@ -38,5 +39,8 @@ export const images = {
   giftImage: require("./gift.png"),
   anniversaryImg: require("./anniversary.png"),
   otherImage: require("./other.png"),
-  InPersonImage
+  rootFlowerImage: require("./root_flower.png"),
+  rootTreeImage: require("./tree.png"),
+  InPersonImage,
+  Tree
 };
