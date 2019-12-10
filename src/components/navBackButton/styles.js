@@ -16,19 +16,28 @@ import { colors } from "../../constants/colors";
 export const Container = styled.View`
   background-color: ${colors.rootWhite};
   flex-direction: row;
-  height: 60;
+  height: 70;
   align-items: flex-end;
-  padding: 10px 32px;
+  padding: 0px 32px;
+  padding-left: 0;
 `;
 
 export const TouchableOpacity = styled.TouchableOpacity`
-  width: 10%;
-  justify-content: center;
+  width: 20%;
+  height: 100%;
+  padding-top: 10px;
+  padding-left: 32px;
+  justify-content: flex-end;
 `;
 
 export const ProgressContainer = styled.View`
-  width: 90%;
+  flex: 1;
   height: 12;
   justify-content: center;
   align-items: flex-end;
+`;
+
+export const CardImage = styled.Image`
+  width: 100%;
+  height: 13px;
 `;

@@ -1,27 +1,31 @@
 import React, { useState } from "react";
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  ImageBackground
-} from "react-native";
+import { View, Text, StyleSheet, ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
+
 import { ScrollView } from "react-native-gesture-handler";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
 import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { Check } from "../../components/CheckBox/styles";
-import { buttonStyle } from "./styles";
+import { buttonStyle, CardImage } from "./styles";
 
 export default function PlantTree(props) {
   const { navigate } = props.navigation;
 
   const [options, setOptions] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ value, label }) => {
     setOptions({ ...options, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = options;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("OccasionTypes", { ...options });
   };
 
   return (
@@ -34,11 +38,6 @@ export default function PlantTree(props) {
       imageStyle={{ resizeMode: "stretch" }}
     >
       <ScrollView>
-        <View style={styles.pageHeader}>
-          <TouchableOpacity onPress={() => navigate("Settings")}>
-            <Image style={styles.imageStyle} source={images.getDefaultAvatar} />
-          </TouchableOpacity>
-        </View>
         <View style={styles.briefView}>
           <Text style={styles.headerText}>Why plant a tree</Text>
           <Text style={styles.mainBrief}>
@@ -47,10 +46,7 @@ export default function PlantTree(props) {
         </View>
         <View style={styles.selectOptions}>
           <View style={styles.singleSelect}>
-            <Image
-              style={styles.singleSelectImage}
-              source={images.climateImg}
-            />
+            <CardImage source={images.climateImg} />
             <View style={styles.description}>
               <Text style={styles.reason}>Climate action</Text>
               <Text style={styles.action}>To support climate action</Text>
@@ -61,13 +57,12 @@ export default function PlantTree(props) {
               checked={true}
               shadowColor={colors.rootShadow}
               backgroundColor={colors.rootGreenDark}
-              handleChange={handleChecked}
             >
               <Check source={images.tickImg} resizeMode="contain"></Check>
             </CheckBox>
           </View>
           <View style={styles.singleSelect}>
-            <Image style={styles.singleSelectImage} source={images.jobsImg} />
+            <CardImage source={images.jobsImg} />
             <View style={styles.description}>
               <Text style={styles.reason}>Create a job</Text>
               <Text style={styles.action}>To create jobs inside africa</Text>
@@ -78,13 +73,12 @@ export default function PlantTree(props) {
               checked={true}
               shadowColor={colors.rootShadow}
               backgroundColor={colors.rootGreenDark}
-              handleChange={handleChecked}
             >
               <Check source={images.tickImg} resizeMode="contain"></Check>
             </CheckBox>
           </View>
           <View style={styles.singleSelect}>
-            <images.AnniversaryImg width={50} height={50} />
+            <CardImage source={images.anniversaryImg} resizeMode="contain" />
             <View style={styles.description}>
               <Text style={styles.reason}>For occasion</Text>
               <Text style={styles.action}>To mark a special occasion </Text>
@@ -101,7 +95,7 @@ export default function PlantTree(props) {
             </CheckBox>
           </View>
           <View style={styles.singleSelect}>
-            <images.GiftImage width={50} height={50} />
+            <CardImage source={images.giftImg} resizeMode="contain" />
             <View style={styles.description}>
               <Text style={styles.reason}>For gift</Text>
               <Text style={styles.action}>To gift to self or loved one</Text>
@@ -123,10 +117,11 @@ export default function PlantTree(props) {
             title="Next"
             class={buttonStyle.fullWidth}
             textStyle={buttonStyle.textColor}
-            onPress={() => navigate("OccasionTypes", { ...options })}
+            onPress={handleSubmit}
           />
         </View>
       </ScrollView>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }
@@ -145,8 +140,9 @@ const styles = StyleSheet.create({
   },
   headerText: {
     fontSize: 25,
-    fontWeight: "300",
-    marginBottom: 20
+    fontWeight: "500",
+    marginBottom: 20,
+    color: colors.rootGreenDark
   },
   briefView: {
     alignItems: "center",
@@ -159,7 +155,9 @@ const styles = StyleSheet.create({
     textAlign: "center"
   },
   selectOptions: {
-    marginTop: 20
+    marginTop: 20,
+    paddingLeft: 10,
+    paddingRight: 10
   },
   singleSelect: {
     width: "100%",
@@ -171,11 +169,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center"
   },
-  singleSelectImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 4
-  },
+
   description: {
     flex: 1,
     marginLeft: 30,

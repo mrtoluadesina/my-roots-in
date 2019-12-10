@@ -1,3 +1,4 @@
+import styled from "styled-components";
 import { colors } from "../../constants/colors";
 
 export const buttonShadows = {
@@ -12,6 +13,12 @@ export const buttonShadows = {
   shadowRadius: 15,
   elevation: 3
 };
+
+export const CardImage = styled.Image`
+  width: 50;
+  height: 50;
+  border-radius: 4;
+`;
 
 export const buttonStyle = {
   fullWidth: {

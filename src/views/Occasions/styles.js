@@ -18,8 +18,7 @@ export const Container = styled.ScrollView`
 
 export const Background = styled.View`
   width: 100%;
-  padding: 0 50px;
-  font-family: "Helvetica-Bold";
+  padding: 0 40px;
   font-weight: 800;
   align-items: center;
   justify-content: center;
@@ -32,32 +31,20 @@ export const Greeting = styled.Text`
   text-align: center;
   width: 100%;
   margin-bottom: 30px;
-  color: ${colors.rootBlack};
-`;
-
-export const Header = styled.View`
-  flex-direction: row;
-  width: 100%;
-  justify-content: flex-end;
-  align-items: center;
-`;
-
-export const Avater = styled.Image`
-  width: 40px;
-  height: 40px;
-  border-radius: 20;
+  font-weight: 500;
+  color: ${colors.rootGreenDark};
 `;
 
 export const Body = styled.View`
-  margin-top: 10px;
-  width: 80%;
+  margin-top: 30px;
+  width: 100%;
   align-items: center;
 `;
 
 export const Description = styled.Text`
-  width: 90%;
+  width: 100%;
   font-family: "Helvetica-Bold";
-  font-size: 20px;
+  font-size: 15px;
   line-height: 24px;
   text-align: center;
   color: ${colors.rootBlack};
@@ -67,7 +54,7 @@ export const Choices = styled.View`
   flex-direction: row;
   flex-wrap: wrap;
   margin-top: 20px;
-  margin-bottom: 80px;
+  margin-bottom: 60px;
   width: 100%;
   justify-content: space-around;
   align-items: center;
@@ -78,6 +65,7 @@ export const CardTitle = styled.Text`
   font-size: 12px;
   line-height: 14px;
   color: ${colors.rootBlack};
+  opacity: 0.5;
   text-align: center;
   position: absolute;
   bottom: -20;
@@ -86,13 +74,13 @@ export const CardTitle = styled.Text`
 `;
 
 export const CardImage = styled.Image`
-  width: 70%;
-  height: 70%;
+  width: 80%;
+  height: 80%;
 `;
 
 export const checkBoxStyle = {
   height: 105,
-  width: 110,
+  width: "40%",
   marginBottom: 50,
   marginLeft: 0,
   position: "relative",
@@ -121,13 +109,13 @@ export const buttonStyle = {
 
 export const styles = {
   fullWidth: {
-    width: "80%",
+    width: "90%",
     height: 52,
-    backgroundColor: colors.rootWhite,
+    backgroundColor: colors.rootGreenDark,
     ...buttonStyle
   },
   textColor: {
-    color: colors.rootGreenDark,
+    color: colors.rootWhite,
     fontSize: 14,
     fontFamily: "Helvetica-Bold"
   }

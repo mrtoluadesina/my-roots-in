@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, View, Text } from "react-native";
+import { StyleSheet, View, Text, Alert } from "react-native";
 import { SimpleCard } from "../../components/Cards";
 import axios from "axios";
 import { connect } from "react-redux";
@@ -11,7 +11,8 @@ import {
   Avatar,
   OverviewImage,
   DetailsView,
-  ImageView
+  ImageView,
+  buttonStyles
 } from "./styles";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
@@ -33,18 +34,17 @@ function Dashboard(props) {
     const loadTree = async () => {
       try {
         const userTree = await axios.get(BASE_URL + "/tree/user/tree", config);
-        if (userTree) setTrees(userTree.data.payload);
+        if (!userTree) throw new Error(error);
+
+        setTrees(userTree.data.payload);
       } catch (error) {
         console.log(error);
-        throw new Error(error);
       }
     };
     loadTree();
   }, []);
 
-  console.log(trees);
-
-  const {countries, greenWall} = trees;
+  const { countries, greenWall } = trees;
 
   return (
     <Main contentContainerStyle={styles.dashboard}>
@@ -61,14 +61,20 @@ function Dashboard(props) {
                 style={[styles.details, styles.padAll, styles.cardSizeStyle]}
               >
                 <ImageView>
-                  <OverviewImage source={images.getStartedImg} />
+                  <OverviewImage
+                    source={images.rootFlowerImage}
+                    resizeMode="contain"
+                  />
                 </ImageView>
                 <DetailsView>
                   <Text style={styles.spanTitle}>The 54 Countries</Text>
                   <View style={styles.details}>
-                    <Text style={styles.quantity}>{countries ? countries.length : 0}</Text>
+                    <Text style={styles.quantity}>
+                      {countries ? countries.length : 0}
+                    </Text>
                     <Text style={styles.description}>
-                      You have {countries ? countries.length : 0} trees planted in the 54 countries of Africa
+                      You have {countries ? countries.length : 0} trees planted
+                      in the 54 countries of Africa
                     </Text>
                   </View>
                 </DetailsView>
@@ -77,14 +83,17 @@ function Dashboard(props) {
                 style={[styles.details, styles.padAll, styles.cardSizeStyle]}
               >
                 <ImageView>
-                  <OverviewImage source={images.getStartedImg} />
+                  <images.Tree />
                 </ImageView>
                 <DetailsView>
                   <Text style={styles.spanTitle}>The Green Great Wall</Text>
                   <View style={styles.details}>
-                    <Text style={styles.quantity}>{greenWall ? greenWall.length : 0}</Text>
+                    <Text style={styles.quantity}>
+                      {greenWall ? greenWall.length : 0}
+                    </Text>
                     <Text style={styles.description}>
-                      You have {greenWall ? greenWall.length : 0} trees planted on the great green wall
+                      You have {greenWall ? greenWall.length : 0} trees planted
+                      on the great green wall
                     </Text>
                   </View>
                 </DetailsView>
@@ -99,18 +108,17 @@ function Dashboard(props) {
               Plant a tree save the planet and support Africa by creating a job
             </Text>
           </Row>
-          <Row style={[styles.cardSizeStyle, styles.btns]}>
+          <Row style={styles.btns}>
+            <SimpleButton
+              title="GEOTAG A TREE"
+              class={buttonStyles.fullWidth}
+              textStyle={buttonStyles.textColor}
+              onPress={() => Alert.alert("Not available on this version")}
+            />
             <SimpleButton
               title="RESERVE A TREE"
-              class={{
-                width: "45%",
-                backgroundColor: colors.rootGreenDark,
-                justifyContent: "center"
-              }}
-              textStyle={{
-                color: colors.rootWhite,
-                fontSize: 14
-              }}
+              class={buttonStyles.fullWidth}
+              textStyle={buttonStyles.textColor}
               onPress={() => navigate("WhereToPlant")}
             />
           </Row>
@@ -154,23 +162,25 @@ const styles = StyleSheet.create({
     borderRadius: 20
   },
   spanTitle: {
-    color: colors.rootDashboardSpanTitle,
-    fontSize: 16,
-    letterSpacing: 1
+    color: colors.rootGreenDark,
+    fontSize: 15,
+    fontFamily: "Helvetica-Bold"
   },
   quantity: {
-    fontSize: 40,
-    paddingRight: 10,
-    width: "15%"
+    fontSize: 25,
+    fontWeight: "500",
+    color: colors.rootGreenDark,
+    width: "25%"
   },
   description: {
+    flex: 1,
     flexWrap: "wrap",
-    width: "85%",
-    fontSize: 12
+    fontSize: 10
   },
   salut: {
     fontSize: 24,
     fontWeight: "800",
+    fontFamily: "Helvetica-Bold",
     color: colors.rootBlack,
     paddingBottom: 15
   },
@@ -180,7 +190,7 @@ const styles = StyleSheet.create({
   },
   info: {
     color: colors.rootBlack,
-    width: "55%",
+    width: "80%",
     fontSize: 16,
     paddingBottom: 15
   },
@@ -194,8 +204,5 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 55,
     elevation: 2
-  },
-  blackText: {
-    color: colors.rootBlack
   }
 });

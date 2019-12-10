@@ -13,7 +13,7 @@ export const ImageContainer = styled.Image`
 `;
 
 export const Section = styled.View`
-  width: 70%;
+  width: 100%;
   align-items: center;
   justify-content: center;
 `;
@@ -28,13 +28,15 @@ export const Heading = styled.Text`
 `;
 
 export const Paragraph = styled.Text`
+  width: 250;
+  font-family: "Helvetica";
   font-size: 15;
+  font-weight: 500;
+  text-align: center;
   line-height: 18;
   letter-spacing: 0.5;
-  font-family: "Helvetica";
+  opacity: 0.7;
   color: ${colors.rootBlack};
-  width: 250;
-  text-align: center;
   margin-top: 2;
 `;
 

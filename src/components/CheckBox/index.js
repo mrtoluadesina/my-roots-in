@@ -3,6 +3,7 @@ import { Container } from "./styles";
 
 export const CheckBox = props => {
   const toggleCheck = selected => {
+    if (!props.handleChange) return null;
     props.handleChange(selected);
   };
 

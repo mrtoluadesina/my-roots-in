@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { TouchableOpacity, ImageBackground } from "react-native";
+import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
+
 import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
@@ -21,12 +21,21 @@ import { colors } from "../../constants/colors";
 import { CheckBox } from "../../components/CheckBox";
 
 export default function HowToPlant(props) {
-  const { navigate, getParam } = props.navigation;
+  const { navigate } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("TypeOfTree");
   };
 
   return (
@@ -40,11 +49,6 @@ export default function HowToPlant(props) {
     >
       <Container>
         <Background>
-          <Header>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
-              <Avater source={images.getDefaultAvatar}></Avater>
-            </TouchableOpacity>
-          </Header>
           <Body>
             <Greeting>How to plant a tree</Greeting>
             <Description>Choose how to plant your roots</Description>
@@ -65,7 +69,7 @@ export default function HowToPlant(props) {
                   }
                   resizeMode={"contain"}
                 />
-                <CardTitle>birthdays</CardTitle>
+                <CardTitle>remote</CardTitle>
               </CheckBox>
               <CheckBox
                 label="person"
@@ -84,7 +88,7 @@ export default function HowToPlant(props) {
                   <images.InPersonImage />
                 )}
 
-                <CardTitle>birthdays</CardTitle>
+                <CardTitle>in person</CardTitle>
               </CheckBox>
             </Choices>
           </Body>
@@ -92,10 +96,11 @@ export default function HowToPlant(props) {
             title="Next"
             class={buttonStyle.fullWidth}
             textStyle={buttonStyle.textColor}
-            onPress={() => navigate("TypeOfTree")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }

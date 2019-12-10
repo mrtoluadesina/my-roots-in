@@ -1,17 +1,17 @@
 import React, { useState } from "react";
-import { ImageBackground, TouchableOpacity } from "react-native";
+import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
 
 import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
   CardTitle,
   checkBoxStyle,
+  CardImage,
   styles
 } from "./styles";
 
@@ -24,9 +24,18 @@ export default function OccasionTypes(props) {
   const { navigate, getParam } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("HowToPlant");
   };
 
   return (
@@ -40,11 +49,6 @@ export default function OccasionTypes(props) {
     >
       <Container>
         <Background>
-          <Header>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
-              <Avater source={images.getDefaultAvatar}></Avater>
-            </TouchableOpacity>
-          </Header>
           <Body>
             <Greeting>
               Type of{" "}
@@ -63,7 +67,7 @@ export default function OccasionTypes(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.GiftImage />
+                <CardImage source={images.giftImage} resizeMode={"contain"} />
                 <CardTitle>birthdays</CardTitle>
               </CheckBox>
               <CheckBox
@@ -74,7 +78,10 @@ export default function OccasionTypes(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.AnniversaryImg />
+                <CardImage
+                  source={images.anniversaryImg}
+                  resizeMode={"contain"}
+                />
                 <CardTitle>anniversary</CardTitle>
               </CheckBox>
               <CheckBox
@@ -85,7 +92,10 @@ export default function OccasionTypes(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.HolidayImage />
+                <CardImage
+                  source={images.holidayImage}
+                  resizeMode={"contain"}
+                />
                 <CardTitle>holidays</CardTitle>
               </CheckBox>
               <CheckBox
@@ -96,7 +106,7 @@ export default function OccasionTypes(props) {
                 handleChange={handleChecked}
                 styles={checkBoxStyle}
               >
-                <images.OtherImage />
+                <CardImage source={images.otherImage} resizeMode={"contain"} />
                 <CardTitle>others</CardTitle>
               </CheckBox>
             </Choices>
@@ -105,10 +115,11 @@ export default function OccasionTypes(props) {
             title="Next"
             class={styles.fullWidth}
             textStyle={styles.textColor}
-            onPress={() => navigate("HowToPlant")}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }

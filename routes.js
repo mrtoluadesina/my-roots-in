@@ -128,7 +128,8 @@ const MainNavigator = createStackNavigator(
         header: (
           <NavBackButton
             onPress={() => navigation.goBack()}
-            progressLevel={0.7}
+            progressLevel={0.5}
+            showProgress
           />
         ),
         headerStyle: {
@@ -172,6 +173,7 @@ const MainNavigator = createStackNavigator(
           <NavBackButton
             onPress={() => navigation.goBack()}
             progressLevel={0.7}
+            showProgress
           />
         ),
         headerStyle: {
@@ -197,7 +199,7 @@ const MainNavigator = createStackNavigator(
     },
 
     // Planting successful Route
-    PlantedSuccessfully: { screen: PlantedSuccessfully }
+    PlantedSuccessfully: { screen: PlantedSuccessfully, header: null }
   },
 
   {

@@ -42,7 +42,7 @@ export const Title = styled.Text`
 export const BigTitle = styled.Text`
   font-size: 26;
   letter-spacing: 1;
-  color: ${colors.rootGreenDark}
+  color: ${colors.rootGreenDark};
 `;
 
 export const DashboardBg = styled.ImageBackground`
@@ -50,7 +50,7 @@ export const DashboardBg = styled.ImageBackground`
   height: 100%;
   position: relative;
   padding: 20px;
-  justify-content: space-between
+  justify-content: space-between;
 `;
 
 export const Row = styled.View`
@@ -69,11 +69,39 @@ export const Avatar = styled.Image`
 export const ImageView = styled.View`
   flex-basis: 25%;
 `;
+
 export const OverviewImage = styled.Image`
-  width: 60px;
-  height: 60px;
+  width: 40px;
+  height: 40px;
 `;
 
 export const DetailsView = styled.View`
   flex-basis: 75%;
 `;
+
+export const buttonShadows = {
+  shadowColor: colors.rootShadow,
+  justifyContent: "center",
+  alignItems: "center",
+  shadowOffset: {
+    width: 0,
+    height: 4
+  },
+  shadowOpacity: 0.4,
+  shadowRadius: 15,
+  elevation: 3
+};
+
+export const buttonStyles = {
+  fullWidth: {
+    width: "45%",
+    height: 52,
+    backgroundColor: colors.rootGreenDark,
+    ...buttonShadows
+  },
+  textColor: {
+    color: colors.rootWhite,
+    fontSize: 11,
+    fontFamily: "Helvetica-Bold"
+  }
+};

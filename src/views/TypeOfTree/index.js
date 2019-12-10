@@ -1,18 +1,17 @@
 import React, { useState } from "react";
-import { ImageBackground, TouchableOpacity, Alert } from "react-native";
+import { ImageBackground } from "react-native";
+import Toaster from "react-native-easy-toast";
 
 import {
   Container,
   Background,
   Greeting,
-  Header,
-  Avater,
   Description,
   Body,
   Choices,
   CardTitle,
   CardImage,
-  GradientBtn,
+  buttonStyle,
   checkBoxStyle
 } from "./styles";
 
@@ -23,9 +22,18 @@ import { CheckBox } from "../../components/CheckBox";
 
 export default function OccasionTypes(props) {
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
+  const [toast, setToast] = useState({});
 
   const handleChecked = ({ label, value }) => {
     setSelected({ ...selected, isSelected: value, label });
+  };
+
+  const handleSubmit = () => {
+    const { isSelected, label } = selected;
+    if (!isSelected.length && !label.length) {
+      return toast.show("Please select an option!");
+    }
+    navigate("PlantedSuccessfully");
   };
 
   const { navigate } = props.navigation;
@@ -41,11 +49,6 @@ export default function OccasionTypes(props) {
     >
       <Container>
         <Background>
-          <Header>
-            <TouchableOpacity onPress={() => navigate("Settings")}>
-              <Avater source={images.getDefaultAvatar}></Avater>
-            </TouchableOpacity>
-          </Header>
           <Body>
             <Greeting>What type of tree</Greeting>
             <Description>
@@ -94,15 +97,13 @@ export default function OccasionTypes(props) {
           </Body>
           <SimpleButton
             title="Submit"
-            class={GradientBtn}
-            textStyle={{
-              color: colors.rootWhite,
-              fontSize: 14
-            }}
-            onPress={() => navigate("PlantedSuccessfully")}
+            class={buttonStyle.fullWidth}
+            textStyle={buttonStyle.textColor}
+            onPress={handleSubmit}
           />
         </Background>
       </Container>
+      <Toaster ref={e => setToast(e)} />
     </ImageBackground>
   );
 }

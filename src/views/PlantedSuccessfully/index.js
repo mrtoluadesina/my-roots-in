@@ -20,14 +20,15 @@ export default function PlantedSuccessfully(props) {
         source={images.verificationCompleteBgImg}
         style={{
           flex: 1,
-          width: "100%",
-          height: "100%",
-          alignContent: "center"
+          width: "100%"
         }}
         imageStyle={{ resizeMode: "stretch" }}
       >
-        <Section style={{ flex: 1, width: "100%" }}>
-          <ImageContainer source={images.verificationImg}></ImageContainer>
+        <Section>
+          <ImageContainer
+            source={images.verificationImg}
+            imageStyle={{ resizeMode: "contain" }}
+          />
 
           <Section style={{ marginBottom: 250, marginTop: 60 }}>
             <Heading>Reservation successful</Heading>
@@ -38,7 +39,7 @@ export default function PlantedSuccessfully(props) {
               title="Got it!"
               textStyle={styles.textColor}
               class={styles.fullWidth}
-              onPress={() => navigate("Home")}
+              onPress={() => navigate("Dashboard")}
             ></SimpleButton>
           </Section>
         </Section>
