@@ -133,11 +133,11 @@ const mapStateToProps = ({ Login }) => ({
   user: Login.user
 });
 
-const mapDispatchToProps = dispatch => ({
-  plantTreeHandler: payload => dispatch(plantTreeMethod(payload))
-});
+// const mapDispatchToProps = dispatch => ({
+//   plantTreeHandler: payload => dispatch(plantTreeMethod(payload))
+// });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+export default connect(mapStateToProps, null)(Dashboard);
 
 const styles = StyleSheet.create({
   dashboard: {
