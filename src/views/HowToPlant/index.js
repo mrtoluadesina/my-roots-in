@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
 import Toaster from "react-native-easy-toast";
-
+import {connect} from "react-redux";
 import {
   Container,
   Background,
@@ -19,8 +19,9 @@ import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 import { CheckBox } from "../../components/CheckBox";
+import { howToPlantMethod } from "../Dashboard/redux/action";
 
-export default function HowToPlant(props) {
+function HowToPlant(props) {
   const { navigate } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
@@ -38,8 +39,8 @@ export default function HowToPlant(props) {
 
     // payload
     const payload = label;
-
-    // do your redux logic here
+    
+    props.handleHowToPlant(payload);
     navigate("TypeOfTree");
   };
 
@@ -109,3 +110,14 @@ export default function HowToPlant(props) {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({roots}) => ({
+  isLoading: roots.isLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleHowToPlant: payload => dispatch(howToPlantMethod(payload))
+})
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(HowToPlant);
