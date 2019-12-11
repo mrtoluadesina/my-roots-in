@@ -15,12 +15,12 @@ export const whereToPlantMethod = (locationType, country) => ({
 
 export const whyPlantMethod = isGift => ({
   type: types.SET_WHY_PLANT_A_TREE,
+  isOcassion,
   isGift
 });
 
-export const typeOfOcassionMethod = (isOcassion, ocassion) => ({
+export const typeOfOcassionMethod = ocassion => ({
   type: types.SET_TYPE_OF_OCCASSION,
-  isOcassion,
   ocassion
 });
 
