@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
 import Toaster from "react-native-easy-toast";
-
+import {connect} from 'react-redux';
 import {
   Container,
   Background,
@@ -23,6 +23,7 @@ import { SimpleButton } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 import metadata from "../../constants/meta";
 import { CheckBox } from "../../components/CheckBox";
+import { whereToPlantMethod } from "../Dashboard/redux/action";
 
 function WhereToPlant(props) {
   const { navigate } = props.navigation;
@@ -38,7 +39,7 @@ function WhereToPlant(props) {
     setWhereToPlant({ ...whereToPlant, locationType, country });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { country, locationType } = whereToPlant;
     if (!country.length && !locationType.length) {
       return toast.show("Please select an option!");
@@ -48,7 +49,7 @@ function WhereToPlant(props) {
     const payload = { country, locationType };
 
     // do your redux logic here
-
+    await props.handleWhereToPlant(payload);
     navigate("PlantTree");
   };
 
@@ -120,4 +121,12 @@ function WhereToPlant(props) {
   );
 }
 
-export default WhereToPlant;
+const mapStateToProps = ({roots}) => ({
+  isLoading: roots.isLoading,
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleWhereToPlant: payload => dispatch(whereToPlantMethod(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(WhereToPlant);
