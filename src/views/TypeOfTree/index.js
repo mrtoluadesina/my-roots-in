@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
 import Toaster from "react-native-easy-toast";
-
+import {connect} from 'react-redux';
 import {
   Container,
   Background,
@@ -19,8 +19,9 @@ import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { colors } from "../../constants/colors";
 import { CheckBox } from "../../components/CheckBox";
+import { plantTree } from "../Dashboard/redux/action";
 
-export default function OccasionTypes(props) {
+function TypeOfTree(props) {
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
   const [toast, setToast] = useState({});
 
@@ -28,7 +29,7 @@ export default function OccasionTypes(props) {
     setSelected({ ...selected, isSelected: value, label });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     const { isSelected, label } = selected;
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
@@ -37,8 +38,7 @@ export default function OccasionTypes(props) {
     // payload
     const treeType = label;
 
-    // do your redux logic here
-
+    await props.handlePlantTree(treeType)
     navigate("PlantedSuccessfully");
   };
 
@@ -113,3 +113,13 @@ export default function OccasionTypes(props) {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({roots}) => ({
+  isLoading: roots.isLoading
+})
+
+const mapDispatchToProps = dispatch => ({
+  handlePlantTree: payload => dispatch(plantTree(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(TypeOfTree);
