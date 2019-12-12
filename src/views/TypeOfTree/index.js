@@ -33,6 +33,12 @@ export default function OccasionTypes(props) {
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
     }
+
+    // payload
+    const treeType = label;
+
+    // do your redux logic here
+
     navigate("PlantedSuccessfully");
   };
 
@@ -56,7 +62,7 @@ export default function OccasionTypes(props) {
             </Description>
             <Choices>
               <CheckBox
-                label="decoration"
+                label="decorationTree"
                 value="isDecoration"
                 checked={selected.isSelected == "isDecoration" ? true : false}
                 shadowColor={colors.rootShadow}
@@ -67,7 +73,7 @@ export default function OccasionTypes(props) {
                 <CardTitle>decoration trees</CardTitle>
               </CheckBox>
               <CheckBox
-                label="fruit"
+                label="fruitTree"
                 value="isFruit"
                 checked={selected.isSelected == "isFruit" ? true : false}
                 shadowColor={colors.rootShadow}
@@ -78,7 +84,7 @@ export default function OccasionTypes(props) {
                 <CardTitle>fruit trees</CardTitle>
               </CheckBox>
               <CheckBox
-                label="environmental"
+                label="environmentalTree"
                 value="isEnvironmental"
                 checked={
                   selected.isSelected == "isEnvironmental" ? true : false

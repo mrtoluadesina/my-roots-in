@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../constants/colors";
-import { black } from "ansi-colors";
-
 export const Container = styled.ScrollView`
   flex: 1;
 `;
@@ -47,6 +45,27 @@ export const Choices = styled.View`
   width: 100%;
   justify-content: space-around;
   align-items: center;
+`;
+
+export const SelectedCountryCard = styled.View`
+  width: 90%;
+  /* padding: 0 40px; */
+  align-items: center;
+  justify-content: center;
+  background-color: #f7f7f7;
+  height: 50px;
+  margin-top: 20px;
+  border-radius: 5px;
+`;
+
+export const SelectedCountry = styled.Text`
+  font-size: 12px;
+  line-height: 14px;
+  color: ${colors.rootBlack};
+  opacity: 0.8;
+  text-align: center;
+  width: 100%;
+  font-family: "Helvetica-Bold";
 `;
 
 export const CardTitle = styled.Text`
