@@ -35,6 +35,11 @@ export default function HowToPlant(props) {
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
     }
+
+    // payload
+    const payload = label;
+
+    // do your redux logic here
     navigate("TypeOfTree");
   };
 
@@ -72,7 +77,7 @@ export default function HowToPlant(props) {
                 <CardTitle>remote</CardTitle>
               </CheckBox>
               <CheckBox
-                label="person"
+                label="inPerson"
                 value="isPerson"
                 checked={selected.isSelected == "isPerson" ? true : false}
                 shadowColor={colors.rootShadow}

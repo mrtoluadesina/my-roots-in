@@ -35,6 +35,11 @@ export default function OccasionTypes(props) {
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
     }
+
+    // payload
+    const payload = label;
+
+    // do your redux logic here
     navigate("HowToPlant");
   };
 

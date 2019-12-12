@@ -25,6 +25,14 @@ export default function PlantTree(props) {
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
     }
+
+    // payload
+    const reason = {
+      isOccasion: isSelected == "isOccasion" ? true : false,
+      isGift: isSelected == "isGift" ? true : false
+    };
+
+    // do redux logic here before routing
     navigate("OccasionTypes", { ...options });
   };
 

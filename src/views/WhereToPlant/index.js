@@ -13,7 +13,9 @@ import {
   CardImage,
   ImageContainer,
   checkBoxStyle,
-  buttonStyle
+  buttonStyle,
+  SelectedCountry,
+  SelectedCountryCard
 } from "./styles";
 
 import { images } from "../../../assets/images";
@@ -25,20 +27,28 @@ import { CheckBox } from "../../components/CheckBox";
 function WhereToPlant(props) {
   const { navigate } = props.navigation;
 
-  const [whereToPlant, setWhereToPlant] = useState({ selected: "" });
+  const [whereToPlant, setWhereToPlant] = useState({
+    country: "",
+    locationType: ""
+  });
+
   const [toast, setToast] = useState({});
 
-  const handleChange = selected => {
-    console.log(selected);
-    setWhereToPlant({ ...whereToPlant, selected });
+  const handleChange = locationType => country => {
+    setWhereToPlant({ ...whereToPlant, locationType, country });
   };
 
   const handleSubmit = () => {
-    console.log(selected);
-    const { selected } = whereToPlant;
-    if (!selected.length) {
+    const { country, locationType } = whereToPlant;
+    if (!country.length && !locationType.length) {
       return toast.show("Please select an option!");
     }
+
+    // payload
+    const payload = { country, locationType };
+
+    // do your redux logic here
+
     navigate("PlantTree");
   };
 
@@ -51,6 +61,14 @@ function WhereToPlant(props) {
           <Body>
             <Greeting>Where to plant</Greeting>
             <Description>Choose the location to plant your roots</Description>
+
+            <SelectedCountryCard>
+              <SelectedCountry>
+                {whereToPlant.country
+                  ? whereToPlant.country
+                  : "Country of choice"}
+              </SelectedCountry>
+            </SelectedCountryCard>
             <Choices>
               <CheckBox
                 label="54Countries"
@@ -59,12 +77,8 @@ function WhereToPlant(props) {
                 styles={checkBoxStyle}
               >
                 <RNPickerSelect
-                  onValueChange={handleChange}
+                  onValueChange={handleChange("54C")}
                   items={allAfricanCountries}
-                  style={{
-                    width: "100%",
-                    height: "100%"
-                  }}
                 >
                   <CardImage
                     source={images.allCountriesImg}
@@ -81,7 +95,7 @@ function WhereToPlant(props) {
                 styles={checkBoxStyle}
               >
                 <RNPickerSelect
-                  onValueChange={handleChange}
+                  onValueChange={handleChange("GGW")}
                   items={greatGreenWallCountries}
                 >
                   <CardImage
