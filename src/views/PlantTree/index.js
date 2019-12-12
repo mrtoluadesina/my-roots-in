@@ -26,21 +26,14 @@ function PlantTree(props) {
     if (!isSelected.length && !label.length) {
       return toast.show("Please select an option!");
     }
-<<<<<<< HEAD
 
     // payload
-    const reason = {
+    const payload = {
       isOccasion: isSelected == "isOccasion" ? true : false,
       isGift: isSelected == "isGift" ? true : false
     };
 
-    // do redux logic here before routing
-=======
-    const payload = {
-      ...options
-    }
     props.handleWhyPlantTree(payload);
->>>>>>> upate the handle submit in whyplanttree screen to send payload to redux store
     navigate("OccasionTypes", { ...options });
   };
 
