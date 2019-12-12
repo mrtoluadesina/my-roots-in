@@ -22,7 +22,8 @@ import { colors } from "../../constants/colors";
 import { SimpleButton } from "../../components/Buttons";
 
 export default function Settings(props) {
-  const details = metadata.signupPage;
+  const { navigate } = props.navigation;
+  const details = metadata.settings;
 
   const initialFormState = {
     name: "John Doe",

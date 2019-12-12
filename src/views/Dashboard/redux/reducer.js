@@ -33,12 +33,12 @@ export default (state = initialState, action = {}) => {
     case SET_WHY_PLANT_A_TREE:
       return {
         ...state,
-        isGift: action.isGift
+        isGift: action.isGift,
+        isOcassion: action.isOcassion
       }
     case SET_TYPE_OF_OCCASSION:
       return {
         ...state,
-        isOcassion: action.isOcassion,
         ocassion: action.ocassion
       }
     case SET_HOW_TO_PLANT:

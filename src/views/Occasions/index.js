@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ImageBackground } from "react-native";
 import Toaster from "react-native-easy-toast";
-
+import {connect} from 'react-redux';
 import {
   Container,
   Background,
@@ -19,8 +19,9 @@ import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { colors } from "../../constants/colors";
+import { typeOfOcassionMethod } from "../Dashboard/redux/action";
 
-export default function OccasionTypes(props) {
+function OccasionTypes(props) {
   const { navigate, getParam } = props.navigation;
 
   const [selected, setSelected] = useState({ isSelected: "", label: "" });
@@ -39,7 +40,7 @@ export default function OccasionTypes(props) {
     // payload
     const payload = label;
 
-    // do your redux logic here
+    props.handleOccasionType(payload);
     navigate("HowToPlant");
   };
 
@@ -128,3 +129,13 @@ export default function OccasionTypes(props) {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({roots}) => ({
+  isLoading: roots.isLoading
+})
+
+const mapDispatchToProps = dispatch => ({
+  handleOccasionType: payload => dispatch(typeOfOcassionMethod(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(OccasionTypes);

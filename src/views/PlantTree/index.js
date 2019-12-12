@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import Toaster from "react-native-easy-toast";
-
+import {connect} from 'react-redux';
 import { ScrollView } from "react-native-gesture-handler";
 import { images } from "../../../assets/images";
 import { colors } from "../../constants/colors";
@@ -9,8 +9,9 @@ import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { Check } from "../../components/CheckBox/styles";
 import { buttonStyle, CardImage } from "./styles";
+import { whyPlantMethod } from "../Dashboard/redux/action";
 
-export default function PlantTree(props) {
+function PlantTree(props) {
   const { navigate } = props.navigation;
 
   const [options, setOptions] = useState({ isSelected: "", label: "" });
@@ -27,12 +28,12 @@ export default function PlantTree(props) {
     }
 
     // payload
-    const reason = {
+    const payload = {
       isOccasion: isSelected == "isOccasion" ? true : false,
       isGift: isSelected == "isGift" ? true : false
     };
 
-    // do redux logic here before routing
+    props.handleWhyPlantTree(payload);
     navigate("OccasionTypes", { ...options });
   };
 
@@ -133,6 +134,16 @@ export default function PlantTree(props) {
     </ImageBackground>
   );
 }
+
+const mapStateToProps = ({roots}) => ({
+  isLoading: roots.isLoading
+});
+
+const mapDispatchToProps = dispatch => ({
+  handleWhyPlantTree: payload => dispatch(whyPlantMethod(payload))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PlantTree);
 
 const styles = StyleSheet.create({
   pageHeader: {

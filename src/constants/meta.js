@@ -42,6 +42,29 @@ export default metadata = {
     }
   ],
 
+  settings: [
+    {
+      label: "Full Name",
+      type: "name",
+      text: "name" // input field textContentType
+    },
+    {
+      label: "Email",
+      type: "email",
+      text: "emailAddress" // input field textContentType
+    },
+    {
+      label: "Country",
+      type: "country",
+      text: "countryName" // input field textContentType
+    },
+    {
+      label: "Phone",
+      type: "phone",
+      text: "telephoneNumber" // input field textContentType
+    }
+  ],
+
   greatGreenWallCountries: [
     { value: "Burkina Faso", label: "Burkina Faso" },
     { value: "Djibouti", label: "Djibouti" },
