@@ -88,7 +88,7 @@ function Login(props) {
             <LinkButton
               title="Don't have an account yet?"
               textStyle={styles.blackText}
-              onPress={() => navigate("Settings")}
+              onPress={() => navigate("Signup")}
             />
           </View>
         </Container>
