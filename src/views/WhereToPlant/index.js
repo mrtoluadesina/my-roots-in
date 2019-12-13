@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import RNPickerSelect from "react-native-picker-select";
 import Toaster from "react-native-easy-toast";
-import {connect} from 'react-redux';
+import { connect } from "react-redux";
 import {
   Container,
   Background,
@@ -71,41 +71,41 @@ function WhereToPlant(props) {
               </SelectedCountry>
             </SelectedCountryCard>
             <Choices>
-              <CheckBox
-                label="54Countries"
-                value="is54Countries"
-                shadowColor={colors.rootShadow}
-                styles={checkBoxStyle}
+              <RNPickerSelect
+                onValueChange={handleChange("54C")}
+                items={allAfricanCountries}
               >
-                <RNPickerSelect
-                  onValueChange={handleChange("54C")}
-                  items={allAfricanCountries}
+                <CheckBox
+                  label="54Countries"
+                  value="is54Countries"
+                  shadowColor={colors.rootShadow}
+                  styles={checkBoxStyle}
                 >
                   <CardImage
                     source={images.allCountriesImg}
                     resizeMode="contain"
                   />
                   <CardTitle>54 countries</CardTitle>
-                </RNPickerSelect>
-              </CheckBox>
+                </CheckBox>
+              </RNPickerSelect>
 
-              <CheckBox
-                label="greatGreenWall"
-                value="isGreatGreenWall"
-                shadowColor={colors.rootShadow}
-                styles={checkBoxStyle}
+              <RNPickerSelect
+                onValueChange={handleChange("GGW")}
+                items={greatGreenWallCountries}
               >
-                <RNPickerSelect
-                  onValueChange={handleChange("GGW")}
-                  items={greatGreenWallCountries}
+                <CheckBox
+                  label="greatGreenWall"
+                  value="isGreatGreenWall"
+                  shadowColor={colors.rootShadow}
+                  styles={checkBoxStyle}
                 >
                   <CardImage
                     source={images.greatGreenWallImg}
                     resizeMode="contain"
                   />
                   <CardTitle>great green wall</CardTitle>
-                </RNPickerSelect>
-              </CheckBox>
+                </CheckBox>
+              </RNPickerSelect>
             </Choices>
           </Body>
           <SimpleButton
@@ -121,12 +121,12 @@ function WhereToPlant(props) {
   );
 }
 
-const mapStateToProps = ({roots}) => ({
-  isLoading: roots.isLoading,
+const mapStateToProps = ({ roots }) => ({
+  isLoading: roots.isLoading
 });
 
 const mapDispatchToProps = dispatch => ({
   handleWhereToPlant: payload => dispatch(whereToPlantMethod(payload))
-})
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(WhereToPlant);
