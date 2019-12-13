@@ -9,7 +9,7 @@ import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { Check } from "../../components/CheckBox/styles";
 import { buttonStyle, CardImage } from "./styles";
-import { whyPlantMethod } from "../Dashboard/redux/action";
+import { whyPlant } from "../Dashboard/redux/action";
 
 function PlantTree(props) {
   const { navigate } = props.navigation;
@@ -140,7 +140,7 @@ const mapStateToProps = ({roots}) => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  handleWhyPlantTree: payload => dispatch(whyPlantMethod(payload))
+  handleWhyPlantTree: payload => dispatch(whyPlant(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlantTree);
