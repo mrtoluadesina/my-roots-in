@@ -1,7 +1,7 @@
 import * as types from "./types";
 import axios from "axios";
 import { BASE_URL } from "../../../constants/api";
-import store from '../../../redux/store';
+import store from "../../../redux/store";
 
 export const loading = isLoading => ({ type: types.SET_LOADING, isLoading });
 
@@ -13,10 +13,10 @@ export const whereToPlantMethod = (locationType, country) => ({
   country
 });
 
-export const whyPlantMethod = isGift => ({
+export const whyPlantMethod = (isGift, isOccasion) => ({
   type: types.SET_WHY_PLANT_A_TREE,
-  isOcassion,
-  isGift
+  isGift,
+  isOccasion
 });
 
 export const typeOfOcassionMethod = ocassion => ({
@@ -44,15 +44,15 @@ export const whereToPlant = payload => dispatch => {
 
 export const whyPlant = payload => dispatch => {
   dispatch(loading(true));
-  dispatch(whyPlantMethod(payload.isGift));
+  const { isOccasion, isGift } = payload;
+  dispatch(whyPlantMethod(isGift, isOccasion));
   dispatch(loading(false));
   return { statusCode: 200, message: "reason chosen" };
 };
 
 export const typeOfOcassion = payload => dispatch => {
   dispatch(loading(true));
-  const { isOcassion, ocassion } = payload;
-  dispatch(typeOfOcassionMethod(isOcassion, ocassion));
+  dispatch(typeOfOcassionMethod(payload));
   return { statusCode: 200, message: "ocassion selected" };
 };
 
@@ -76,20 +76,20 @@ const config = {
   headers: {
     Authorization: `Bearer ${token}`
   }
-}
+};
 
 export const plantTree = payload => dispatch => {
   dispatch(loading(true));
   return axios
-    .post(BASE_URL + '/tree', payload, config)
+    .post(BASE_URL + "/tree", payload, config)
     .then(res => {
       dispatch(loading(false));
-      return res.data
+      return res.data;
     })
     .catch(error => {
       dispatch(loading(false));
-      const {message} = error;
+      const { message } = error;
       dispatch(errorMethod(message));
       throw error;
-    })
-}
+    });
+};

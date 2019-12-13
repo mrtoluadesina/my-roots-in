@@ -7,7 +7,7 @@ const initialState = {
   country: "",
   locationType: "",
   treeType: "",
-  isOcassion: false,
+  isOccasion: false,
   ocassion: "",
   isGift: false
 }
@@ -34,7 +34,7 @@ export default (state = initialState, action = {}) => {
       return {
         ...state,
         isGift: action.isGift,
-        isOcassion: action.isOcassion
+        isOccasion: action.isOccasion
       }
     case SET_TYPE_OF_OCCASSION:
       return {
