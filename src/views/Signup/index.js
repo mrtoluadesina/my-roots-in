@@ -22,11 +22,11 @@ function Signup(props) {
   const details = metadata.signupPage;
 
   const initialFormState = {
-    name: "John Doe",
-    email: "Lawson@gmail.com",
-    password: "8392198489712",
-    country: "London",
-    phone: "+2345678909876"
+    name: "",
+    email: "",
+    password: "",
+    country: "",
+    phone: ""
   };
   const [fields, setFields] = useState(initialFormState);
 
@@ -75,17 +75,17 @@ function Signup(props) {
                 />
               ))}
             </Form>
-          <SimpleButton
-            title="Submit"
-            class={styles.fullWidth}
-            textStyle={styles.textColor}
-            loading={props.isLoading}
-            onPress={() => handleSubmit()}
-          />
-          <Signin onPress={() => navigate("Login")}>
-            Have an account signin?
-          </Signin>
-        </Background>
+            <SimpleButton
+              title="Submit"
+              class={styles.fullWidth}
+              textStyle={styles.textColor}
+              loading={props.isLoading}
+              onPress={() => handleSubmit()}
+            />
+            <Signin onPress={() => navigate("Login")}>
+              Have an account signin?
+            </Signin>
+          </Background>
         </Container>
       </KeyboardAvoidingView>
     </ImageBackground>
