@@ -8,7 +8,7 @@ const initialState = {
   locationType: "",
   treeType: "",
   isOccasion: false,
-  ocassion: "",
+  occasion: "",
   isGift: false
 }
 
@@ -39,7 +39,7 @@ export default (state = initialState, action = {}) => {
     case SET_TYPE_OF_OCCASSION:
       return {
         ...state,
-        ocassion: action.ocassion
+        occasion: action.occasion
       }
     case SET_HOW_TO_PLANT:
       return {
