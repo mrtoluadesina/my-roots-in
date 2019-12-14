@@ -19,9 +19,9 @@ export const whyPlantMethod = (isGift, isOccasion) => ({
   isOccasion
 });
 
-export const typeOfOcassionMethod = ocassion => ({
+export const typeOfoccasionMethod = occasion => ({
   type: types.SET_TYPE_OF_OCCASSION,
-  ocassion
+  occasion
 });
 
 export const howToPlantMethod = location => ({
@@ -50,27 +50,28 @@ export const whyPlant = payload => dispatch => {
   return { statusCode: 200, message: "reason chosen" };
 };
 
-export const typeOfOcassion = payload => dispatch => {
+export const typeOfoccasion = payload => dispatch => {
   dispatch(loading(true));
-  dispatch(typeOfOcassionMethod(payload));
-  return { statusCode: 200, message: "ocassion selected" };
+  dispatch(typeOfoccasionMethod(payload));
+  return { statusCode: 200, message: "occasion selected" };
 };
 
 export const howToPlant = payload => dispatch => {
   dispatch(loading(true));
-  dispatch(howToPlantMethod(payload.location));
+  dispatch(howToPlantMethod(payload));
   dispatch(loading(false));
   return { statusCode: 200, message: "location selected" };
 };
 
 export const whatTypeOfTree = payload => dispatch => {
   dispatch(loading(true));
-  dispatch(whatTypeMethod(payload.treeType));
+  dispatch(whatTypeMethod(payload));
   dispatch(loading(false));
   return { statusCode: 200, message: "Tree Selected" };
 };
 
-const token = store.getState().Login.token;
+const {name, email, token} = store.getState().Login.token;
+const {location, country, locationType, treeType, isOccasion, isGift, occasion} = store.getState().roots;
 
 const config = {
   headers: {
@@ -80,8 +81,22 @@ const config = {
 
 export const plantTree = payload => dispatch => {
   dispatch(loading(true));
+  dispatch(whatTypeMethod(payload));
+  const data = {
+    email,
+    name,
+    treeType,
+    locationType,
+    reason: {
+      isOccasion,
+      isGift
+    },
+    occasion,
+    country,
+    location
+  }
   return axios
-    .post(BASE_URL + "/tree", payload, config)
+    .post(BASE_URL + "/tree", data, config)
     .then(res => {
       dispatch(loading(false));
       return res.data;
