@@ -25,7 +25,7 @@ export const login = payload => dispatch => {
       const user = {
         name, email, token
       }
-      dispatch(setUser(res.data.token, user));
+      dispatch(setUser(user));
       dispatch(setToken(res.data.token));
       return res.data;
     })
