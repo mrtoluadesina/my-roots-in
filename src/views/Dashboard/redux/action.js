@@ -19,7 +19,7 @@ export const whyPlantMethod = (isGift, isOccasion) => ({
   isOccasion
 });
 
-export const typeOfoccasionMethod = occasion => ({
+export const typeOfOccasionMethod = occasion => ({
   type: types.SET_TYPE_OF_OCCASSION,
   occasion
 });
@@ -50,9 +50,9 @@ export const whyPlant = payload => dispatch => {
   return { statusCode: 200, message: "reason chosen" };
 };
 
-export const typeOfoccasion = payload => dispatch => {
+export const typeOfOccasion = payload => dispatch => {
   dispatch(loading(true));
-  dispatch(typeOfoccasionMethod(payload));
+  dispatch(typeOfOccasionMethod(payload));
   return { statusCode: 200, message: "occasion selected" };
 };
 

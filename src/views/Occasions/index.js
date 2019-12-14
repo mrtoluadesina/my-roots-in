@@ -19,7 +19,7 @@ import { images } from "../../../assets/images";
 import { SimpleButton } from "../../components/Buttons";
 import { CheckBox } from "../../components/CheckBox";
 import { colors } from "../../constants/colors";
-import { typeOfOcassionMethod } from "../Dashboard/redux/action";
+import { typeOfOccasionMethod } from "../Dashboard/redux/action";
 
 function OccasionTypes(props) {
   const { navigate, getParam } = props.navigation;
@@ -135,7 +135,7 @@ const mapStateToProps = ({roots}) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  handleOccasionType: payload => dispatch(typeOfOcassionMethod(payload))
+  handleOccasionType: payload => dispatch(typeOfOccasionMethod(payload))
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(OccasionTypes);
